@@ -278,7 +278,7 @@ impl Ui {
     /// Returns an immutable reference to the inputs/outputs object
     #[doc(alias = "GetIO")]
     pub fn io(&self) -> &Io {
-        unsafe { &*(sys::igGetIO() as *const Io) }
+        unsafe { &*(get_io() as *const Io) }
     }
 
     /// Returns an immutable reference to the font atlas.
@@ -1031,4 +1031,27 @@ pub enum Direction {
     Right = sys::ImGuiDir_Right,
     Up = sys::ImGuiDir_Up,
     Down = sys::ImGuiDir_Down,
+}
+
+// The following functions are a hack to fix codegen diverging from docking
+// and non-docking branches
+
+#[cfg(feature = "docking")]
+fn get_platform_io() -> *mut sys::ImGuiPlatformIO {
+    unsafe { sys::igGetPlatformIO_Nil() }
+}
+
+#[cfg(not(feature = "docking"))]
+fn get_platform_io() -> *mut sys::ImGuiPlatformIO {
+    unsafe { sys::igGetPlatformIO() }
+}
+
+#[cfg(feature = "docking")]
+fn get_io() -> *mut sys::ImGuiIO {
+    unsafe { sys::igGetIO_Nil() }
+}
+
+#[cfg(not(feature = "docking"))]
+fn get_io() -> *mut sys::ImGuiIO {
+    unsafe { sys::igGetIO() }
 }

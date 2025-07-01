@@ -6,6 +6,7 @@ use std::process;
 use std::ptr;
 
 // use crate::string::{ImStr, ImString};
+use crate::get_platform_io;
 use crate::Ui;
 
 /// Trait for clipboard backends
@@ -66,7 +67,7 @@ pub(crate) unsafe extern "C" fn get_clipboard_text(
     _user_data: *mut sys::ImGuiContext,
 ) -> *const c_char {
     let result = catch_unwind(|| {
-        let user_data = unsafe { (*sys::igGetPlatformIO()).Platform_ClipboardUserData };
+        let user_data = unsafe { (*get_platform_io()).Platform_ClipboardUserData };
 
         let ctx = &mut *(user_data as *mut ClipboardContext);
         match ctx.backend.get() {
@@ -88,7 +89,7 @@ pub(crate) unsafe extern "C" fn set_clipboard_text(
     text: *const c_char,
 ) {
     let result = catch_unwind(|| {
-        let user_data = unsafe { (*sys::igGetPlatformIO()).Platform_ClipboardUserData };
+        let user_data = unsafe { (*get_platform_io()).Platform_ClipboardUserData };
 
         let ctx = &mut *(user_data as *mut ClipboardContext);
         let text = CStr::from_ptr(text).to_owned();
@@ -106,7 +107,7 @@ impl Ui {
     /// Returns the current clipboard contents as text, or None if the clipboard is empty or cannot
     /// be accessed
     pub fn clipboard_text(&self) -> Option<String> {
-        let platform_io = unsafe { sys::igGetPlatformIO() };
+        let platform_io = get_platform_io();
 
         let current_clipboard_text_fn = unsafe { (*platform_io).Platform_GetClipboardTextFn };
 
@@ -140,7 +141,8 @@ impl Ui {
     ///
     /// Does nothing if the clipboard cannot be accessed.
     pub fn set_clipboard_text(&self, text: impl AsRef<str>) {
-        let platform_io = unsafe { sys::igGetPlatformIO() };
+        let platform_io = get_platform_io();
+
         let set_clipboard_text_fn = unsafe { (*platform_io).Platform_SetClipboardTextFn };
 
         if let Some(set_clipboard_text_fn) = set_clipboard_text_fn {
