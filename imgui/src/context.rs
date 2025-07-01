@@ -235,6 +235,7 @@ impl Context {
             &mut *(get_platform_io() as *mut crate::PlatformIo)
         };
         platform_io.set_ime_data_fn = Some(crate::ime::set_ime_data);
+        platform_io.ime_user_data = ime_data_ctx.get() as *mut _;
         self.ime_data_ctx = ime_data_ctx;
     }
     fn create_internal(mut shared_font_atlas: Option<SharedFontAtlas>) -> Self {
