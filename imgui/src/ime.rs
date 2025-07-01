@@ -8,7 +8,7 @@ pub trait ImeDataBackend: 'static {
         &mut self,
         ctx: *mut sys::ImGuiContext,
         viewport: &mut crate::Viewport,
-        data: Option<PlatformImeData>,
+        data: PlatformImeData,
     );
 }
 
@@ -36,7 +36,7 @@ impl ImeDataBackend for DummyImeDataContext {
         &mut self,
         _: *mut sys::ImGuiContext,
         _: &mut crate::Viewport,
-        _: Option<PlatformImeData>,
+        _: PlatformImeData,
     ) {
     }
 }
@@ -47,7 +47,7 @@ pub(crate) unsafe extern "C" fn set_ime_data(
     data: *mut sys::ImGuiPlatformImeData,
 ) {
     let result = catch_unwind(|| {
-        let data = unsafe { (data as *mut crate::PlatformImeData).as_ref().cloned() };
+        let data = unsafe { *(data as *mut crate::PlatformImeData).as_ref().unwrap() };
 
         let user_data = unsafe { (*get_platform_io()).Platform_ImeUserData };
         let ctx = &mut *(user_data as *mut ImeDataContext);
