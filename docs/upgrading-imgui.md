@@ -56,7 +56,7 @@ In short, there are a few steps:
 
    With this step, we now have new C bindings to the desired version of Dear ImGui.
 
-5. Back in the root of the imgui-rs repo, run `cargo xtask bindgen`
+5. Back in the root of the imgui-rs repo, run `cargo xtask bindgen-cli`
 
     This step generates `imgui-sys/src/bindings.rs` etc which are then used by `imgui/src/*`
 

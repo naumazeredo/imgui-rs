@@ -116,7 +116,6 @@ fn generate_binding_file(
 ) -> Result<()> {
     let mut cmd = std::process::Command::new("bindgen");
     let a = &[
-        "--size_t-is-usize",
         "--no-prepend-enum-name",
         "--no-doc-comments",
         // Layout tests aren't portable (they hardcode type sizes), and for
