@@ -972,12 +972,10 @@ impl<'ui> Image<'ui> {
 
     /// Draw the image on the window.
     pub fn build(self) {
-        use std::os::raw::c_void;
-
         unsafe {
             sys::ImDrawList_AddImage(
                 self.draw_list.draw_list,
-                self.texture_id.id() as *mut c_void,
+                self.texture_id.id(),
                 self.p_min.into(),
                 self.p_max.into(),
                 self.uv_min.into(),
@@ -1062,12 +1060,10 @@ impl<'ui> ImageQuad<'ui> {
 
     /// Draw the image on the window.
     pub fn build(self) {
-        use std::os::raw::c_void;
-
         unsafe {
             sys::ImDrawList_AddImageQuad(
                 self.draw_list.draw_list,
-                self.texture_id.id() as *mut c_void,
+                self.texture_id.id(),
                 self.p1.into(),
                 self.p2.into(),
                 self.p3.into(),
@@ -1175,12 +1171,10 @@ impl<'ui> ImageRounded<'ui> {
 
     /// Draw the image on the window.
     pub fn build(self) {
-        use std::os::raw::c_void;
-
         unsafe {
             sys::ImDrawList_AddImageRounded(
                 self.draw_list.draw_list,
-                self.texture_id.id() as *mut c_void,
+                self.texture_id.id(),
                 self.p_min.into(),
                 self.p_max.into(),
                 self.uv_min.into(),
@@ -1218,6 +1212,7 @@ impl<'ui, F: FnOnce() + 'static> Callback<'ui, F> {
                 self.draw_list.draw_list,
                 Some(Self::run_callback),
                 callback as *mut c_void,
+                0,
             );
         }
     }

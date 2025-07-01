@@ -24,16 +24,6 @@ bitflags! {
         /// This is mostly to instruct the backend to fill `io.nav_inputs`. The backend
         /// also needs to set `BackendFlags::HasGamepad`.
         const NAV_ENABLE_GAMEPAD = sys::ImGuiConfigFlags_NavEnableGamepad;
-        /// Instruction navigation to move the mouse cursor.
-        ///
-        /// May be useful on TV/console systems where moving a virtual mouse is awkward.
-        /// Will update `io.mouse_pos` and set `io.want_set_mouse_pos = true`. If enabled,
-        /// you *must* honor `io.want_set_mouse_pos`, or imgui-rs will react as if the mouse is
-        /// jumping around back and forth.
-        const NAV_ENABLE_SET_MOUSE_POS = sys::ImGuiConfigFlags_NavEnableSetMousePos;
-        /// Instruction navigation to not set the `io.want_capture_keyboard` flag when
-        /// `io.nav_active` is set.
-        const NAV_NO_CAPTURE_KEYBOARD = sys::ImGuiConfigFlags_NavNoCaptureKeyboard;
         /// Instruction imgui-rs to clear mouse position/buttons in `frame()`.
         ///
         /// This allows ignoring the mouse information set by the backend.
@@ -146,6 +136,16 @@ pub struct Io {
     /// framebuffer coordinates
     pub display_framebuffer_scale: [f32; 2],
 
+    /// Swap Activate/Cancel (A<>B) buttons, to match the typical "Nintendo/Japanese consoles"
+    /// button layout when using Gamepad navigation
+    pub config_nav_swap_gamepad_buttons: bool,
+    pub config_nav_move_set_mouse_pos: bool,
+    pub config_nav_capture_keyboard: bool,
+    pub config_nav_escape_clear_focus_item: bool,
+    pub config_nav_escape_clear_focus_window: bool,
+    pub config_nav_cursor_visible_auto: bool,
+    pub config_nav_cursor_visible_always: bool,
+
     #[cfg(feature = "docking")]
     pub config_docking_no_split: bool,
     #[cfg(feature = "docking")]
@@ -176,10 +176,6 @@ pub struct Io {
     /// * Multi-selection in lists uses Cmd/Super instead of Ctrl
     pub config_mac_os_behaviors: bool,
 
-    /// Swap Activate/Cancel (A<>B) buttons, to match the typical "Nintendo/Japanese consoles"
-    /// button layout when using Gamepad navigation
-    pub config_nav_swap_gamepad_buttons: bool,
-
     /// Enable input queue trickling: some types of events submitted during the same frame (e.g. button down + up)
     /// will be spread over multiple frames, improving interactions with low framerates.
     pub config_input_trickle_event_queue: bool,
@@ -199,6 +195,11 @@ pub struct Io {
     ///
     /// Windows without a title bar are not affected.
     pub config_windows_move_from_title_bar_only: bool,
+    /// CTRL+C copy the contents of focused window into the clipboard. Experimental because:
+    /// (1) has known issues with nested Begin/End pairs
+    /// (2) text output quality varies
+    /// (3) text output is in submission order rather than spatial order.
+    pub config_windows_copy_contents_with_ctrl_c: bool,
 
     /// Enable scrolling page by page when clicking outside the scrollbar grab.
     /// When disabled, always scroll to clicked location. When enabled, Shift+Click scrolls to clicked location.
@@ -254,6 +255,8 @@ pub struct Io {
 
     /// Highlight and show an error message when multiple items have conflicting identifiers.
     pub config_debug_highlight_id_conflicts: bool,
+    /// Show "Item Picker" button in aforementioned popup.
+    pub config_debug_highlight_id_conflicts_show_item_picker: bool,
 
     /// First-time calls to Begin()/BeginChild() will return false. NEEDS TO BE SET AT APPLICATION BOOT TIME if you don't want to miss windows.
     pub config_debug_begin_return_value_once: bool,
@@ -364,6 +367,7 @@ pub struct Io {
     mouse_clicked_count: [u16; 5],
     mouse_clicked_last_count: [u16; 5],
     mouse_released: [bool; 5],
+    mouse_released_time: [f64; 5],
     mouse_down_owned: [bool; 5],
     mouse_down_owned_unless_popup_close: [bool; 5],
 
@@ -383,8 +387,6 @@ pub struct Io {
     pub app_focus_lost: bool,
 
     app_accepting_events: bool,
-    backend_using_legacy_key_arrays: sys::ImS8,
-    backend_using_legacy_nav_input_array: bool,
 
     input_queue_surrogate: sys::ImWchar16,
     input_queue_characters: ImVector<sys::ImWchar>,
@@ -427,7 +429,7 @@ impl Io {
             .iter()
             // TODO: are the values in the buffer guaranteed to be valid unicode
             // scalar values? if so we can just expose this as a `&[char]`...
-            .map(|c| core::char::from_u32(*c).unwrap_or(core::char::REPLACEMENT_CHARACTER))
+            .map(|c| core::char::from_u32(*c as u32).unwrap_or(core::char::REPLACEMENT_CHARACTER))
     }
 
     pub fn update_delta_time(&mut self, delta: Duration) {
@@ -564,10 +566,7 @@ fn test_io_memory_layout() {
                 config_windows_move_from_title_bar_only,
                 ConfigWindowsMoveFromTitleBarOnly
             );
-            assert_field_offset!(
-                config_scrollbar_scroll_by_page,
-                ConfigScrollbarScrollByPage
-            );
+            assert_field_offset!(config_scrollbar_scroll_by_page, ConfigScrollbarScrollByPage);
             assert_field_offset!(backend_platform_name, BackendPlatformName);
             assert_field_offset!(backend_renderer_name, BackendRendererName);
             assert_field_offset!(backend_platform_user_data, BackendPlatformUserData);

@@ -3,25 +3,25 @@ use std::collections::HashMap;
 /// An opaque texture identifier
 #[derive(Copy, Clone, Debug, Eq, PartialEq, Hash)]
 #[repr(transparent)]
-pub struct TextureId(usize);
+pub struct TextureId(u64);
 
 impl TextureId {
     /// Creates a new texture id with the given identifier.
     #[inline]
-    pub const fn new(id: usize) -> Self {
+    pub const fn new(id: u64) -> Self {
         Self(id)
     }
 
     /// Returns the id of the TextureId.
     #[inline]
-    pub const fn id(self) -> usize {
+    pub const fn id(self) -> u64 {
         self.0
     }
 }
 
-impl From<usize> for TextureId {
+impl From<u64> for TextureId {
     #[inline]
-    fn from(id: usize) -> Self {
+    fn from(id: u64) -> Self {
         TextureId(id)
     }
 }
@@ -29,14 +29,14 @@ impl From<usize> for TextureId {
 impl<T> From<*const T> for TextureId {
     #[inline]
     fn from(ptr: *const T) -> Self {
-        TextureId(ptr as usize)
+        TextureId(ptr as u64)
     }
 }
 
 impl<T> From<*mut T> for TextureId {
     #[inline]
     fn from(ptr: *mut T) -> Self {
-        TextureId(ptr as usize)
+        TextureId(ptr as u64)
     }
 }
 
@@ -56,8 +56,8 @@ fn test_texture_id_memory_layout() {
 /// Generic texture mapping for use by renderers.
 #[derive(Debug)]
 pub struct Textures<T> {
-    textures: HashMap<usize, T>,
-    next: usize,
+    textures: HashMap<u64, T>,
+    next: u64,
 }
 
 /// We manually impl Default as `#[derive(Default)]`

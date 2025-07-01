@@ -139,9 +139,12 @@ bitflags! {
 
         /// ColorEdit, ColorPicker: show vertical alpha bar/gradient in picker.
         const ALPHA_BAR = sys::ImGuiColorEditFlags_AlphaBar;
-        /// ColorEdit, ColorPicker, ColorButton: display preview as a transparent color over a
-        /// checkerboard, instead of opaque.
-        const ALPHA_PREVIEW = sys::ImGuiColorEditFlags_AlphaPreview;
+        /// ColorEdit, ColorPicker, ColorButton: display preview as a opaque color over a
+        /// checkerboard, instead of transparent.
+        const ALPHA_OPAQUE = sys::ImGuiColorEditFlags_AlphaOpaque;
+        /// ColorEdit, ColorPicker, ColorButton: disable rendering a checkboard background
+        /// behind transparent color.
+        const ALPHA_NO_BG = sys::ImGuiColorEditFlags_AlphaNoBg;
         /// ColorEdit, ColorPicker, ColorButton: display half opaque / half checkerboard, instead
         /// of opaque.
         const ALPHA_PREVIEW_HALF = sys::ImGuiColorEditFlags_AlphaPreviewHalf;
@@ -258,10 +261,10 @@ where
         self.flags.set(ColorEditFlags::NO_LABEL, !value);
         self
     }
-    /// Enables/disables the vertical alpha bar/gradient in the color picker.
+    /// Enables/disables rendering the checkerboard pattern.
     #[inline]
-    pub fn alpha_bar(mut self, value: bool) -> Self {
-        self.flags.set(ColorEditFlags::ALPHA_BAR, value);
+    pub fn alpha_no_bg(mut self, value: bool) -> Self {
+        self.flags.set(ColorEditFlags::ALPHA_NO_BG, value);
         self
     }
     /// Sets the preview style.
@@ -272,8 +275,8 @@ where
             preview == ColorPreview::HalfAlpha,
         );
         self.flags.set(
-            ColorEditFlags::ALPHA_PREVIEW,
-            preview == ColorPreview::Alpha,
+            ColorEditFlags::ALPHA_OPAQUE,
+            preview == ColorPreview::Opaque,
         );
         self
     }
@@ -478,10 +481,10 @@ where
         self.flags.set(ColorEditFlags::NO_LABEL, !value);
         self
     }
-    /// Enables/disables the vertical alpha bar/gradient in the color picker.
+    /// Enables/disables rendering the checkerboard pattern.
     #[inline]
-    pub fn alpha_bar(mut self, value: bool) -> Self {
-        self.flags.set(ColorEditFlags::ALPHA_BAR, value);
+    pub fn alpha_no_bg(mut self, value: bool) -> Self {
+        self.flags.set(ColorEditFlags::ALPHA_NO_BG, value);
         self
     }
     /// Sets the preview style.
@@ -492,8 +495,8 @@ where
             preview == ColorPreview::HalfAlpha,
         );
         self.flags.set(
-            ColorEditFlags::ALPHA_PREVIEW,
-            preview == ColorPreview::Alpha,
+            ColorEditFlags::ALPHA_OPAQUE,
+            preview == ColorPreview::Opaque,
         );
         self
     }
@@ -696,10 +699,10 @@ where
         self.flags.set(ColorEditFlags::NO_SIDE_PREVIEW, !value);
         self
     }
-    /// Enables/disables the vertical alpha bar/gradient in the color picker.
+    /// Enables/disables rendering the checkerboard pattern.
     #[inline]
-    pub fn alpha_bar(mut self, value: bool) -> Self {
-        self.flags.set(ColorEditFlags::ALPHA_BAR, value);
+    pub fn alpha_no_bg(mut self, value: bool) -> Self {
+        self.flags.set(ColorEditFlags::ALPHA_NO_BG, value);
         self
     }
     /// Sets the preview style.
@@ -710,8 +713,8 @@ where
             preview == ColorPreview::HalfAlpha,
         );
         self.flags.set(
-            ColorEditFlags::ALPHA_PREVIEW,
-            preview == ColorPreview::Alpha,
+            ColorEditFlags::ALPHA_OPAQUE,
+            preview == ColorPreview::Opaque,
         );
         self
     }
@@ -921,10 +924,10 @@ where
         self.flags.set(ColorEditFlags::NO_SIDE_PREVIEW, !value);
         self
     }
-    /// Enables/disables the vertical alpha bar/gradient in the color picker.
+    /// Enables/disables rendering the checkerboard pattern.
     #[inline]
-    pub fn alpha_bar(mut self, value: bool) -> Self {
-        self.flags.set(ColorEditFlags::ALPHA_BAR, value);
+    pub fn alpha_no_bg(mut self, value: bool) -> Self {
+        self.flags.set(ColorEditFlags::ALPHA_NO_BG, value);
         self
     }
     /// Sets the preview style.
@@ -935,8 +938,8 @@ where
             preview == ColorPreview::HalfAlpha,
         );
         self.flags.set(
-            ColorEditFlags::ALPHA_PREVIEW,
-            preview == ColorPreview::Alpha,
+            ColorEditFlags::ALPHA_OPAQUE,
+            preview == ColorPreview::Opaque,
         );
         self
     }
@@ -1126,8 +1129,8 @@ impl<'ui, T: AsRef<str>> ColorButton<'ui, T> {
             preview == ColorPreview::HalfAlpha,
         );
         self.flags.set(
-            ColorEditFlags::ALPHA_PREVIEW,
-            preview == ColorPreview::Alpha,
+            ColorEditFlags::ALPHA_OPAQUE,
+            preview == ColorPreview::Opaque,
         );
         self
     }

@@ -1258,9 +1258,9 @@ extern "C" fn callback<T: InputTextCallbackHandler>(
             }
         }
         InputTextFlags::CALLBACK_CHAR_FILTER => {
-            let chr = unsafe { std::char::from_u32((*data).EventChar).unwrap() };
+            let chr = unsafe { std::char::from_u32((*data).EventChar as u32).unwrap() };
             let new_data = match callback_data.user_data.cback_handler.char_filter(chr) {
-                Some(value) => u32::from(value),
+                Some(value) => u32::from(value) as u16,
                 // 0 means "do not use this char" in imgui docs
                 None => 0,
             };

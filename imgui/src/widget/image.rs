@@ -1,5 +1,3 @@
-use std::os::raw::c_void;
-
 use crate::math::MintVec2;
 use crate::math::MintVec4;
 use crate::render::renderer::TextureId;
@@ -15,7 +13,7 @@ pub struct Image {
     uv0: [f32; 2],
     uv1: [f32; 2],
     tint_col: [f32; 4],
-    border_col: [f32; 4],
+    bg_col: [f32; 4],
 }
 
 impl Image {
@@ -28,7 +26,7 @@ impl Image {
             uv0: [0.0, 0.0],
             uv1: [1.0, 1.0],
             tint_col: [1.0, 1.0, 1.0, 1.0],
-            border_col: [0.0, 0.0, 0.0, 0.0],
+            bg_col: [0.0, 0.0, 0.0, 0.0],
         }
     }
     /// Sets the image size
@@ -53,20 +51,20 @@ impl Image {
         self
     }
     /// Sets the border color (default: no border)
-    pub fn border_col(mut self, border_col: impl Into<MintVec4>) -> Self {
-        self.border_col = border_col.into().into();
+    pub fn bg_col(mut self, bg_col: impl Into<MintVec4>) -> Self {
+        self.bg_col = bg_col.into().into();
         self
     }
     /// Builds the image
     pub fn build(self, _: &Ui) {
         unsafe {
-            sys::igImage(
-                self.texture_id.id() as *mut c_void,
+            sys::igImageWithBg(
+                self.texture_id.id(),
                 self.size.into(),
                 self.uv0.into(),
                 self.uv1.into(),
+                self.bg_col.into(),
                 self.tint_col.into(),
-                self.border_col.into(),
             );
         }
     }
@@ -167,7 +165,7 @@ impl<'ui, StrId: AsRef<str>> ImageButton<'ui, StrId> {
         unsafe {
             sys::igImageButton(
                 self.ui.scratch_txt(self.str_id),
-                self.texture_id.id() as *mut c_void,
+                self.texture_id.id(),
                 self.size.into(),
                 self.uv0.into(),
                 self.uv1.into(),
@@ -217,7 +215,7 @@ impl ImageButtonDeprecated {
     /// Builds the image button
     pub fn build(self, _: &Ui) -> bool {
         unsafe {
-            sys::igPushID_Ptr(self.texture_id.id() as *const _);
+            sys::igPushID_Ptr(self.texture_id.id() as *const core::ffi::c_void);
 
             if self.frame_padding >= 0 {
                 sys::igPushStyleVar_Vec2(
@@ -228,7 +226,7 @@ impl ImageButtonDeprecated {
 
             let res = sys::igImageButton(
                 b"#image".as_ptr().cast(),
-                self.texture_id.id() as *mut c_void,
+                self.texture_id.id(),
                 self.size.into(),
                 self.uv0.into(),
                 self.uv1.into(),

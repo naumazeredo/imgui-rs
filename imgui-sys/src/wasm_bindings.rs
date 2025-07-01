@@ -149,12 +149,7 @@ pub struct ImDrawListSharedData {
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct ImFontAtlasBuilder {
-    _unused: [u8; 0],
-}
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct ImFontLoader {
+pub struct ImFontBuilderIO {
     _unused: [u8; 0],
 }
 #[repr(C)]
@@ -179,7 +174,6 @@ pub type ImGuiStyleVar = core::ffi::c_int;
 pub type ImGuiTableBgTarget = core::ffi::c_int;
 pub type ImDrawFlags = core::ffi::c_int;
 pub type ImDrawListFlags = core::ffi::c_int;
-pub type ImFontFlags = core::ffi::c_int;
 pub type ImFontAtlasFlags = core::ffi::c_int;
 pub type ImGuiBackendFlags = core::ffi::c_int;
 pub type ImGuiButtonFlags = core::ffi::c_int;
@@ -235,21 +229,6 @@ pub struct ImVec4 {
     pub w: f32,
 }
 pub type ImTextureID = ImU64;
-#[repr(C)]
-#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
-pub struct ImTextureRef {
-    pub _TexData: *mut ImTextureData,
-    pub _TexID: ImTextureID,
-}
-impl Default for ImTextureRef {
-    fn default() -> Self {
-        let mut s = ::core::mem::MaybeUninit::<Self>::uninit();
-        unsafe {
-            ::core::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
-            s.assume_init()
-        }
-    }
-}
 pub const ImGuiWindowFlags_None: ImGuiWindowFlags_ = 0;
 pub const ImGuiWindowFlags_NoTitleBar: ImGuiWindowFlags_ = 1;
 pub const ImGuiWindowFlags_NoResize: ImGuiWindowFlags_ = 2;
@@ -341,11 +320,8 @@ pub const ImGuiTreeNodeFlags_SpanFullWidth: ImGuiTreeNodeFlags_ = 4096;
 pub const ImGuiTreeNodeFlags_SpanLabelWidth: ImGuiTreeNodeFlags_ = 8192;
 pub const ImGuiTreeNodeFlags_SpanAllColumns: ImGuiTreeNodeFlags_ = 16384;
 pub const ImGuiTreeNodeFlags_LabelSpanAllColumns: ImGuiTreeNodeFlags_ = 32768;
-pub const ImGuiTreeNodeFlags_NavLeftJumpsToParent: ImGuiTreeNodeFlags_ = 131072;
+pub const ImGuiTreeNodeFlags_NavLeftJumpsBackHere: ImGuiTreeNodeFlags_ = 131072;
 pub const ImGuiTreeNodeFlags_CollapsingHeader: ImGuiTreeNodeFlags_ = 26;
-pub const ImGuiTreeNodeFlags_DrawLinesNone: ImGuiTreeNodeFlags_ = 262144;
-pub const ImGuiTreeNodeFlags_DrawLinesFull: ImGuiTreeNodeFlags_ = 524288;
-pub const ImGuiTreeNodeFlags_DrawLinesToNodes: ImGuiTreeNodeFlags_ = 1048576;
 pub type ImGuiTreeNodeFlags_ = core::ffi::c_uint;
 pub const ImGuiPopupFlags_None: ImGuiPopupFlags_ = 0;
 pub const ImGuiPopupFlags_MouseButtonLeft: ImGuiPopupFlags_ = 0;
@@ -628,13 +604,13 @@ pub const ImGuiKey_ReservedForModShift: ImGuiKey = 664;
 pub const ImGuiKey_ReservedForModAlt: ImGuiKey = 665;
 pub const ImGuiKey_ReservedForModSuper: ImGuiKey = 666;
 pub const ImGuiKey_NamedKey_END: ImGuiKey = 667;
-pub const ImGuiKey_NamedKey_COUNT: ImGuiKey = 155;
 pub const ImGuiMod_None: ImGuiKey = 0;
 pub const ImGuiMod_Ctrl: ImGuiKey = 4096;
 pub const ImGuiMod_Shift: ImGuiKey = 8192;
 pub const ImGuiMod_Alt: ImGuiKey = 16384;
 pub const ImGuiMod_Super: ImGuiKey = 32768;
 pub const ImGuiMod_Mask_: ImGuiKey = 61440;
+pub const ImGuiKey_NamedKey_COUNT: ImGuiKey = 155;
 pub type ImGuiKey = core::ffi::c_uint;
 pub const ImGuiInputFlags_None: ImGuiInputFlags_ = 0;
 pub const ImGuiInputFlags_Repeat: ImGuiInputFlags_ = 1;
@@ -662,7 +638,6 @@ pub const ImGuiBackendFlags_HasGamepad: ImGuiBackendFlags_ = 1;
 pub const ImGuiBackendFlags_HasMouseCursors: ImGuiBackendFlags_ = 2;
 pub const ImGuiBackendFlags_HasSetMousePos: ImGuiBackendFlags_ = 4;
 pub const ImGuiBackendFlags_RendererHasVtxOffset: ImGuiBackendFlags_ = 8;
-pub const ImGuiBackendFlags_RendererHasTextures: ImGuiBackendFlags_ = 16;
 pub type ImGuiBackendFlags_ = core::ffi::c_uint;
 pub const ImGuiCol_Text: ImGuiCol_ = 0;
 pub const ImGuiCol_TextDisabled: ImGuiCol_ = 1;
@@ -697,32 +672,30 @@ pub const ImGuiCol_SeparatorActive: ImGuiCol_ = 29;
 pub const ImGuiCol_ResizeGrip: ImGuiCol_ = 30;
 pub const ImGuiCol_ResizeGripHovered: ImGuiCol_ = 31;
 pub const ImGuiCol_ResizeGripActive: ImGuiCol_ = 32;
-pub const ImGuiCol_InputTextCursor: ImGuiCol_ = 33;
-pub const ImGuiCol_TabHovered: ImGuiCol_ = 34;
-pub const ImGuiCol_Tab: ImGuiCol_ = 35;
-pub const ImGuiCol_TabSelected: ImGuiCol_ = 36;
-pub const ImGuiCol_TabSelectedOverline: ImGuiCol_ = 37;
-pub const ImGuiCol_TabDimmed: ImGuiCol_ = 38;
-pub const ImGuiCol_TabDimmedSelected: ImGuiCol_ = 39;
-pub const ImGuiCol_TabDimmedSelectedOverline: ImGuiCol_ = 40;
-pub const ImGuiCol_PlotLines: ImGuiCol_ = 41;
-pub const ImGuiCol_PlotLinesHovered: ImGuiCol_ = 42;
-pub const ImGuiCol_PlotHistogram: ImGuiCol_ = 43;
-pub const ImGuiCol_PlotHistogramHovered: ImGuiCol_ = 44;
-pub const ImGuiCol_TableHeaderBg: ImGuiCol_ = 45;
-pub const ImGuiCol_TableBorderStrong: ImGuiCol_ = 46;
-pub const ImGuiCol_TableBorderLight: ImGuiCol_ = 47;
-pub const ImGuiCol_TableRowBg: ImGuiCol_ = 48;
-pub const ImGuiCol_TableRowBgAlt: ImGuiCol_ = 49;
-pub const ImGuiCol_TextLink: ImGuiCol_ = 50;
-pub const ImGuiCol_TextSelectedBg: ImGuiCol_ = 51;
-pub const ImGuiCol_TreeLines: ImGuiCol_ = 52;
-pub const ImGuiCol_DragDropTarget: ImGuiCol_ = 53;
-pub const ImGuiCol_NavCursor: ImGuiCol_ = 54;
-pub const ImGuiCol_NavWindowingHighlight: ImGuiCol_ = 55;
-pub const ImGuiCol_NavWindowingDimBg: ImGuiCol_ = 56;
-pub const ImGuiCol_ModalWindowDimBg: ImGuiCol_ = 57;
-pub const ImGuiCol_COUNT: ImGuiCol_ = 58;
+pub const ImGuiCol_TabHovered: ImGuiCol_ = 33;
+pub const ImGuiCol_Tab: ImGuiCol_ = 34;
+pub const ImGuiCol_TabSelected: ImGuiCol_ = 35;
+pub const ImGuiCol_TabSelectedOverline: ImGuiCol_ = 36;
+pub const ImGuiCol_TabDimmed: ImGuiCol_ = 37;
+pub const ImGuiCol_TabDimmedSelected: ImGuiCol_ = 38;
+pub const ImGuiCol_TabDimmedSelectedOverline: ImGuiCol_ = 39;
+pub const ImGuiCol_PlotLines: ImGuiCol_ = 40;
+pub const ImGuiCol_PlotLinesHovered: ImGuiCol_ = 41;
+pub const ImGuiCol_PlotHistogram: ImGuiCol_ = 42;
+pub const ImGuiCol_PlotHistogramHovered: ImGuiCol_ = 43;
+pub const ImGuiCol_TableHeaderBg: ImGuiCol_ = 44;
+pub const ImGuiCol_TableBorderStrong: ImGuiCol_ = 45;
+pub const ImGuiCol_TableBorderLight: ImGuiCol_ = 46;
+pub const ImGuiCol_TableRowBg: ImGuiCol_ = 47;
+pub const ImGuiCol_TableRowBgAlt: ImGuiCol_ = 48;
+pub const ImGuiCol_TextLink: ImGuiCol_ = 49;
+pub const ImGuiCol_TextSelectedBg: ImGuiCol_ = 50;
+pub const ImGuiCol_DragDropTarget: ImGuiCol_ = 51;
+pub const ImGuiCol_NavCursor: ImGuiCol_ = 52;
+pub const ImGuiCol_NavWindowingHighlight: ImGuiCol_ = 53;
+pub const ImGuiCol_NavWindowingDimBg: ImGuiCol_ = 54;
+pub const ImGuiCol_ModalWindowDimBg: ImGuiCol_ = 55;
+pub const ImGuiCol_COUNT: ImGuiCol_ = 56;
 pub type ImGuiCol_ = core::ffi::c_uint;
 pub const ImGuiStyleVar_Alpha: ImGuiStyleVar_ = 0;
 pub const ImGuiStyleVar_DisabledAlpha: ImGuiStyleVar_ = 1;
@@ -753,14 +726,12 @@ pub const ImGuiStyleVar_TabBarBorderSize: ImGuiStyleVar_ = 25;
 pub const ImGuiStyleVar_TabBarOverlineSize: ImGuiStyleVar_ = 26;
 pub const ImGuiStyleVar_TableAngledHeadersAngle: ImGuiStyleVar_ = 27;
 pub const ImGuiStyleVar_TableAngledHeadersTextAlign: ImGuiStyleVar_ = 28;
-pub const ImGuiStyleVar_TreeLinesSize: ImGuiStyleVar_ = 29;
-pub const ImGuiStyleVar_TreeLinesRounding: ImGuiStyleVar_ = 30;
-pub const ImGuiStyleVar_ButtonTextAlign: ImGuiStyleVar_ = 31;
-pub const ImGuiStyleVar_SelectableTextAlign: ImGuiStyleVar_ = 32;
-pub const ImGuiStyleVar_SeparatorTextBorderSize: ImGuiStyleVar_ = 33;
-pub const ImGuiStyleVar_SeparatorTextAlign: ImGuiStyleVar_ = 34;
-pub const ImGuiStyleVar_SeparatorTextPadding: ImGuiStyleVar_ = 35;
-pub const ImGuiStyleVar_COUNT: ImGuiStyleVar_ = 36;
+pub const ImGuiStyleVar_ButtonTextAlign: ImGuiStyleVar_ = 29;
+pub const ImGuiStyleVar_SelectableTextAlign: ImGuiStyleVar_ = 30;
+pub const ImGuiStyleVar_SeparatorTextBorderSize: ImGuiStyleVar_ = 31;
+pub const ImGuiStyleVar_SeparatorTextAlign: ImGuiStyleVar_ = 32;
+pub const ImGuiStyleVar_SeparatorTextPadding: ImGuiStyleVar_ = 33;
+pub const ImGuiStyleVar_COUNT: ImGuiStyleVar_ = 34;
 pub type ImGuiStyleVar_ = core::ffi::c_uint;
 pub const ImGuiButtonFlags_None: ImGuiButtonFlags_ = 0;
 pub const ImGuiButtonFlags_MouseButtonLeft: ImGuiButtonFlags_ = 1;
@@ -953,9 +924,6 @@ impl Default for ImGuiTableColumnSortSpecs {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, PartialEq)]
 pub struct ImGuiStyle {
-    pub FontSizeBase: f32,
-    pub FontScaleMain: f32,
-    pub FontScaleDpi: f32,
     pub Alpha: f32,
     pub DisabledAlpha: f32,
     pub WindowPadding: ImVec2,
@@ -992,9 +960,6 @@ pub struct ImGuiStyle {
     pub TabBarOverlineSize: f32,
     pub TableAngledHeadersAngle: f32,
     pub TableAngledHeadersTextAlign: ImVec2,
-    pub TreeLinesFlags: ImGuiTreeNodeFlags,
-    pub TreeLinesSize: f32,
-    pub TreeLinesRounding: f32,
     pub ColorButtonPosition: ImGuiDir,
     pub ButtonTextAlign: ImVec2,
     pub SelectableTextAlign: ImVec2,
@@ -1009,14 +974,12 @@ pub struct ImGuiStyle {
     pub AntiAliasedFill: bool,
     pub CurveTessellationTol: f32,
     pub CircleTessellationMaxError: f32,
-    pub Colors: [ImVec4; 58usize],
+    pub Colors: [ImVec4; 56usize],
     pub HoverStationaryDelay: f32,
     pub HoverDelayShort: f32,
     pub HoverDelayNormal: f32,
     pub HoverFlagsForTooltipMouse: ImGuiHoveredFlags,
     pub HoverFlagsForTooltipNav: ImGuiHoveredFlags,
-    pub _MainScale: f32,
-    pub _NextFrameFontSizeBase: f32,
 }
 impl Default for ImGuiStyle {
     fn default() -> Self {
@@ -1057,15 +1020,16 @@ pub struct ImGuiIO {
     pub ConfigFlags: ImGuiConfigFlags,
     pub BackendFlags: ImGuiBackendFlags,
     pub DisplaySize: ImVec2,
-    pub DisplayFramebufferScale: ImVec2,
     pub DeltaTime: f32,
     pub IniSavingRate: f32,
     pub IniFilename: *const core::ffi::c_char,
     pub LogFilename: *const core::ffi::c_char,
     pub UserData: *mut core::ffi::c_void,
     pub Fonts: *mut ImFontAtlas,
-    pub FontDefault: *mut ImFont,
+    pub FontGlobalScale: f32,
     pub FontAllowUserScaling: bool,
+    pub FontDefault: *mut ImFont,
+    pub DisplayFramebufferScale: ImVec2,
     pub ConfigNavSwapGamepadButtons: bool,
     pub ConfigNavMoveSetMousePos: bool,
     pub ConfigNavCaptureKeyboard: bool,
@@ -1391,7 +1355,7 @@ pub struct ImGuiListClipper {
     pub DisplayEnd: core::ffi::c_int,
     pub ItemsCount: core::ffi::c_int,
     pub ItemsHeight: f32,
-    pub StartPosY: f64,
+    pub StartPosY: f32,
     pub StartSeekOffsetY: f64,
     pub TempData: *mut core::ffi::c_void,
 }
@@ -1537,7 +1501,7 @@ pub type ImDrawCallback = ::core::option::Option<
 #[derive(Debug, Copy, Clone, PartialEq)]
 pub struct ImDrawCmd {
     pub ClipRect: ImVec4,
-    pub TexRef: ImTextureRef,
+    pub TextureId: ImTextureID,
     pub VtxOffset: core::ffi::c_uint,
     pub IdxOffset: core::ffi::c_uint,
     pub ElemCount: core::ffi::c_uint,
@@ -1563,20 +1527,11 @@ pub struct ImDrawVert {
     pub col: ImU32,
 }
 #[repr(C)]
-#[derive(Debug, Copy, Clone, PartialEq)]
+#[derive(Debug, Default, Copy, Clone, PartialEq)]
 pub struct ImDrawCmdHeader {
     pub ClipRect: ImVec4,
-    pub TexRef: ImTextureRef,
+    pub TextureId: ImTextureID,
     pub VtxOffset: core::ffi::c_uint,
-}
-impl Default for ImDrawCmdHeader {
-    fn default() -> Self {
-        let mut s = ::core::mem::MaybeUninit::<Self>::uninit();
-        unsafe {
-            ::core::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
-            s.assume_init()
-        }
-    }
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
@@ -1728,12 +1683,12 @@ impl Default for ImVector_ImVec4 {
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
-pub struct ImVector_ImTextureRef {
+pub struct ImVector_ImTextureID {
     pub Size: core::ffi::c_int,
     pub Capacity: core::ffi::c_int,
-    pub Data: *mut ImTextureRef,
+    pub Data: *mut ImTextureID,
 }
-impl Default for ImVector_ImTextureRef {
+impl Default for ImVector_ImTextureID {
     fn default() -> Self {
         let mut s = ::core::mem::MaybeUninit::<Self>::uninit();
         unsafe {
@@ -1773,7 +1728,7 @@ pub struct ImDrawList {
     pub _CmdHeader: ImDrawCmdHeader,
     pub _Splitter: ImDrawListSplitter,
     pub _ClipRectStack: ImVector_ImVec4,
-    pub _TextureStack: ImVector_ImTextureRef,
+    pub _TextureIdStack: ImVector_ImTextureID,
     pub _CallbacksDataBuf: ImVector_ImU8,
     pub _FringeScale: f32,
     pub _OwnerName: *const core::ffi::c_char,
@@ -1804,22 +1759,6 @@ impl Default for ImVector_ImDrawListPtr {
     }
 }
 #[repr(C)]
-#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
-pub struct ImVector_ImTextureDataPtr {
-    pub Size: core::ffi::c_int,
-    pub Capacity: core::ffi::c_int,
-    pub Data: *mut *mut ImTextureData,
-}
-impl Default for ImVector_ImTextureDataPtr {
-    fn default() -> Self {
-        let mut s = ::core::mem::MaybeUninit::<Self>::uninit();
-        unsafe {
-            ::core::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
-            s.assume_init()
-        }
-    }
-}
-#[repr(C)]
 #[derive(Debug, Copy, Clone, PartialEq)]
 pub struct ImDrawData {
     pub Valid: bool,
@@ -1831,71 +1770,8 @@ pub struct ImDrawData {
     pub DisplaySize: ImVec2,
     pub FramebufferScale: ImVec2,
     pub OwnerViewport: *mut ImGuiViewport,
-    pub Textures: *mut ImVector_ImTextureDataPtr,
 }
 impl Default for ImDrawData {
-    fn default() -> Self {
-        let mut s = ::core::mem::MaybeUninit::<Self>::uninit();
-        unsafe {
-            ::core::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
-            s.assume_init()
-        }
-    }
-}
-pub const ImTextureFormat_RGBA32: ImTextureFormat = 0;
-pub const ImTextureFormat_Alpha8: ImTextureFormat = 1;
-pub type ImTextureFormat = core::ffi::c_uint;
-pub const ImTextureStatus_OK: ImTextureStatus = 0;
-pub const ImTextureStatus_Destroyed: ImTextureStatus = 1;
-pub const ImTextureStatus_WantCreate: ImTextureStatus = 2;
-pub const ImTextureStatus_WantUpdates: ImTextureStatus = 3;
-pub const ImTextureStatus_WantDestroy: ImTextureStatus = 4;
-pub type ImTextureStatus = core::ffi::c_uint;
-#[repr(C)]
-#[derive(Debug, Default, Copy, Clone, Hash, PartialEq, Eq)]
-pub struct ImTextureRect {
-    pub x: core::ffi::c_ushort,
-    pub y: core::ffi::c_ushort,
-    pub w: core::ffi::c_ushort,
-    pub h: core::ffi::c_ushort,
-}
-#[repr(C)]
-#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
-pub struct ImVector_ImTextureRect {
-    pub Size: core::ffi::c_int,
-    pub Capacity: core::ffi::c_int,
-    pub Data: *mut ImTextureRect,
-}
-impl Default for ImVector_ImTextureRect {
-    fn default() -> Self {
-        let mut s = ::core::mem::MaybeUninit::<Self>::uninit();
-        unsafe {
-            ::core::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
-            s.assume_init()
-        }
-    }
-}
-#[repr(C)]
-#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
-pub struct ImTextureData {
-    pub UniqueID: core::ffi::c_int,
-    pub Status: ImTextureStatus,
-    pub BackendUserData: *mut core::ffi::c_void,
-    pub TexID: ImTextureID,
-    pub Format: ImTextureFormat,
-    pub Width: core::ffi::c_int,
-    pub Height: core::ffi::c_int,
-    pub BytesPerPixel: core::ffi::c_int,
-    pub Pixels: *mut core::ffi::c_uchar,
-    pub UsedRect: ImTextureRect,
-    pub UpdateRect: ImTextureRect,
-    pub Updates: ImVector_ImTextureRect,
-    pub UnusedFrames: core::ffi::c_int,
-    pub RefCount: core::ffi::c_ushort,
-    pub UseColors: bool,
-    pub WantDestroyNextFrame: bool,
-}
-impl Default for ImTextureData {
     fn default() -> Self {
         let mut s = ::core::mem::MaybeUninit::<Self>::uninit();
         unsafe {
@@ -1907,31 +1783,26 @@ impl Default for ImTextureData {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, PartialEq)]
 pub struct ImFontConfig {
-    pub Name: [core::ffi::c_char; 40usize],
     pub FontData: *mut core::ffi::c_void,
     pub FontDataSize: core::ffi::c_int,
     pub FontDataOwnedByAtlas: bool,
     pub MergeMode: bool,
     pub PixelSnapH: bool,
-    pub PixelSnapV: bool,
-    pub FontNo: ImS8,
-    pub OversampleH: ImS8,
-    pub OversampleV: ImS8,
+    pub FontNo: core::ffi::c_int,
+    pub OversampleH: core::ffi::c_int,
+    pub OversampleV: core::ffi::c_int,
     pub SizePixels: f32,
-    pub GlyphRanges: *const ImWchar,
-    pub GlyphExcludeRanges: *const ImWchar,
     pub GlyphOffset: ImVec2,
+    pub GlyphRanges: *const ImWchar,
     pub GlyphMinAdvanceX: f32,
     pub GlyphMaxAdvanceX: f32,
     pub GlyphExtraAdvanceX: f32,
-    pub FontLoaderFlags: core::ffi::c_uint,
+    pub FontBuilderFlags: core::ffi::c_uint,
     pub RasterizerMultiply: f32,
     pub RasterizerDensity: f32,
     pub EllipsisChar: ImWchar,
-    pub Flags: ImFontFlags,
+    pub Name: [core::ffi::c_char; 40usize],
     pub DstFont: *mut ImFont,
-    pub FontLoader: *const ImFontLoader,
-    pub FontLoaderData: *mut core::ffi::c_void,
 }
 impl Default for ImFontConfig {
     fn default() -> Self {
@@ -1956,7 +1827,6 @@ pub struct ImFontGlyph {
     pub V0: f32,
     pub U1: f32,
     pub V1: f32,
-    pub PackId: core::ffi::c_int,
 }
 impl ImFontGlyph {
     #[inline]
@@ -2026,47 +1896,14 @@ impl ImFontGlyph {
         }
     }
     #[inline]
-    pub fn SourceIdx(&self) -> core::ffi::c_uint {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 4u8) as u32) }
-    }
-    #[inline]
-    pub fn set_SourceIdx(&mut self, val: core::ffi::c_uint) {
-        unsafe {
-            let val: u32 = ::core::mem::transmute(val);
-            self._bitfield_1.set(2usize, 4u8, val as u64)
-        }
-    }
-    #[inline]
-    pub unsafe fn SourceIdx_raw(this: *const Self) -> core::ffi::c_uint {
-        unsafe {
-            ::core::mem::transmute(<__BindgenBitfieldUnit<[u8; 4usize]>>::raw_get(
-                ::core::ptr::addr_of!((*this)._bitfield_1),
-                2usize,
-                4u8,
-            ) as u32)
-        }
-    }
-    #[inline]
-    pub unsafe fn set_SourceIdx_raw(this: *mut Self, val: core::ffi::c_uint) {
-        unsafe {
-            let val: u32 = ::core::mem::transmute(val);
-            <__BindgenBitfieldUnit<[u8; 4usize]>>::raw_set(
-                ::core::ptr::addr_of_mut!((*this)._bitfield_1),
-                2usize,
-                4u8,
-                val as u64,
-            )
-        }
-    }
-    #[inline]
     pub fn Codepoint(&self) -> core::ffi::c_uint {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(6usize, 26u8) as u32) }
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 30u8) as u32) }
     }
     #[inline]
     pub fn set_Codepoint(&mut self, val: core::ffi::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
-            self._bitfield_1.set(6usize, 26u8, val as u64)
+            self._bitfield_1.set(2usize, 30u8, val as u64)
         }
     }
     #[inline]
@@ -2074,8 +1911,8 @@ impl ImFontGlyph {
         unsafe {
             ::core::mem::transmute(<__BindgenBitfieldUnit<[u8; 4usize]>>::raw_get(
                 ::core::ptr::addr_of!((*this)._bitfield_1),
-                6usize,
-                26u8,
+                2usize,
+                30u8,
             ) as u32)
         }
     }
@@ -2085,8 +1922,8 @@ impl ImFontGlyph {
             let val: u32 = ::core::mem::transmute(val);
             <__BindgenBitfieldUnit<[u8; 4usize]>>::raw_set(
                 ::core::ptr::addr_of_mut!((*this)._bitfield_1),
-                6usize,
-                26u8,
+                2usize,
+                30u8,
                 val as u64,
             )
         }
@@ -2095,7 +1932,6 @@ impl ImFontGlyph {
     pub fn new_bitfield_1(
         Colored: core::ffi::c_uint,
         Visible: core::ffi::c_uint,
-        SourceIdx: core::ffi::c_uint,
         Codepoint: core::ffi::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 4usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 4usize]> = Default::default();
@@ -2107,11 +1943,7 @@ impl ImFontGlyph {
             let Visible: u32 = unsafe { ::core::mem::transmute(Visible) };
             Visible as u64
         });
-        __bindgen_bitfield_unit.set(2usize, 4u8, {
-            let SourceIdx: u32 = unsafe { ::core::mem::transmute(SourceIdx) };
-            SourceIdx as u64
-        });
-        __bindgen_bitfield_unit.set(6usize, 26u8, {
+        __bindgen_bitfield_unit.set(2usize, 30u8, {
             let Codepoint: u32 = unsafe { ::core::mem::transmute(Codepoint) };
             Codepoint as u64
         });
@@ -2148,16 +1980,111 @@ impl Default for ImFontGlyphRangesBuilder {
         }
     }
 }
-pub type ImFontAtlasRectId = core::ffi::c_int;
 #[repr(C)]
-#[derive(Debug, Default, Copy, Clone, PartialEq)]
-pub struct ImFontAtlasRect {
-    pub x: core::ffi::c_ushort,
-    pub y: core::ffi::c_ushort,
-    pub w: core::ffi::c_ushort,
-    pub h: core::ffi::c_ushort,
-    pub uv0: ImVec2,
-    pub uv1: ImVec2,
+#[derive(Debug, Copy, Clone, PartialEq)]
+pub struct ImFontAtlasCustomRect {
+    pub X: core::ffi::c_ushort,
+    pub Y: core::ffi::c_ushort,
+    pub Width: core::ffi::c_ushort,
+    pub Height: core::ffi::c_ushort,
+    pub _bitfield_align_1: [u32; 0],
+    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize]>,
+    pub GlyphAdvanceX: f32,
+    pub GlyphOffset: ImVec2,
+    pub Font: *mut ImFont,
+}
+impl Default for ImFontAtlasCustomRect {
+    fn default() -> Self {
+        let mut s = ::core::mem::MaybeUninit::<Self>::uninit();
+        unsafe {
+            ::core::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
+            s.assume_init()
+        }
+    }
+}
+impl ImFontAtlasCustomRect {
+    #[inline]
+    pub fn GlyphID(&self) -> core::ffi::c_uint {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 31u8) as u32) }
+    }
+    #[inline]
+    pub fn set_GlyphID(&mut self, val: core::ffi::c_uint) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(0usize, 31u8, val as u64)
+        }
+    }
+    #[inline]
+    pub unsafe fn GlyphID_raw(this: *const Self) -> core::ffi::c_uint {
+        unsafe {
+            ::core::mem::transmute(<__BindgenBitfieldUnit<[u8; 4usize]>>::raw_get(
+                ::core::ptr::addr_of!((*this)._bitfield_1),
+                0usize,
+                31u8,
+            ) as u32)
+        }
+    }
+    #[inline]
+    pub unsafe fn set_GlyphID_raw(this: *mut Self, val: core::ffi::c_uint) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            <__BindgenBitfieldUnit<[u8; 4usize]>>::raw_set(
+                ::core::ptr::addr_of_mut!((*this)._bitfield_1),
+                0usize,
+                31u8,
+                val as u64,
+            )
+        }
+    }
+    #[inline]
+    pub fn GlyphColored(&self) -> core::ffi::c_uint {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(31usize, 1u8) as u32) }
+    }
+    #[inline]
+    pub fn set_GlyphColored(&mut self, val: core::ffi::c_uint) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(31usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub unsafe fn GlyphColored_raw(this: *const Self) -> core::ffi::c_uint {
+        unsafe {
+            ::core::mem::transmute(<__BindgenBitfieldUnit<[u8; 4usize]>>::raw_get(
+                ::core::ptr::addr_of!((*this)._bitfield_1),
+                31usize,
+                1u8,
+            ) as u32)
+        }
+    }
+    #[inline]
+    pub unsafe fn set_GlyphColored_raw(this: *mut Self, val: core::ffi::c_uint) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            <__BindgenBitfieldUnit<[u8; 4usize]>>::raw_set(
+                ::core::ptr::addr_of_mut!((*this)._bitfield_1),
+                31usize,
+                1u8,
+                val as u64,
+            )
+        }
+    }
+    #[inline]
+    pub fn new_bitfield_1(
+        GlyphID: core::ffi::c_uint,
+        GlyphColored: core::ffi::c_uint,
+    ) -> __BindgenBitfieldUnit<[u8; 4usize]> {
+        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 4usize]> = Default::default();
+        __bindgen_bitfield_unit.set(0usize, 31u8, {
+            let GlyphID: u32 = unsafe { ::core::mem::transmute(GlyphID) };
+            GlyphID as u64
+        });
+        __bindgen_bitfield_unit.set(31usize, 1u8, {
+            let GlyphColored: u32 = unsafe { ::core::mem::transmute(GlyphColored) };
+            GlyphColored as u64
+        });
+        __bindgen_bitfield_unit
+    }
 }
 pub const ImFontAtlasFlags_None: ImFontAtlasFlags_ = 0;
 pub const ImFontAtlasFlags_NoPowerOfTwoHeight: ImFontAtlasFlags_ = 1;
@@ -2172,6 +2099,22 @@ pub struct ImVector_ImFontPtr {
     pub Data: *mut *mut ImFont,
 }
 impl Default for ImVector_ImFontPtr {
+    fn default() -> Self {
+        let mut s = ::core::mem::MaybeUninit::<Self>::uninit();
+        unsafe {
+            ::core::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
+            s.assume_init()
+        }
+    }
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub struct ImVector_ImFontAtlasCustomRect {
+    pub Size: core::ffi::c_int,
+    pub Capacity: core::ffi::c_int,
+    pub Data: *mut ImFontAtlasCustomRect,
+}
+impl Default for ImVector_ImFontAtlasCustomRect {
     fn default() -> Self {
         let mut s = ::core::mem::MaybeUninit::<Self>::uninit();
         unsafe {
@@ -2197,54 +2140,30 @@ impl Default for ImVector_ImFontConfig {
     }
 }
 #[repr(C)]
-#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
-pub struct ImVector_ImDrawListSharedDataPtr {
-    pub Size: core::ffi::c_int,
-    pub Capacity: core::ffi::c_int,
-    pub Data: *mut *mut ImDrawListSharedData,
-}
-impl Default for ImVector_ImDrawListSharedDataPtr {
-    fn default() -> Self {
-        let mut s = ::core::mem::MaybeUninit::<Self>::uninit();
-        unsafe {
-            ::core::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
-            s.assume_init()
-        }
-    }
-}
-#[repr(C)]
 #[derive(Debug, Copy, Clone, PartialEq)]
 pub struct ImFontAtlas {
     pub Flags: ImFontAtlasFlags,
-    pub TexDesiredFormat: ImTextureFormat,
+    pub TexID: ImTextureID,
+    pub TexDesiredWidth: core::ffi::c_int,
     pub TexGlyphPadding: core::ffi::c_int,
-    pub TexMinWidth: core::ffi::c_int,
-    pub TexMinHeight: core::ffi::c_int,
-    pub TexMaxWidth: core::ffi::c_int,
-    pub TexMaxHeight: core::ffi::c_int,
     pub UserData: *mut core::ffi::c_void,
-    pub TexRef: ImTextureRef,
-    pub TexData: *mut ImTextureData,
-    pub TexList: ImVector_ImTextureDataPtr,
     pub Locked: bool,
-    pub RendererHasTextures: bool,
-    pub TexIsBuilt: bool,
+    pub TexReady: bool,
     pub TexPixelsUseColors: bool,
+    pub TexPixelsAlpha8: *mut core::ffi::c_uchar,
+    pub TexPixelsRGBA32: *mut core::ffi::c_uint,
+    pub TexWidth: core::ffi::c_int,
+    pub TexHeight: core::ffi::c_int,
     pub TexUvScale: ImVec2,
     pub TexUvWhitePixel: ImVec2,
     pub Fonts: ImVector_ImFontPtr,
+    pub CustomRects: ImVector_ImFontAtlasCustomRect,
     pub Sources: ImVector_ImFontConfig,
     pub TexUvLines: [ImVec4; 33usize],
-    pub TexNextUniqueID: core::ffi::c_int,
-    pub FontNextUniqueID: core::ffi::c_int,
-    pub DrawListSharedDatas: ImVector_ImDrawListSharedDataPtr,
-    pub Builder: *mut ImFontAtlasBuilder,
-    pub FontLoader: *const ImFontLoader,
-    pub FontLoaderName: *const core::ffi::c_char,
-    pub FontLoaderData: *mut core::ffi::c_void,
-    pub FontLoaderFlags: core::ffi::c_uint,
-    pub RefCount: core::ffi::c_int,
-    pub OwnerContext: *mut ImGuiContext,
+    pub FontBuilderIO: *const ImFontBuilderIO,
+    pub FontBuilderFlags: core::ffi::c_uint,
+    pub PackIdMouseCursors: core::ffi::c_int,
+    pub PackIdLines: core::ffi::c_int,
 }
 impl Default for ImFontAtlas {
     fn default() -> Self {
@@ -2305,190 +2224,27 @@ impl Default for ImVector_ImFontGlyph {
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone, PartialEq)]
-pub struct ImFontBaked {
+pub struct ImFont {
     pub IndexAdvanceX: ImVector_float,
     pub FallbackAdvanceX: f32,
-    pub Size: f32,
-    pub RasterizerDensity: f32,
+    pub FontSize: f32,
     pub IndexLookup: ImVector_ImU16,
     pub Glyphs: ImVector_ImFontGlyph,
-    pub FallbackGlyphIndex: core::ffi::c_int,
-    pub Ascent: f32,
-    pub Descent: f32,
-    pub _bitfield_align_1: [u32; 0],
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize]>,
-    pub LastUsedFrame: core::ffi::c_int,
-    pub BakedId: ImGuiID,
-    pub ContainerFont: *mut ImFont,
-    pub FontLoaderDatas: *mut core::ffi::c_void,
-}
-impl Default for ImFontBaked {
-    fn default() -> Self {
-        let mut s = ::core::mem::MaybeUninit::<Self>::uninit();
-        unsafe {
-            ::core::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
-            s.assume_init()
-        }
-    }
-}
-impl ImFontBaked {
-    #[inline]
-    pub fn MetricsTotalSurface(&self) -> core::ffi::c_uint {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 26u8) as u32) }
-    }
-    #[inline]
-    pub fn set_MetricsTotalSurface(&mut self, val: core::ffi::c_uint) {
-        unsafe {
-            let val: u32 = ::core::mem::transmute(val);
-            self._bitfield_1.set(0usize, 26u8, val as u64)
-        }
-    }
-    #[inline]
-    pub unsafe fn MetricsTotalSurface_raw(this: *const Self) -> core::ffi::c_uint {
-        unsafe {
-            ::core::mem::transmute(<__BindgenBitfieldUnit<[u8; 4usize]>>::raw_get(
-                ::core::ptr::addr_of!((*this)._bitfield_1),
-                0usize,
-                26u8,
-            ) as u32)
-        }
-    }
-    #[inline]
-    pub unsafe fn set_MetricsTotalSurface_raw(this: *mut Self, val: core::ffi::c_uint) {
-        unsafe {
-            let val: u32 = ::core::mem::transmute(val);
-            <__BindgenBitfieldUnit<[u8; 4usize]>>::raw_set(
-                ::core::ptr::addr_of_mut!((*this)._bitfield_1),
-                0usize,
-                26u8,
-                val as u64,
-            )
-        }
-    }
-    #[inline]
-    pub fn WantDestroy(&self) -> core::ffi::c_uint {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(26usize, 1u8) as u32) }
-    }
-    #[inline]
-    pub fn set_WantDestroy(&mut self, val: core::ffi::c_uint) {
-        unsafe {
-            let val: u32 = ::core::mem::transmute(val);
-            self._bitfield_1.set(26usize, 1u8, val as u64)
-        }
-    }
-    #[inline]
-    pub unsafe fn WantDestroy_raw(this: *const Self) -> core::ffi::c_uint {
-        unsafe {
-            ::core::mem::transmute(<__BindgenBitfieldUnit<[u8; 4usize]>>::raw_get(
-                ::core::ptr::addr_of!((*this)._bitfield_1),
-                26usize,
-                1u8,
-            ) as u32)
-        }
-    }
-    #[inline]
-    pub unsafe fn set_WantDestroy_raw(this: *mut Self, val: core::ffi::c_uint) {
-        unsafe {
-            let val: u32 = ::core::mem::transmute(val);
-            <__BindgenBitfieldUnit<[u8; 4usize]>>::raw_set(
-                ::core::ptr::addr_of_mut!((*this)._bitfield_1),
-                26usize,
-                1u8,
-                val as u64,
-            )
-        }
-    }
-    #[inline]
-    pub fn LockLoadingFallback(&self) -> core::ffi::c_uint {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(27usize, 1u8) as u32) }
-    }
-    #[inline]
-    pub fn set_LockLoadingFallback(&mut self, val: core::ffi::c_uint) {
-        unsafe {
-            let val: u32 = ::core::mem::transmute(val);
-            self._bitfield_1.set(27usize, 1u8, val as u64)
-        }
-    }
-    #[inline]
-    pub unsafe fn LockLoadingFallback_raw(this: *const Self) -> core::ffi::c_uint {
-        unsafe {
-            ::core::mem::transmute(<__BindgenBitfieldUnit<[u8; 4usize]>>::raw_get(
-                ::core::ptr::addr_of!((*this)._bitfield_1),
-                27usize,
-                1u8,
-            ) as u32)
-        }
-    }
-    #[inline]
-    pub unsafe fn set_LockLoadingFallback_raw(this: *mut Self, val: core::ffi::c_uint) {
-        unsafe {
-            let val: u32 = ::core::mem::transmute(val);
-            <__BindgenBitfieldUnit<[u8; 4usize]>>::raw_set(
-                ::core::ptr::addr_of_mut!((*this)._bitfield_1),
-                27usize,
-                1u8,
-                val as u64,
-            )
-        }
-    }
-    #[inline]
-    pub fn new_bitfield_1(
-        MetricsTotalSurface: core::ffi::c_uint,
-        WantDestroy: core::ffi::c_uint,
-        LockLoadingFallback: core::ffi::c_uint,
-    ) -> __BindgenBitfieldUnit<[u8; 4usize]> {
-        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 4usize]> = Default::default();
-        __bindgen_bitfield_unit.set(0usize, 26u8, {
-            let MetricsTotalSurface: u32 = unsafe { ::core::mem::transmute(MetricsTotalSurface) };
-            MetricsTotalSurface as u64
-        });
-        __bindgen_bitfield_unit.set(26usize, 1u8, {
-            let WantDestroy: u32 = unsafe { ::core::mem::transmute(WantDestroy) };
-            WantDestroy as u64
-        });
-        __bindgen_bitfield_unit.set(27usize, 1u8, {
-            let LockLoadingFallback: u32 = unsafe { ::core::mem::transmute(LockLoadingFallback) };
-            LockLoadingFallback as u64
-        });
-        __bindgen_bitfield_unit
-    }
-}
-pub const ImFontFlags_None: ImFontFlags_ = 0;
-pub const ImFontFlags_NoLoadError: ImFontFlags_ = 2;
-pub const ImFontFlags_NoLoadGlyphs: ImFontFlags_ = 4;
-pub const ImFontFlags_LockBakedSizes: ImFontFlags_ = 8;
-pub type ImFontFlags_ = core::ffi::c_uint;
-#[repr(C)]
-#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
-pub struct ImVector_ImFontConfigPtr {
-    pub Size: core::ffi::c_int,
-    pub Capacity: core::ffi::c_int,
-    pub Data: *mut *mut ImFontConfig,
-}
-impl Default for ImVector_ImFontConfigPtr {
-    fn default() -> Self {
-        let mut s = ::core::mem::MaybeUninit::<Self>::uninit();
-        unsafe {
-            ::core::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
-            s.assume_init()
-        }
-    }
-}
-#[repr(C)]
-#[derive(Debug, Copy, Clone, PartialEq)]
-pub struct ImFont {
-    pub LastBaked: *mut ImFontBaked,
+    pub FallbackGlyph: *mut ImFontGlyph,
     pub ContainerAtlas: *mut ImFontAtlas,
-    pub Flags: ImFontFlags,
-    pub CurrentRasterizerDensity: f32,
-    pub FontId: ImGuiID,
-    pub LegacySize: f32,
-    pub Sources: ImVector_ImFontConfigPtr,
+    pub Sources: *mut ImFontConfig,
+    pub SourcesCount: core::ffi::c_short,
+    pub EllipsisCharCount: core::ffi::c_short,
     pub EllipsisChar: ImWchar,
     pub FallbackChar: ImWchar,
+    pub EllipsisWidth: f32,
+    pub EllipsisCharStep: f32,
+    pub Scale: f32,
+    pub Ascent: f32,
+    pub Descent: f32,
+    pub MetricsTotalSurface: core::ffi::c_int,
+    pub DirtyLookupTables: bool,
     pub Used8kPagesMap: [ImU8; 1usize],
-    pub EllipsisAutoBake: bool,
-    pub RemapPairs: ImGuiStorage,
 }
 impl Default for ImFont {
     fn default() -> Self {
@@ -2511,7 +2267,6 @@ pub struct ImGuiViewport {
     pub Flags: ImGuiViewportFlags,
     pub Pos: ImVec2,
     pub Size: ImVec2,
-    pub FramebufferScale: ImVec2,
     pub WorkPos: ImVec2,
     pub WorkSize: ImVec2,
     pub PlatformHandle: *mut core::ffi::c_void,
@@ -2549,10 +2304,7 @@ pub struct ImGuiPlatformIO {
     >,
     pub Platform_ImeUserData: *mut core::ffi::c_void,
     pub Platform_LocaleDecimalPoint: ImWchar,
-    pub Renderer_TextureMaxWidth: core::ffi::c_int,
-    pub Renderer_TextureMaxHeight: core::ffi::c_int,
     pub Renderer_RenderState: *mut core::ffi::c_void,
-    pub Textures: ImVector_ImTextureDataPtr,
 }
 impl Default for ImGuiPlatformIO {
     fn default() -> Self {
@@ -2567,10 +2319,8 @@ impl Default for ImGuiPlatformIO {
 #[derive(Debug, Default, Copy, Clone, PartialEq)]
 pub struct ImGuiPlatformImeData {
     pub WantVisible: bool,
-    pub WantTextInput: bool,
     pub InputPos: ImVec2,
     pub InputLineHeight: f32,
-    pub ViewportId: ImGuiID,
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -2595,22 +2345,6 @@ unsafe extern "C" {
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn ImVec4_ImVec4_Float(_x: f32, _y: f32, _z: f32, _w: f32) -> *mut ImVec4;
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
-    pub fn ImTextureRef_ImTextureRef_Nil() -> *mut ImTextureRef;
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
-    pub fn ImTextureRef_destroy(self_: *mut ImTextureRef);
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
-    pub fn ImTextureRef_ImTextureRef_TextureID(tex_id: ImTextureID) -> *mut ImTextureRef;
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
-    pub fn ImTextureRef_GetTexID(self_: *mut ImTextureRef) -> ImTextureID;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -2833,6 +2567,10 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
+    pub fn igSetWindowFontScale(scale: f32);
+}
+#[link(wasm_import_module = "imgui-sys-v0")]
+unsafe extern "C" {
     pub fn igSetWindowPos_Str(name: *const core::ffi::c_char, pos: ImVec2, cond: ImGuiCond);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -2893,23 +2631,11 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igPushFont(font: *mut ImFont, font_size_base_unscaled: f32);
+    pub fn igPushFont(font: *mut ImFont);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igPopFont();
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
-    pub fn igGetFont() -> *mut ImFont;
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
-    pub fn igGetFontSize() -> f32;
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
-    pub fn igGetFontBaked() -> *mut ImFontBaked;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -2974,6 +2700,14 @@ unsafe extern "C" {
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igPopTextWrapPos();
+}
+#[link(wasm_import_module = "imgui-sys-v0")]
+unsafe extern "C" {
+    pub fn igGetFont() -> *mut ImFont;
+}
+#[link(wasm_import_module = "imgui-sys-v0")]
+unsafe extern "C" {
+    pub fn igGetFontSize() -> f32;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -3231,19 +2965,16 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igTextLinkOpenURL(
-        label: *const core::ffi::c_char,
-        url: *const core::ffi::c_char,
-    ) -> bool;
+    pub fn igTextLinkOpenURL(label: *const core::ffi::c_char, url: *const core::ffi::c_char);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igImage(tex_ref: ImTextureRef, image_size: ImVec2, uv0: ImVec2, uv1: ImVec2);
+    pub fn igImage(user_texture_id: ImTextureID, image_size: ImVec2, uv0: ImVec2, uv1: ImVec2);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igImageWithBg(
-        tex_ref: ImTextureRef,
+        user_texture_id: ImTextureID,
         image_size: ImVec2,
         uv0: ImVec2,
         uv1: ImVec2,
@@ -3255,7 +2986,7 @@ unsafe extern "C" {
 unsafe extern "C" {
     pub fn igImageButton(
         str_id: *const core::ffi::c_char,
-        tex_ref: ImTextureRef,
+        user_texture_id: ImTextureID,
         image_size: ImVec2,
         uv0: ImVec2,
         uv1: ImVec2,
@@ -5371,11 +5102,11 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImDrawList_PushTexture(self_: *mut ImDrawList, tex_ref: ImTextureRef);
+    pub fn ImDrawList_PushTextureID(self_: *mut ImDrawList, texture_id: ImTextureID);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImDrawList_PopTexture(self_: *mut ImDrawList);
+    pub fn ImDrawList_PopTextureID(self_: *mut ImDrawList);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -5621,7 +5352,7 @@ unsafe extern "C" {
 unsafe extern "C" {
     pub fn ImDrawList_AddImage(
         self_: *mut ImDrawList,
-        tex_ref: ImTextureRef,
+        user_texture_id: ImTextureID,
         p_min: ImVec2,
         p_max: ImVec2,
         uv_min: ImVec2,
@@ -5633,7 +5364,7 @@ unsafe extern "C" {
 unsafe extern "C" {
     pub fn ImDrawList_AddImageQuad(
         self_: *mut ImDrawList,
-        tex_ref: ImTextureRef,
+        user_texture_id: ImTextureID,
         p1: ImVec2,
         p2: ImVec2,
         p3: ImVec2,
@@ -5649,7 +5380,7 @@ unsafe extern "C" {
 unsafe extern "C" {
     pub fn ImDrawList_AddImageRounded(
         self_: *mut ImDrawList,
-        tex_ref: ImTextureRef,
+        user_texture_id: ImTextureID,
         p_min: ImVec2,
         p_max: ImVec2,
         uv_min: ImVec2,
@@ -5839,13 +5570,6 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImDrawList__SetDrawListSharedData(
-        self_: *mut ImDrawList,
-        data: *mut ImDrawListSharedData,
-    );
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
     pub fn ImDrawList__ResetForNewFrame(self_: *mut ImDrawList);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -5866,7 +5590,7 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImDrawList__OnChangedTexture(self_: *mut ImDrawList);
+    pub fn ImDrawList__OnChangedTextureID(self_: *mut ImDrawList);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -5874,7 +5598,7 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImDrawList__SetTexture(self_: *mut ImDrawList, tex_ref: ImTextureRef);
+    pub fn ImDrawList__SetTextureID(self_: *mut ImDrawList, texture_id: ImTextureID);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -5931,76 +5655,11 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImTextureData_ImTextureData() -> *mut ImTextureData;
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
-    pub fn ImTextureData_destroy(self_: *mut ImTextureData);
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
-    pub fn ImTextureData_Create(
-        self_: *mut ImTextureData,
-        format: ImTextureFormat,
-        w: core::ffi::c_int,
-        h: core::ffi::c_int,
-    );
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
-    pub fn ImTextureData_DestroyPixels(self_: *mut ImTextureData);
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
-    pub fn ImTextureData_GetPixels(self_: *mut ImTextureData) -> *mut core::ffi::c_void;
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
-    pub fn ImTextureData_GetPixelsAt(
-        self_: *mut ImTextureData,
-        x: core::ffi::c_int,
-        y: core::ffi::c_int,
-    ) -> *mut core::ffi::c_void;
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
-    pub fn ImTextureData_GetSizeInBytes(self_: *mut ImTextureData) -> core::ffi::c_int;
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
-    pub fn ImTextureData_GetPitch(self_: *mut ImTextureData) -> core::ffi::c_int;
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
-    pub fn ImTextureData_GetTexRef(pOut: *mut ImTextureRef, self_: *mut ImTextureData);
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
-    pub fn ImTextureData_GetTexID(self_: *mut ImTextureData) -> ImTextureID;
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
-    pub fn ImTextureData_SetTexID(self_: *mut ImTextureData, tex_id: ImTextureID);
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
-    pub fn ImTextureData_SetStatus(self_: *mut ImTextureData, status: ImTextureStatus);
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
     pub fn ImFontConfig_ImFontConfig() -> *mut ImFontConfig;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn ImFontConfig_destroy(self_: *mut ImFontConfig);
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
-    pub fn ImFontGlyph_ImFontGlyph() -> *mut ImFontGlyph;
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
-    pub fn ImFontGlyph_destroy(self_: *mut ImFontGlyph);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -6050,11 +5709,15 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImFontAtlasRect_ImFontAtlasRect() -> *mut ImFontAtlasRect;
+    pub fn ImFontAtlasCustomRect_ImFontAtlasCustomRect() -> *mut ImFontAtlasCustomRect;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImFontAtlasRect_destroy(self_: *mut ImFontAtlasRect);
+    pub fn ImFontAtlasCustomRect_destroy(self_: *mut ImFontAtlasCustomRect);
+}
+#[link(wasm_import_module = "imgui-sys-v0")]
+unsafe extern "C" {
+    pub fn ImFontAtlasCustomRect_IsPacked(self_: *mut ImFontAtlasCustomRect) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -6122,18 +5785,6 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImFontAtlas_RemoveFont(self_: *mut ImFontAtlas, font: *mut ImFont);
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
-    pub fn ImFontAtlas_Clear(self_: *mut ImFontAtlas);
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
-    pub fn ImFontAtlas_CompactCache(self_: *mut ImFontAtlas);
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
     pub fn ImFontAtlas_ClearInputData(self_: *mut ImFontAtlas);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -6146,57 +5797,113 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
+    pub fn ImFontAtlas_Clear(self_: *mut ImFontAtlas);
+}
+#[link(wasm_import_module = "imgui-sys-v0")]
+unsafe extern "C" {
+    pub fn ImFontAtlas_Build(self_: *mut ImFontAtlas) -> bool;
+}
+#[link(wasm_import_module = "imgui-sys-v0")]
+unsafe extern "C" {
+    pub fn ImFontAtlas_GetTexDataAsAlpha8(
+        self_: *mut ImFontAtlas,
+        out_pixels: *mut *mut core::ffi::c_uchar,
+        out_width: *mut core::ffi::c_int,
+        out_height: *mut core::ffi::c_int,
+        out_bytes_per_pixel: *mut core::ffi::c_int,
+    );
+}
+#[link(wasm_import_module = "imgui-sys-v0")]
+unsafe extern "C" {
+    pub fn ImFontAtlas_GetTexDataAsRGBA32(
+        self_: *mut ImFontAtlas,
+        out_pixels: *mut *mut core::ffi::c_uchar,
+        out_width: *mut core::ffi::c_int,
+        out_height: *mut core::ffi::c_int,
+        out_bytes_per_pixel: *mut core::ffi::c_int,
+    );
+}
+#[link(wasm_import_module = "imgui-sys-v0")]
+unsafe extern "C" {
+    pub fn ImFontAtlas_IsBuilt(self_: *mut ImFontAtlas) -> bool;
+}
+#[link(wasm_import_module = "imgui-sys-v0")]
+unsafe extern "C" {
+    pub fn ImFontAtlas_SetTexID(self_: *mut ImFontAtlas, id: ImTextureID);
+}
+#[link(wasm_import_module = "imgui-sys-v0")]
+unsafe extern "C" {
     pub fn ImFontAtlas_GetGlyphRangesDefault(self_: *mut ImFontAtlas) -> *const ImWchar;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImFontAtlas_AddCustomRect(
+    pub fn ImFontAtlas_GetGlyphRangesGreek(self_: *mut ImFontAtlas) -> *const ImWchar;
+}
+#[link(wasm_import_module = "imgui-sys-v0")]
+unsafe extern "C" {
+    pub fn ImFontAtlas_GetGlyphRangesKorean(self_: *mut ImFontAtlas) -> *const ImWchar;
+}
+#[link(wasm_import_module = "imgui-sys-v0")]
+unsafe extern "C" {
+    pub fn ImFontAtlas_GetGlyphRangesJapanese(self_: *mut ImFontAtlas) -> *const ImWchar;
+}
+#[link(wasm_import_module = "imgui-sys-v0")]
+unsafe extern "C" {
+    pub fn ImFontAtlas_GetGlyphRangesChineseFull(self_: *mut ImFontAtlas) -> *const ImWchar;
+}
+#[link(wasm_import_module = "imgui-sys-v0")]
+unsafe extern "C" {
+    pub fn ImFontAtlas_GetGlyphRangesChineseSimplifiedCommon(
+        self_: *mut ImFontAtlas,
+    ) -> *const ImWchar;
+}
+#[link(wasm_import_module = "imgui-sys-v0")]
+unsafe extern "C" {
+    pub fn ImFontAtlas_GetGlyphRangesCyrillic(self_: *mut ImFontAtlas) -> *const ImWchar;
+}
+#[link(wasm_import_module = "imgui-sys-v0")]
+unsafe extern "C" {
+    pub fn ImFontAtlas_GetGlyphRangesThai(self_: *mut ImFontAtlas) -> *const ImWchar;
+}
+#[link(wasm_import_module = "imgui-sys-v0")]
+unsafe extern "C" {
+    pub fn ImFontAtlas_GetGlyphRangesVietnamese(self_: *mut ImFontAtlas) -> *const ImWchar;
+}
+#[link(wasm_import_module = "imgui-sys-v0")]
+unsafe extern "C" {
+    pub fn ImFontAtlas_AddCustomRectRegular(
         self_: *mut ImFontAtlas,
         width: core::ffi::c_int,
         height: core::ffi::c_int,
-        out_r: *mut ImFontAtlasRect,
-    ) -> ImFontAtlasRectId;
+    ) -> core::ffi::c_int;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImFontAtlas_RemoveCustomRect(self_: *mut ImFontAtlas, id: ImFontAtlasRectId);
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
-    pub fn ImFontAtlas_GetCustomRect(
+    pub fn ImFontAtlas_AddCustomRectFontGlyph(
         self_: *mut ImFontAtlas,
-        id: ImFontAtlasRectId,
-        out_r: *mut ImFontAtlasRect,
-    ) -> bool;
+        font: *mut ImFont,
+        id: ImWchar,
+        width: core::ffi::c_int,
+        height: core::ffi::c_int,
+        advance_x: f32,
+        offset: ImVec2,
+    ) -> core::ffi::c_int;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImFontBaked_ImFontBaked() -> *mut ImFontBaked;
+    pub fn ImFontAtlas_GetCustomRectByIndex(
+        self_: *mut ImFontAtlas,
+        index: core::ffi::c_int,
+    ) -> *mut ImFontAtlasCustomRect;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImFontBaked_destroy(self_: *mut ImFontBaked);
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
-    pub fn ImFontBaked_ClearOutputData(self_: *mut ImFontBaked);
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
-    pub fn ImFontBaked_FindGlyph(self_: *mut ImFontBaked, c: ImWchar) -> *mut ImFontGlyph;
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
-    pub fn ImFontBaked_FindGlyphNoFallback(self_: *mut ImFontBaked, c: ImWchar)
-        -> *mut ImFontGlyph;
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
-    pub fn ImFontBaked_GetCharAdvance(self_: *mut ImFontBaked, c: ImWchar) -> f32;
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
-    pub fn ImFontBaked_IsGlyphLoaded(self_: *mut ImFontBaked, c: ImWchar) -> bool;
+    pub fn ImFontAtlas_CalcCustomRectUV(
+        self_: *mut ImFontAtlas,
+        rect: *const ImFontAtlasCustomRect,
+        out_uv_min: *mut ImVec2,
+        out_uv_max: *mut ImVec2,
+    );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -6208,7 +5915,15 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImFont_IsGlyphInFont(self_: *mut ImFont, c: ImWchar) -> bool;
+    pub fn ImFont_FindGlyph(self_: *mut ImFont, c: ImWchar) -> *mut ImFontGlyph;
+}
+#[link(wasm_import_module = "imgui-sys-v0")]
+unsafe extern "C" {
+    pub fn ImFont_FindGlyphNoFallback(self_: *mut ImFont, c: ImWchar) -> *mut ImFontGlyph;
+}
+#[link(wasm_import_module = "imgui-sys-v0")]
+unsafe extern "C" {
+    pub fn ImFont_GetCharAdvance(self_: *mut ImFont, c: ImWchar) -> f32;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -6217,14 +5932,6 @@ unsafe extern "C" {
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn ImFont_GetDebugName(self_: *mut ImFont) -> *const core::ffi::c_char;
-}
-#[link(wasm_import_module = "imgui-sys-v0")]
-unsafe extern "C" {
-    pub fn ImFont_GetFontBaked(
-        self_: *mut ImFont,
-        font_size: f32,
-        density: f32,
-    ) -> *mut ImFontBaked;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -6241,9 +5948,9 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImFont_CalcWordWrapPosition(
+    pub fn ImFont_CalcWordWrapPositionA(
         self_: *mut ImFont,
-        size: f32,
+        scale: f32,
         text: *const core::ffi::c_char,
         text_end: *const core::ffi::c_char,
         wrap_width: f32,
@@ -6258,7 +5965,6 @@ unsafe extern "C" {
         pos: ImVec2,
         col: ImU32,
         c: ImWchar,
-        cpu_fine_clip: *const ImVec4,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -6278,11 +5984,36 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
+    pub fn ImFont_BuildLookupTable(self_: *mut ImFont);
+}
+#[link(wasm_import_module = "imgui-sys-v0")]
+unsafe extern "C" {
     pub fn ImFont_ClearOutputData(self_: *mut ImFont);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImFont_AddRemapChar(self_: *mut ImFont, from_codepoint: ImWchar, to_codepoint: ImWchar);
+    pub fn ImFont_GrowIndex(self_: *mut ImFont, new_size: core::ffi::c_int);
+}
+#[link(wasm_import_module = "imgui-sys-v0")]
+unsafe extern "C" {
+    pub fn ImFont_AddGlyph(
+        self_: *mut ImFont,
+        src_cfg: *const ImFontConfig,
+        c: ImWchar,
+        x0: f32,
+        y0: f32,
+        x1: f32,
+        y1: f32,
+        u0: f32,
+        v0: f32,
+        u1: f32,
+        v1: f32,
+        advance_x: f32,
+    );
+}
+#[link(wasm_import_module = "imgui-sys-v0")]
+unsafe extern "C" {
+    pub fn ImFont_AddRemapChar(self_: *mut ImFont, dst: ImWchar, src: ImWchar, overwrite_dst: bool);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {

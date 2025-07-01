@@ -304,8 +304,6 @@ pub struct FontConfig {
     pub oversample_v: i32,
     /// Align every glyph to pixel boundary
     pub pixel_snap_h: bool,
-    /// Extra spacing (in pixels) between glyphs
-    pub glyph_extra_spacing: [f32; 2],
     /// Offset for all glyphs in this font
     pub glyph_offset: [f32; 2],
     /// Unicode ranges to use from this font
@@ -314,6 +312,8 @@ pub struct FontConfig {
     pub glyph_min_advance_x: f32,
     /// Maximum advance_x for glyphs
     pub glyph_max_advance_x: f32,
+    /// Extra spacing (in pixels) between glyphs
+    pub glyph_extra_advance_x: f32,
     /// Settings for a custom font rasterizer if used
     pub font_builder_flags: u32,
     /// Brighten (>1.0) or darken (<1.0) font output
@@ -337,7 +337,7 @@ impl Default for FontConfig {
             oversample_h: 2,
             oversample_v: 1,
             pixel_snap_h: false,
-            glyph_extra_spacing: [0.0, 0.0],
+            glyph_extra_advance_x: 0.0,
             glyph_offset: [0.0, 0.0],
             glyph_ranges: FontGlyphRanges::default(),
             glyph_min_advance_x: 0.0,
@@ -357,7 +357,7 @@ impl FontConfig {
         raw.OversampleH = self.oversample_h;
         raw.OversampleV = self.oversample_v;
         raw.PixelSnapH = self.pixel_snap_h;
-        raw.GlyphExtraSpacing = self.glyph_extra_spacing.into();
+        raw.GlyphExtraAdvanceX = self.glyph_extra_advance_x;
         raw.GlyphOffset = self.glyph_offset.into();
         raw.GlyphRanges = unsafe { self.glyph_ranges.to_ptr(atlas) };
         raw.GlyphMinAdvanceX = self.glyph_min_advance_x;
@@ -366,7 +366,7 @@ impl FontConfig {
         raw.RasterizerMultiply = self.rasterizer_multiply;
         raw.RasterizerMultiply = self.rasterizer_density;
         // char is used as "unset" for EllipsisChar
-        raw.EllipsisChar = self.ellipsis_char.map(|c| c as u32).unwrap_or(!0);
+        raw.EllipsisChar = self.ellipsis_char.map(|c| c as u16).unwrap_or(!0);
         if let Some(name) = self.name.as_ref() {
             let bytes = name.as_bytes();
             let mut len = bytes.len().min(raw.Name.len() - 1);
@@ -399,12 +399,8 @@ fn test_font_config_default() {
     assert_eq!(font_config.oversample_v, sys_font_config.OversampleV);
     assert_eq!(font_config.pixel_snap_h, sys_font_config.PixelSnapH);
     assert_eq!(
-        font_config.glyph_extra_spacing[0],
-        sys_font_config.GlyphExtraSpacing.x
-    );
-    assert_eq!(
-        font_config.glyph_extra_spacing[1],
-        sys_font_config.GlyphExtraSpacing.y
+        font_config.glyph_extra_advance_x,
+        sys_font_config.GlyphExtraAdvanceX
     );
     assert_eq!(font_config.glyph_offset[0], sys_font_config.GlyphOffset.x);
     assert_eq!(font_config.glyph_offset[1], sys_font_config.GlyphOffset.y);
