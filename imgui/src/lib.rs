@@ -156,6 +156,7 @@ mod docking_utils;
 pub mod drag_drop;
 pub mod draw_list;
 mod fonts;
+mod ime;
 mod input;
 mod input_widget;
 pub mod internal;
