@@ -101,6 +101,7 @@ pub use self::fonts::atlas::*;
 pub use self::fonts::font::*;
 pub use self::fonts::glyph::*;
 pub use self::fonts::glyph_ranges::*;
+pub use self::ime::*;
 pub use self::input::keyboard::*;
 pub use self::input::mouse::*;
 pub use self::input_widget::*;
