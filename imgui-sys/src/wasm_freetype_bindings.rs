@@ -162,63 +162,63 @@ pub struct ImFontLoader {
 pub struct ImGuiContext {
     _unused: [u8; 0],
 }
-pub type ImGuiID = cty::c_uint;
-pub type ImS8 = cty::c_schar;
-pub type ImU8 = cty::c_uchar;
-pub type ImS16 = cty::c_short;
-pub type ImU16 = cty::c_ushort;
-pub type ImU32 = cty::c_uint;
-pub type ImS64 = cty::c_longlong;
-pub type ImU64 = cty::c_ulonglong;
-pub type ImGuiCol = cty::c_int;
-pub type ImGuiCond = cty::c_int;
-pub type ImGuiDataType = cty::c_int;
-pub type ImGuiMouseButton = cty::c_int;
-pub type ImGuiMouseCursor = cty::c_int;
-pub type ImGuiStyleVar = cty::c_int;
-pub type ImGuiTableBgTarget = cty::c_int;
-pub type ImDrawFlags = cty::c_int;
-pub type ImDrawListFlags = cty::c_int;
-pub type ImFontFlags = cty::c_int;
-pub type ImFontAtlasFlags = cty::c_int;
-pub type ImGuiBackendFlags = cty::c_int;
-pub type ImGuiButtonFlags = cty::c_int;
-pub type ImGuiChildFlags = cty::c_int;
-pub type ImGuiColorEditFlags = cty::c_int;
-pub type ImGuiConfigFlags = cty::c_int;
-pub type ImGuiComboFlags = cty::c_int;
-pub type ImGuiDragDropFlags = cty::c_int;
-pub type ImGuiFocusedFlags = cty::c_int;
-pub type ImGuiHoveredFlags = cty::c_int;
-pub type ImGuiInputFlags = cty::c_int;
-pub type ImGuiInputTextFlags = cty::c_int;
-pub type ImGuiItemFlags = cty::c_int;
-pub type ImGuiKeyChord = cty::c_int;
-pub type ImGuiPopupFlags = cty::c_int;
-pub type ImGuiMultiSelectFlags = cty::c_int;
-pub type ImGuiSelectableFlags = cty::c_int;
-pub type ImGuiSliderFlags = cty::c_int;
-pub type ImGuiTabBarFlags = cty::c_int;
-pub type ImGuiTabItemFlags = cty::c_int;
-pub type ImGuiTableFlags = cty::c_int;
-pub type ImGuiTableColumnFlags = cty::c_int;
-pub type ImGuiTableRowFlags = cty::c_int;
-pub type ImGuiTreeNodeFlags = cty::c_int;
-pub type ImGuiViewportFlags = cty::c_int;
-pub type ImGuiWindowFlags = cty::c_int;
-pub type ImWchar16 = cty::c_ushort;
+pub type ImGuiID = core::ffi::c_uint;
+pub type ImS8 = core::ffi::c_schar;
+pub type ImU8 = core::ffi::c_uchar;
+pub type ImS16 = core::ffi::c_short;
+pub type ImU16 = core::ffi::c_ushort;
+pub type ImU32 = core::ffi::c_uint;
+pub type ImS64 = core::ffi::c_longlong;
+pub type ImU64 = core::ffi::c_ulonglong;
+pub type ImGuiCol = core::ffi::c_int;
+pub type ImGuiCond = core::ffi::c_int;
+pub type ImGuiDataType = core::ffi::c_int;
+pub type ImGuiMouseButton = core::ffi::c_int;
+pub type ImGuiMouseCursor = core::ffi::c_int;
+pub type ImGuiStyleVar = core::ffi::c_int;
+pub type ImGuiTableBgTarget = core::ffi::c_int;
+pub type ImDrawFlags = core::ffi::c_int;
+pub type ImDrawListFlags = core::ffi::c_int;
+pub type ImFontFlags = core::ffi::c_int;
+pub type ImFontAtlasFlags = core::ffi::c_int;
+pub type ImGuiBackendFlags = core::ffi::c_int;
+pub type ImGuiButtonFlags = core::ffi::c_int;
+pub type ImGuiChildFlags = core::ffi::c_int;
+pub type ImGuiColorEditFlags = core::ffi::c_int;
+pub type ImGuiConfigFlags = core::ffi::c_int;
+pub type ImGuiComboFlags = core::ffi::c_int;
+pub type ImGuiDragDropFlags = core::ffi::c_int;
+pub type ImGuiFocusedFlags = core::ffi::c_int;
+pub type ImGuiHoveredFlags = core::ffi::c_int;
+pub type ImGuiInputFlags = core::ffi::c_int;
+pub type ImGuiInputTextFlags = core::ffi::c_int;
+pub type ImGuiItemFlags = core::ffi::c_int;
+pub type ImGuiKeyChord = core::ffi::c_int;
+pub type ImGuiPopupFlags = core::ffi::c_int;
+pub type ImGuiMultiSelectFlags = core::ffi::c_int;
+pub type ImGuiSelectableFlags = core::ffi::c_int;
+pub type ImGuiSliderFlags = core::ffi::c_int;
+pub type ImGuiTabBarFlags = core::ffi::c_int;
+pub type ImGuiTabItemFlags = core::ffi::c_int;
+pub type ImGuiTableFlags = core::ffi::c_int;
+pub type ImGuiTableColumnFlags = core::ffi::c_int;
+pub type ImGuiTableRowFlags = core::ffi::c_int;
+pub type ImGuiTreeNodeFlags = core::ffi::c_int;
+pub type ImGuiViewportFlags = core::ffi::c_int;
+pub type ImGuiWindowFlags = core::ffi::c_int;
+pub type ImWchar16 = core::ffi::c_ushort;
 pub type ImWchar = ImWchar16;
 pub type ImGuiSelectionUserData = ImS64;
 pub type ImGuiInputTextCallback = ::core::option::Option<
-    unsafe extern "C" fn(data: *mut ImGuiInputTextCallbackData) -> cty::c_int,
+    unsafe extern "C" fn(data: *mut ImGuiInputTextCallbackData) -> core::ffi::c_int,
 >;
 pub type ImGuiSizeCallback =
     ::core::option::Option<unsafe extern "C" fn(data: *mut ImGuiSizeCallbackData)>;
 pub type ImGuiMemAllocFunc = ::core::option::Option<
-    unsafe extern "C" fn(sz: usize, user_data: *mut cty::c_void) -> *mut cty::c_void,
+    unsafe extern "C" fn(sz: usize, user_data: *mut core::ffi::c_void) -> *mut core::ffi::c_void,
 >;
 pub type ImGuiMemFreeFunc = ::core::option::Option<
-    unsafe extern "C" fn(ptr: *mut cty::c_void, user_data: *mut cty::c_void),
+    unsafe extern "C" fn(ptr: *mut core::ffi::c_void, user_data: *mut core::ffi::c_void),
 >;
 #[repr(C)]
 #[derive(Debug, Default, Copy, Clone, PartialEq)]
@@ -278,7 +278,7 @@ pub const ImGuiWindowFlags_Tooltip: ImGuiWindowFlags_ = 33554432;
 pub const ImGuiWindowFlags_Popup: ImGuiWindowFlags_ = 67108864;
 pub const ImGuiWindowFlags_Modal: ImGuiWindowFlags_ = 134217728;
 pub const ImGuiWindowFlags_ChildMenu: ImGuiWindowFlags_ = 268435456;
-pub type ImGuiWindowFlags_ = cty::c_uint;
+pub type ImGuiWindowFlags_ = core::ffi::c_uint;
 pub const ImGuiChildFlags_None: ImGuiChildFlags_ = 0;
 pub const ImGuiChildFlags_Borders: ImGuiChildFlags_ = 1;
 pub const ImGuiChildFlags_AlwaysUseWindowPadding: ImGuiChildFlags_ = 2;
@@ -289,7 +289,7 @@ pub const ImGuiChildFlags_AutoResizeY: ImGuiChildFlags_ = 32;
 pub const ImGuiChildFlags_AlwaysAutoResize: ImGuiChildFlags_ = 64;
 pub const ImGuiChildFlags_FrameStyle: ImGuiChildFlags_ = 128;
 pub const ImGuiChildFlags_NavFlattened: ImGuiChildFlags_ = 256;
-pub type ImGuiChildFlags_ = cty::c_uint;
+pub type ImGuiChildFlags_ = core::ffi::c_uint;
 pub const ImGuiItemFlags_None: ImGuiItemFlags_ = 0;
 pub const ImGuiItemFlags_NoTabStop: ImGuiItemFlags_ = 1;
 pub const ImGuiItemFlags_NoNav: ImGuiItemFlags_ = 2;
@@ -297,7 +297,7 @@ pub const ImGuiItemFlags_NoNavDefaultFocus: ImGuiItemFlags_ = 4;
 pub const ImGuiItemFlags_ButtonRepeat: ImGuiItemFlags_ = 8;
 pub const ImGuiItemFlags_AutoClosePopups: ImGuiItemFlags_ = 16;
 pub const ImGuiItemFlags_AllowDuplicateId: ImGuiItemFlags_ = 32;
-pub type ImGuiItemFlags_ = cty::c_uint;
+pub type ImGuiItemFlags_ = core::ffi::c_uint;
 pub const ImGuiInputTextFlags_None: ImGuiInputTextFlags_ = 0;
 pub const ImGuiInputTextFlags_CharsDecimal: ImGuiInputTextFlags_ = 1;
 pub const ImGuiInputTextFlags_CharsHexadecimal: ImGuiInputTextFlags_ = 2;
@@ -323,7 +323,7 @@ pub const ImGuiInputTextFlags_CallbackAlways: ImGuiInputTextFlags_ = 1048576;
 pub const ImGuiInputTextFlags_CallbackCharFilter: ImGuiInputTextFlags_ = 2097152;
 pub const ImGuiInputTextFlags_CallbackResize: ImGuiInputTextFlags_ = 4194304;
 pub const ImGuiInputTextFlags_CallbackEdit: ImGuiInputTextFlags_ = 8388608;
-pub type ImGuiInputTextFlags_ = cty::c_uint;
+pub type ImGuiInputTextFlags_ = core::ffi::c_uint;
 pub const ImGuiTreeNodeFlags_None: ImGuiTreeNodeFlags_ = 0;
 pub const ImGuiTreeNodeFlags_Selected: ImGuiTreeNodeFlags_ = 1;
 pub const ImGuiTreeNodeFlags_Framed: ImGuiTreeNodeFlags_ = 2;
@@ -346,7 +346,7 @@ pub const ImGuiTreeNodeFlags_CollapsingHeader: ImGuiTreeNodeFlags_ = 26;
 pub const ImGuiTreeNodeFlags_DrawLinesNone: ImGuiTreeNodeFlags_ = 262144;
 pub const ImGuiTreeNodeFlags_DrawLinesFull: ImGuiTreeNodeFlags_ = 524288;
 pub const ImGuiTreeNodeFlags_DrawLinesToNodes: ImGuiTreeNodeFlags_ = 1048576;
-pub type ImGuiTreeNodeFlags_ = cty::c_uint;
+pub type ImGuiTreeNodeFlags_ = core::ffi::c_uint;
 pub const ImGuiPopupFlags_None: ImGuiPopupFlags_ = 0;
 pub const ImGuiPopupFlags_MouseButtonLeft: ImGuiPopupFlags_ = 0;
 pub const ImGuiPopupFlags_MouseButtonRight: ImGuiPopupFlags_ = 1;
@@ -359,7 +359,7 @@ pub const ImGuiPopupFlags_NoOpenOverItems: ImGuiPopupFlags_ = 256;
 pub const ImGuiPopupFlags_AnyPopupId: ImGuiPopupFlags_ = 1024;
 pub const ImGuiPopupFlags_AnyPopupLevel: ImGuiPopupFlags_ = 2048;
 pub const ImGuiPopupFlags_AnyPopup: ImGuiPopupFlags_ = 3072;
-pub type ImGuiPopupFlags_ = cty::c_uint;
+pub type ImGuiPopupFlags_ = core::ffi::c_uint;
 pub const ImGuiSelectableFlags_None: ImGuiSelectableFlags_ = 0;
 pub const ImGuiSelectableFlags_NoAutoClosePopups: ImGuiSelectableFlags_ = 1;
 pub const ImGuiSelectableFlags_SpanAllColumns: ImGuiSelectableFlags_ = 2;
@@ -367,7 +367,7 @@ pub const ImGuiSelectableFlags_AllowDoubleClick: ImGuiSelectableFlags_ = 4;
 pub const ImGuiSelectableFlags_Disabled: ImGuiSelectableFlags_ = 8;
 pub const ImGuiSelectableFlags_AllowOverlap: ImGuiSelectableFlags_ = 16;
 pub const ImGuiSelectableFlags_Highlight: ImGuiSelectableFlags_ = 32;
-pub type ImGuiSelectableFlags_ = cty::c_uint;
+pub type ImGuiSelectableFlags_ = core::ffi::c_uint;
 pub const ImGuiComboFlags_None: ImGuiComboFlags_ = 0;
 pub const ImGuiComboFlags_PopupAlignLeft: ImGuiComboFlags_ = 1;
 pub const ImGuiComboFlags_HeightSmall: ImGuiComboFlags_ = 2;
@@ -378,7 +378,7 @@ pub const ImGuiComboFlags_NoArrowButton: ImGuiComboFlags_ = 32;
 pub const ImGuiComboFlags_NoPreview: ImGuiComboFlags_ = 64;
 pub const ImGuiComboFlags_WidthFitPreview: ImGuiComboFlags_ = 128;
 pub const ImGuiComboFlags_HeightMask_: ImGuiComboFlags_ = 30;
-pub type ImGuiComboFlags_ = cty::c_uint;
+pub type ImGuiComboFlags_ = core::ffi::c_uint;
 pub const ImGuiTabBarFlags_None: ImGuiTabBarFlags_ = 0;
 pub const ImGuiTabBarFlags_Reorderable: ImGuiTabBarFlags_ = 1;
 pub const ImGuiTabBarFlags_AutoSelectNewTabs: ImGuiTabBarFlags_ = 2;
@@ -391,7 +391,7 @@ pub const ImGuiTabBarFlags_FittingPolicyResizeDown: ImGuiTabBarFlags_ = 128;
 pub const ImGuiTabBarFlags_FittingPolicyScroll: ImGuiTabBarFlags_ = 256;
 pub const ImGuiTabBarFlags_FittingPolicyMask_: ImGuiTabBarFlags_ = 384;
 pub const ImGuiTabBarFlags_FittingPolicyDefault_: ImGuiTabBarFlags_ = 128;
-pub type ImGuiTabBarFlags_ = cty::c_uint;
+pub type ImGuiTabBarFlags_ = core::ffi::c_uint;
 pub const ImGuiTabItemFlags_None: ImGuiTabItemFlags_ = 0;
 pub const ImGuiTabItemFlags_UnsavedDocument: ImGuiTabItemFlags_ = 1;
 pub const ImGuiTabItemFlags_SetSelected: ImGuiTabItemFlags_ = 2;
@@ -402,14 +402,14 @@ pub const ImGuiTabItemFlags_NoReorder: ImGuiTabItemFlags_ = 32;
 pub const ImGuiTabItemFlags_Leading: ImGuiTabItemFlags_ = 64;
 pub const ImGuiTabItemFlags_Trailing: ImGuiTabItemFlags_ = 128;
 pub const ImGuiTabItemFlags_NoAssumedClosure: ImGuiTabItemFlags_ = 256;
-pub type ImGuiTabItemFlags_ = cty::c_uint;
+pub type ImGuiTabItemFlags_ = core::ffi::c_uint;
 pub const ImGuiFocusedFlags_None: ImGuiFocusedFlags_ = 0;
 pub const ImGuiFocusedFlags_ChildWindows: ImGuiFocusedFlags_ = 1;
 pub const ImGuiFocusedFlags_RootWindow: ImGuiFocusedFlags_ = 2;
 pub const ImGuiFocusedFlags_AnyWindow: ImGuiFocusedFlags_ = 4;
 pub const ImGuiFocusedFlags_NoPopupHierarchy: ImGuiFocusedFlags_ = 8;
 pub const ImGuiFocusedFlags_RootAndChildWindows: ImGuiFocusedFlags_ = 3;
-pub type ImGuiFocusedFlags_ = cty::c_uint;
+pub type ImGuiFocusedFlags_ = core::ffi::c_uint;
 pub const ImGuiHoveredFlags_None: ImGuiHoveredFlags_ = 0;
 pub const ImGuiHoveredFlags_ChildWindows: ImGuiHoveredFlags_ = 1;
 pub const ImGuiHoveredFlags_RootWindow: ImGuiHoveredFlags_ = 2;
@@ -430,7 +430,7 @@ pub const ImGuiHoveredFlags_DelayNone: ImGuiHoveredFlags_ = 16384;
 pub const ImGuiHoveredFlags_DelayShort: ImGuiHoveredFlags_ = 32768;
 pub const ImGuiHoveredFlags_DelayNormal: ImGuiHoveredFlags_ = 65536;
 pub const ImGuiHoveredFlags_NoSharedDelay: ImGuiHoveredFlags_ = 131072;
-pub type ImGuiHoveredFlags_ = cty::c_uint;
+pub type ImGuiHoveredFlags_ = core::ffi::c_uint;
 pub const ImGuiDragDropFlags_None: ImGuiDragDropFlags_ = 0;
 pub const ImGuiDragDropFlags_SourceNoPreviewTooltip: ImGuiDragDropFlags_ = 1;
 pub const ImGuiDragDropFlags_SourceNoDisableHover: ImGuiDragDropFlags_ = 2;
@@ -444,7 +444,7 @@ pub const ImGuiDragDropFlags_AcceptBeforeDelivery: ImGuiDragDropFlags_ = 1024;
 pub const ImGuiDragDropFlags_AcceptNoDrawDefaultRect: ImGuiDragDropFlags_ = 2048;
 pub const ImGuiDragDropFlags_AcceptNoPreviewTooltip: ImGuiDragDropFlags_ = 4096;
 pub const ImGuiDragDropFlags_AcceptPeekOnly: ImGuiDragDropFlags_ = 3072;
-pub type ImGuiDragDropFlags_ = cty::c_uint;
+pub type ImGuiDragDropFlags_ = core::ffi::c_uint;
 pub const ImGuiDataType_S8: ImGuiDataType_ = 0;
 pub const ImGuiDataType_U8: ImGuiDataType_ = 1;
 pub const ImGuiDataType_S16: ImGuiDataType_ = 2;
@@ -458,18 +458,18 @@ pub const ImGuiDataType_Double: ImGuiDataType_ = 9;
 pub const ImGuiDataType_Bool: ImGuiDataType_ = 10;
 pub const ImGuiDataType_String: ImGuiDataType_ = 11;
 pub const ImGuiDataType_COUNT: ImGuiDataType_ = 12;
-pub type ImGuiDataType_ = cty::c_uint;
+pub type ImGuiDataType_ = core::ffi::c_uint;
 pub const ImGuiDir_None: ImGuiDir = -1;
 pub const ImGuiDir_Left: ImGuiDir = 0;
 pub const ImGuiDir_Right: ImGuiDir = 1;
 pub const ImGuiDir_Up: ImGuiDir = 2;
 pub const ImGuiDir_Down: ImGuiDir = 3;
 pub const ImGuiDir_COUNT: ImGuiDir = 4;
-pub type ImGuiDir = cty::c_int;
+pub type ImGuiDir = core::ffi::c_int;
 pub const ImGuiSortDirection_None: ImGuiSortDirection = 0;
 pub const ImGuiSortDirection_Ascending: ImGuiSortDirection = 1;
 pub const ImGuiSortDirection_Descending: ImGuiSortDirection = 2;
-pub type ImGuiSortDirection = cty::c_uint;
+pub type ImGuiSortDirection = core::ffi::c_uint;
 pub const ImGuiKey_None: ImGuiKey = 0;
 pub const ImGuiKey_NamedKey_BEGIN: ImGuiKey = 512;
 pub const ImGuiKey_Tab: ImGuiKey = 512;
@@ -635,7 +635,7 @@ pub const ImGuiMod_Shift: ImGuiKey = 8192;
 pub const ImGuiMod_Alt: ImGuiKey = 16384;
 pub const ImGuiMod_Super: ImGuiKey = 32768;
 pub const ImGuiMod_Mask_: ImGuiKey = 61440;
-pub type ImGuiKey = cty::c_uint;
+pub type ImGuiKey = core::ffi::c_uint;
 pub const ImGuiInputFlags_None: ImGuiInputFlags_ = 0;
 pub const ImGuiInputFlags_Repeat: ImGuiInputFlags_ = 1;
 pub const ImGuiInputFlags_RouteActive: ImGuiInputFlags_ = 1024;
@@ -647,7 +647,7 @@ pub const ImGuiInputFlags_RouteOverActive: ImGuiInputFlags_ = 32768;
 pub const ImGuiInputFlags_RouteUnlessBgFocused: ImGuiInputFlags_ = 65536;
 pub const ImGuiInputFlags_RouteFromRootWindow: ImGuiInputFlags_ = 131072;
 pub const ImGuiInputFlags_Tooltip: ImGuiInputFlags_ = 262144;
-pub type ImGuiInputFlags_ = cty::c_uint;
+pub type ImGuiInputFlags_ = core::ffi::c_uint;
 pub const ImGuiConfigFlags_None: ImGuiConfigFlags_ = 0;
 pub const ImGuiConfigFlags_NavEnableKeyboard: ImGuiConfigFlags_ = 1;
 pub const ImGuiConfigFlags_NavEnableGamepad: ImGuiConfigFlags_ = 2;
@@ -656,14 +656,14 @@ pub const ImGuiConfigFlags_NoMouseCursorChange: ImGuiConfigFlags_ = 32;
 pub const ImGuiConfigFlags_NoKeyboard: ImGuiConfigFlags_ = 64;
 pub const ImGuiConfigFlags_IsSRGB: ImGuiConfigFlags_ = 1048576;
 pub const ImGuiConfigFlags_IsTouchScreen: ImGuiConfigFlags_ = 2097152;
-pub type ImGuiConfigFlags_ = cty::c_uint;
+pub type ImGuiConfigFlags_ = core::ffi::c_uint;
 pub const ImGuiBackendFlags_None: ImGuiBackendFlags_ = 0;
 pub const ImGuiBackendFlags_HasGamepad: ImGuiBackendFlags_ = 1;
 pub const ImGuiBackendFlags_HasMouseCursors: ImGuiBackendFlags_ = 2;
 pub const ImGuiBackendFlags_HasSetMousePos: ImGuiBackendFlags_ = 4;
 pub const ImGuiBackendFlags_RendererHasVtxOffset: ImGuiBackendFlags_ = 8;
 pub const ImGuiBackendFlags_RendererHasTextures: ImGuiBackendFlags_ = 16;
-pub type ImGuiBackendFlags_ = cty::c_uint;
+pub type ImGuiBackendFlags_ = core::ffi::c_uint;
 pub const ImGuiCol_Text: ImGuiCol_ = 0;
 pub const ImGuiCol_TextDisabled: ImGuiCol_ = 1;
 pub const ImGuiCol_WindowBg: ImGuiCol_ = 2;
@@ -723,7 +723,7 @@ pub const ImGuiCol_NavWindowingHighlight: ImGuiCol_ = 55;
 pub const ImGuiCol_NavWindowingDimBg: ImGuiCol_ = 56;
 pub const ImGuiCol_ModalWindowDimBg: ImGuiCol_ = 57;
 pub const ImGuiCol_COUNT: ImGuiCol_ = 58;
-pub type ImGuiCol_ = cty::c_uint;
+pub type ImGuiCol_ = core::ffi::c_uint;
 pub const ImGuiStyleVar_Alpha: ImGuiStyleVar_ = 0;
 pub const ImGuiStyleVar_DisabledAlpha: ImGuiStyleVar_ = 1;
 pub const ImGuiStyleVar_WindowPadding: ImGuiStyleVar_ = 2;
@@ -761,14 +761,14 @@ pub const ImGuiStyleVar_SeparatorTextBorderSize: ImGuiStyleVar_ = 33;
 pub const ImGuiStyleVar_SeparatorTextAlign: ImGuiStyleVar_ = 34;
 pub const ImGuiStyleVar_SeparatorTextPadding: ImGuiStyleVar_ = 35;
 pub const ImGuiStyleVar_COUNT: ImGuiStyleVar_ = 36;
-pub type ImGuiStyleVar_ = cty::c_uint;
+pub type ImGuiStyleVar_ = core::ffi::c_uint;
 pub const ImGuiButtonFlags_None: ImGuiButtonFlags_ = 0;
 pub const ImGuiButtonFlags_MouseButtonLeft: ImGuiButtonFlags_ = 1;
 pub const ImGuiButtonFlags_MouseButtonRight: ImGuiButtonFlags_ = 2;
 pub const ImGuiButtonFlags_MouseButtonMiddle: ImGuiButtonFlags_ = 4;
 pub const ImGuiButtonFlags_MouseButtonMask_: ImGuiButtonFlags_ = 7;
 pub const ImGuiButtonFlags_EnableNav: ImGuiButtonFlags_ = 8;
-pub type ImGuiButtonFlags_ = cty::c_uint;
+pub type ImGuiButtonFlags_ = core::ffi::c_uint;
 pub const ImGuiColorEditFlags_None: ImGuiColorEditFlags_ = 0;
 pub const ImGuiColorEditFlags_NoAlpha: ImGuiColorEditFlags_ = 2;
 pub const ImGuiColorEditFlags_NoPicker: ImGuiColorEditFlags_ = 4;
@@ -800,7 +800,7 @@ pub const ImGuiColorEditFlags_DisplayMask_: ImGuiColorEditFlags_ = 7340032;
 pub const ImGuiColorEditFlags_DataTypeMask_: ImGuiColorEditFlags_ = 25165824;
 pub const ImGuiColorEditFlags_PickerMask_: ImGuiColorEditFlags_ = 100663296;
 pub const ImGuiColorEditFlags_InputMask_: ImGuiColorEditFlags_ = 402653184;
-pub type ImGuiColorEditFlags_ = cty::c_uint;
+pub type ImGuiColorEditFlags_ = core::ffi::c_uint;
 pub const ImGuiSliderFlags_None: ImGuiSliderFlags_ = 0;
 pub const ImGuiSliderFlags_Logarithmic: ImGuiSliderFlags_ = 32;
 pub const ImGuiSliderFlags_NoRoundToFormat: ImGuiSliderFlags_ = 64;
@@ -811,12 +811,12 @@ pub const ImGuiSliderFlags_ClampZeroRange: ImGuiSliderFlags_ = 1024;
 pub const ImGuiSliderFlags_NoSpeedTweaks: ImGuiSliderFlags_ = 2048;
 pub const ImGuiSliderFlags_AlwaysClamp: ImGuiSliderFlags_ = 1536;
 pub const ImGuiSliderFlags_InvalidMask_: ImGuiSliderFlags_ = 1879048207;
-pub type ImGuiSliderFlags_ = cty::c_uint;
+pub type ImGuiSliderFlags_ = core::ffi::c_uint;
 pub const ImGuiMouseButton_Left: ImGuiMouseButton_ = 0;
 pub const ImGuiMouseButton_Right: ImGuiMouseButton_ = 1;
 pub const ImGuiMouseButton_Middle: ImGuiMouseButton_ = 2;
 pub const ImGuiMouseButton_COUNT: ImGuiMouseButton_ = 5;
-pub type ImGuiMouseButton_ = cty::c_uint;
+pub type ImGuiMouseButton_ = core::ffi::c_uint;
 pub const ImGuiMouseCursor_None: ImGuiMouseCursor_ = -1;
 pub const ImGuiMouseCursor_Arrow: ImGuiMouseCursor_ = 0;
 pub const ImGuiMouseCursor_TextInput: ImGuiMouseCursor_ = 1;
@@ -830,18 +830,18 @@ pub const ImGuiMouseCursor_Wait: ImGuiMouseCursor_ = 8;
 pub const ImGuiMouseCursor_Progress: ImGuiMouseCursor_ = 9;
 pub const ImGuiMouseCursor_NotAllowed: ImGuiMouseCursor_ = 10;
 pub const ImGuiMouseCursor_COUNT: ImGuiMouseCursor_ = 11;
-pub type ImGuiMouseCursor_ = cty::c_int;
+pub type ImGuiMouseCursor_ = core::ffi::c_int;
 pub const ImGuiMouseSource_Mouse: ImGuiMouseSource = 0;
 pub const ImGuiMouseSource_TouchScreen: ImGuiMouseSource = 1;
 pub const ImGuiMouseSource_Pen: ImGuiMouseSource = 2;
 pub const ImGuiMouseSource_COUNT: ImGuiMouseSource = 3;
-pub type ImGuiMouseSource = cty::c_uint;
+pub type ImGuiMouseSource = core::ffi::c_uint;
 pub const ImGuiCond_None: ImGuiCond_ = 0;
 pub const ImGuiCond_Always: ImGuiCond_ = 1;
 pub const ImGuiCond_Once: ImGuiCond_ = 2;
 pub const ImGuiCond_FirstUseEver: ImGuiCond_ = 4;
 pub const ImGuiCond_Appearing: ImGuiCond_ = 8;
-pub type ImGuiCond_ = cty::c_uint;
+pub type ImGuiCond_ = core::ffi::c_uint;
 pub const ImGuiTableFlags_None: ImGuiTableFlags_ = 0;
 pub const ImGuiTableFlags_Resizable: ImGuiTableFlags_ = 1;
 pub const ImGuiTableFlags_Reorderable: ImGuiTableFlags_ = 2;
@@ -879,7 +879,7 @@ pub const ImGuiTableFlags_SortMulti: ImGuiTableFlags_ = 67108864;
 pub const ImGuiTableFlags_SortTristate: ImGuiTableFlags_ = 134217728;
 pub const ImGuiTableFlags_HighlightHoveredColumn: ImGuiTableFlags_ = 268435456;
 pub const ImGuiTableFlags_SizingMask_: ImGuiTableFlags_ = 57344;
-pub type ImGuiTableFlags_ = cty::c_uint;
+pub type ImGuiTableFlags_ = core::ffi::c_uint;
 pub const ImGuiTableColumnFlags_None: ImGuiTableColumnFlags_ = 0;
 pub const ImGuiTableColumnFlags_Disabled: ImGuiTableColumnFlags_ = 1;
 pub const ImGuiTableColumnFlags_DefaultHide: ImGuiTableColumnFlags_ = 2;
@@ -908,20 +908,20 @@ pub const ImGuiTableColumnFlags_WidthMask_: ImGuiTableColumnFlags_ = 24;
 pub const ImGuiTableColumnFlags_IndentMask_: ImGuiTableColumnFlags_ = 196608;
 pub const ImGuiTableColumnFlags_StatusMask_: ImGuiTableColumnFlags_ = 251658240;
 pub const ImGuiTableColumnFlags_NoDirectResize_: ImGuiTableColumnFlags_ = 1073741824;
-pub type ImGuiTableColumnFlags_ = cty::c_uint;
+pub type ImGuiTableColumnFlags_ = core::ffi::c_uint;
 pub const ImGuiTableRowFlags_None: ImGuiTableRowFlags_ = 0;
 pub const ImGuiTableRowFlags_Headers: ImGuiTableRowFlags_ = 1;
-pub type ImGuiTableRowFlags_ = cty::c_uint;
+pub type ImGuiTableRowFlags_ = core::ffi::c_uint;
 pub const ImGuiTableBgTarget_None: ImGuiTableBgTarget_ = 0;
 pub const ImGuiTableBgTarget_RowBg0: ImGuiTableBgTarget_ = 1;
 pub const ImGuiTableBgTarget_RowBg1: ImGuiTableBgTarget_ = 2;
 pub const ImGuiTableBgTarget_CellBg: ImGuiTableBgTarget_ = 3;
-pub type ImGuiTableBgTarget_ = cty::c_uint;
+pub type ImGuiTableBgTarget_ = core::ffi::c_uint;
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImGuiTableSortSpecs {
     pub Specs: *const ImGuiTableColumnSortSpecs,
-    pub SpecsCount: cty::c_int,
+    pub SpecsCount: core::ffi::c_int,
     pub SpecsDirty: bool,
 }
 impl Default for ImGuiTableSortSpecs {
@@ -1038,8 +1038,8 @@ pub struct ImGuiKeyData {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImVector_ImWchar {
-    pub Size: cty::c_int,
-    pub Capacity: cty::c_int,
+    pub Size: core::ffi::c_int,
+    pub Capacity: core::ffi::c_int,
     pub Data: *mut ImWchar,
 }
 impl Default for ImVector_ImWchar {
@@ -1060,9 +1060,9 @@ pub struct ImGuiIO {
     pub DisplayFramebufferScale: ImVec2,
     pub DeltaTime: f32,
     pub IniSavingRate: f32,
-    pub IniFilename: *const cty::c_char,
-    pub LogFilename: *const cty::c_char,
-    pub UserData: *mut cty::c_void,
+    pub IniFilename: *const core::ffi::c_char,
+    pub LogFilename: *const core::ffi::c_char,
+    pub UserData: *mut core::ffi::c_void,
     pub Fonts: *mut ImFontAtlas,
     pub FontDefault: *mut ImFont,
     pub FontAllowUserScaling: bool,
@@ -1100,11 +1100,11 @@ pub struct ImGuiIO {
     pub ConfigDebugBeginReturnValueLoop: bool,
     pub ConfigDebugIgnoreFocusLoss: bool,
     pub ConfigDebugIniSettings: bool,
-    pub BackendPlatformName: *const cty::c_char,
-    pub BackendRendererName: *const cty::c_char,
-    pub BackendPlatformUserData: *mut cty::c_void,
-    pub BackendRendererUserData: *mut cty::c_void,
-    pub BackendLanguageUserData: *mut cty::c_void,
+    pub BackendPlatformName: *const core::ffi::c_char,
+    pub BackendRendererName: *const core::ffi::c_char,
+    pub BackendPlatformUserData: *mut core::ffi::c_void,
+    pub BackendRendererUserData: *mut core::ffi::c_void,
+    pub BackendLanguageUserData: *mut core::ffi::c_void,
     pub WantCaptureMouse: bool,
     pub WantCaptureKeyboard: bool,
     pub WantTextInput: bool,
@@ -1113,10 +1113,10 @@ pub struct ImGuiIO {
     pub NavActive: bool,
     pub NavVisible: bool,
     pub Framerate: f32,
-    pub MetricsRenderVertices: cty::c_int,
-    pub MetricsRenderIndices: cty::c_int,
-    pub MetricsRenderWindows: cty::c_int,
-    pub MetricsActiveWindows: cty::c_int,
+    pub MetricsRenderVertices: core::ffi::c_int,
+    pub MetricsRenderIndices: core::ffi::c_int,
+    pub MetricsRenderWindows: core::ffi::c_int,
+    pub MetricsActiveWindows: core::ffi::c_int,
     pub MouseDelta: ImVec2,
     pub Ctx: *mut ImGuiContext,
     pub MousePos: ImVec2,
@@ -1168,16 +1168,16 @@ pub struct ImGuiInputTextCallbackData {
     pub Ctx: *mut ImGuiContext,
     pub EventFlag: ImGuiInputTextFlags,
     pub Flags: ImGuiInputTextFlags,
-    pub UserData: *mut cty::c_void,
+    pub UserData: *mut core::ffi::c_void,
     pub EventChar: ImWchar,
     pub EventKey: ImGuiKey,
-    pub Buf: *mut cty::c_char,
-    pub BufTextLen: cty::c_int,
-    pub BufSize: cty::c_int,
+    pub Buf: *mut core::ffi::c_char,
+    pub BufTextLen: core::ffi::c_int,
+    pub BufSize: core::ffi::c_int,
     pub BufDirty: bool,
-    pub CursorPos: cty::c_int,
-    pub SelectionStart: cty::c_int,
-    pub SelectionEnd: cty::c_int,
+    pub CursorPos: core::ffi::c_int,
+    pub SelectionStart: core::ffi::c_int,
+    pub SelectionEnd: core::ffi::c_int,
 }
 impl Default for ImGuiInputTextCallbackData {
     fn default() -> Self {
@@ -1191,7 +1191,7 @@ impl Default for ImGuiInputTextCallbackData {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, PartialEq)]
 pub struct ImGuiSizeCallbackData {
-    pub UserData: *mut cty::c_void,
+    pub UserData: *mut core::ffi::c_void,
     pub Pos: ImVec2,
     pub CurrentSize: ImVec2,
     pub DesiredSize: ImVec2,
@@ -1208,12 +1208,12 @@ impl Default for ImGuiSizeCallbackData {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImGuiPayload {
-    pub Data: *mut cty::c_void,
-    pub DataSize: cty::c_int,
+    pub Data: *mut core::ffi::c_void,
+    pub DataSize: core::ffi::c_int,
     pub SourceId: ImGuiID,
     pub SourceParentId: ImGuiID,
-    pub DataFrameCount: cty::c_int,
-    pub DataType: [cty::c_char; 33usize],
+    pub DataFrameCount: core::ffi::c_int,
+    pub DataType: [core::ffi::c_char; 33usize],
     pub Preview: bool,
     pub Delivery: bool,
 }
@@ -1229,13 +1229,13 @@ impl Default for ImGuiPayload {
 #[repr(C)]
 #[derive(Debug, Default, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImGuiOnceUponAFrame {
-    pub RefFrame: cty::c_int,
+    pub RefFrame: core::ffi::c_int,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImGuiTextRange {
-    pub b: *const cty::c_char,
-    pub e: *const cty::c_char,
+    pub b: *const core::ffi::c_char,
+    pub e: *const core::ffi::c_char,
 }
 impl Default for ImGuiTextRange {
     fn default() -> Self {
@@ -1249,8 +1249,8 @@ impl Default for ImGuiTextRange {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImVector_ImGuiTextRange {
-    pub Size: cty::c_int,
-    pub Capacity: cty::c_int,
+    pub Size: core::ffi::c_int,
+    pub Capacity: core::ffi::c_int,
     pub Data: *mut ImGuiTextRange,
 }
 impl Default for ImVector_ImGuiTextRange {
@@ -1265,9 +1265,9 @@ impl Default for ImVector_ImGuiTextRange {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImGuiTextFilter {
-    pub InputBuf: [cty::c_char; 256usize],
+    pub InputBuf: [core::ffi::c_char; 256usize],
     pub Filters: ImVector_ImGuiTextRange,
-    pub CountGrep: cty::c_int,
+    pub CountGrep: core::ffi::c_int,
 }
 impl Default for ImGuiTextFilter {
     fn default() -> Self {
@@ -1281,9 +1281,9 @@ impl Default for ImGuiTextFilter {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImVector_char {
-    pub Size: cty::c_int,
-    pub Capacity: cty::c_int,
-    pub Data: *mut cty::c_char,
+    pub Size: core::ffi::c_int,
+    pub Capacity: core::ffi::c_int,
+    pub Data: *mut core::ffi::c_char,
 }
 impl Default for ImVector_char {
     fn default() -> Self {
@@ -1317,9 +1317,9 @@ pub struct ImGuiStoragePair {
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub union ImGuiStoragePair__bindgen_ty_1 {
-    pub val_i: cty::c_int,
+    pub val_i: core::ffi::c_int,
     pub val_f: f32,
-    pub val_p: *mut cty::c_void,
+    pub val_p: *mut core::ffi::c_void,
 }
 impl Default for ImGuiStoragePair__bindgen_ty_1 {
     fn default() -> Self {
@@ -1356,8 +1356,8 @@ impl ::core::fmt::Debug for ImGuiStoragePair {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImVector_ImGuiStoragePair {
-    pub Size: cty::c_int,
-    pub Capacity: cty::c_int,
+    pub Size: core::ffi::c_int,
+    pub Capacity: core::ffi::c_int,
     pub Data: *mut ImGuiStoragePair,
 }
 impl Default for ImVector_ImGuiStoragePair {
@@ -1387,13 +1387,13 @@ impl Default for ImGuiStorage {
 #[derive(Debug, Copy, Clone, PartialEq)]
 pub struct ImGuiListClipper {
     pub Ctx: *mut ImGuiContext,
-    pub DisplayStart: cty::c_int,
-    pub DisplayEnd: cty::c_int,
-    pub ItemsCount: cty::c_int,
+    pub DisplayStart: core::ffi::c_int,
+    pub DisplayEnd: core::ffi::c_int,
+    pub ItemsCount: core::ffi::c_int,
     pub ItemsHeight: f32,
     pub StartPosY: f64,
     pub StartSeekOffsetY: f64,
-    pub TempData: *mut cty::c_void,
+    pub TempData: *mut core::ffi::c_void,
 }
 impl Default for ImGuiListClipper {
     fn default() -> Self {
@@ -1426,12 +1426,12 @@ pub const ImGuiMultiSelectFlags_ScopeRect: ImGuiMultiSelectFlags_ = 4096;
 pub const ImGuiMultiSelectFlags_SelectOnClick: ImGuiMultiSelectFlags_ = 8192;
 pub const ImGuiMultiSelectFlags_SelectOnClickRelease: ImGuiMultiSelectFlags_ = 16384;
 pub const ImGuiMultiSelectFlags_NavWrapX: ImGuiMultiSelectFlags_ = 65536;
-pub type ImGuiMultiSelectFlags_ = cty::c_uint;
+pub type ImGuiMultiSelectFlags_ = core::ffi::c_uint;
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImVector_ImGuiSelectionRequest {
-    pub Size: cty::c_int,
-    pub Capacity: cty::c_int,
+    pub Size: core::ffi::c_int,
+    pub Capacity: core::ffi::c_int,
     pub Data: *mut ImGuiSelectionRequest,
 }
 impl Default for ImVector_ImGuiSelectionRequest {
@@ -1451,7 +1451,7 @@ pub struct ImGuiMultiSelectIO {
     pub NavIdItem: ImGuiSelectionUserData,
     pub NavIdSelected: bool,
     pub RangeSrcReset: bool,
-    pub ItemsCount: cty::c_int,
+    pub ItemsCount: core::ffi::c_int,
 }
 impl Default for ImGuiMultiSelectIO {
     fn default() -> Self {
@@ -1465,7 +1465,7 @@ impl Default for ImGuiMultiSelectIO {
 pub const ImGuiSelectionRequestType_None: ImGuiSelectionRequestType = 0;
 pub const ImGuiSelectionRequestType_SetAll: ImGuiSelectionRequestType = 1;
 pub const ImGuiSelectionRequestType_SetRange: ImGuiSelectionRequestType = 2;
-pub type ImGuiSelectionRequestType = cty::c_uint;
+pub type ImGuiSelectionRequestType = core::ffi::c_uint;
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImGuiSelectionRequest {
@@ -1487,13 +1487,16 @@ impl Default for ImGuiSelectionRequest {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImGuiSelectionBasicStorage {
-    pub Size: cty::c_int,
+    pub Size: core::ffi::c_int,
     pub PreserveOrder: bool,
-    pub UserData: *mut cty::c_void,
+    pub UserData: *mut core::ffi::c_void,
     pub AdapterIndexToStorageId: ::core::option::Option<
-        unsafe extern "C" fn(self_: *mut ImGuiSelectionBasicStorage, idx: cty::c_int) -> ImGuiID,
+        unsafe extern "C" fn(
+            self_: *mut ImGuiSelectionBasicStorage,
+            idx: core::ffi::c_int,
+        ) -> ImGuiID,
     >,
-    pub _SelectionOrder: cty::c_int,
+    pub _SelectionOrder: core::ffi::c_int,
     pub _Storage: ImGuiStorage,
 }
 impl Default for ImGuiSelectionBasicStorage {
@@ -1508,11 +1511,11 @@ impl Default for ImGuiSelectionBasicStorage {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImGuiSelectionExternalStorage {
-    pub UserData: *mut cty::c_void,
+    pub UserData: *mut core::ffi::c_void,
     pub AdapterSetItemSelected: ::core::option::Option<
         unsafe extern "C" fn(
             self_: *mut ImGuiSelectionExternalStorage,
-            idx: cty::c_int,
+            idx: core::ffi::c_int,
             selected: bool,
         ),
     >,
@@ -1526,7 +1529,7 @@ impl Default for ImGuiSelectionExternalStorage {
         }
     }
 }
-pub type ImDrawIdx = cty::c_ushort;
+pub type ImDrawIdx = core::ffi::c_ushort;
 pub type ImDrawCallback = ::core::option::Option<
     unsafe extern "C" fn(parent_list: *const ImDrawList, cmd: *const ImDrawCmd),
 >;
@@ -1535,13 +1538,13 @@ pub type ImDrawCallback = ::core::option::Option<
 pub struct ImDrawCmd {
     pub ClipRect: ImVec4,
     pub TexRef: ImTextureRef,
-    pub VtxOffset: cty::c_uint,
-    pub IdxOffset: cty::c_uint,
-    pub ElemCount: cty::c_uint,
+    pub VtxOffset: core::ffi::c_uint,
+    pub IdxOffset: core::ffi::c_uint,
+    pub ElemCount: core::ffi::c_uint,
     pub UserCallback: ImDrawCallback,
-    pub UserCallbackData: *mut cty::c_void,
-    pub UserCallbackDataSize: cty::c_int,
-    pub UserCallbackDataOffset: cty::c_int,
+    pub UserCallbackData: *mut core::ffi::c_void,
+    pub UserCallbackDataSize: core::ffi::c_int,
+    pub UserCallbackDataOffset: core::ffi::c_int,
 }
 impl Default for ImDrawCmd {
     fn default() -> Self {
@@ -1564,7 +1567,7 @@ pub struct ImDrawVert {
 pub struct ImDrawCmdHeader {
     pub ClipRect: ImVec4,
     pub TexRef: ImTextureRef,
-    pub VtxOffset: cty::c_uint,
+    pub VtxOffset: core::ffi::c_uint,
 }
 impl Default for ImDrawCmdHeader {
     fn default() -> Self {
@@ -1578,8 +1581,8 @@ impl Default for ImDrawCmdHeader {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImVector_ImDrawCmd {
-    pub Size: cty::c_int,
-    pub Capacity: cty::c_int,
+    pub Size: core::ffi::c_int,
+    pub Capacity: core::ffi::c_int,
     pub Data: *mut ImDrawCmd,
 }
 impl Default for ImVector_ImDrawCmd {
@@ -1594,8 +1597,8 @@ impl Default for ImVector_ImDrawCmd {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImVector_ImDrawIdx {
-    pub Size: cty::c_int,
-    pub Capacity: cty::c_int,
+    pub Size: core::ffi::c_int,
+    pub Capacity: core::ffi::c_int,
     pub Data: *mut ImDrawIdx,
 }
 impl Default for ImVector_ImDrawIdx {
@@ -1625,8 +1628,8 @@ impl Default for ImDrawChannel {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImVector_ImDrawChannel {
-    pub Size: cty::c_int,
-    pub Capacity: cty::c_int,
+    pub Size: core::ffi::c_int,
+    pub Capacity: core::ffi::c_int,
     pub Data: *mut ImDrawChannel,
 }
 impl Default for ImVector_ImDrawChannel {
@@ -1641,8 +1644,8 @@ impl Default for ImVector_ImDrawChannel {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImDrawListSplitter {
-    pub _Current: cty::c_int,
-    pub _Count: cty::c_int,
+    pub _Current: core::ffi::c_int,
+    pub _Count: core::ffi::c_int,
     pub _Channels: ImVector_ImDrawChannel,
 }
 impl Default for ImDrawListSplitter {
@@ -1668,18 +1671,18 @@ pub const ImDrawFlags_RoundCornersRight: ImDrawFlags_ = 160;
 pub const ImDrawFlags_RoundCornersAll: ImDrawFlags_ = 240;
 pub const ImDrawFlags_RoundCornersDefault_: ImDrawFlags_ = 240;
 pub const ImDrawFlags_RoundCornersMask_: ImDrawFlags_ = 496;
-pub type ImDrawFlags_ = cty::c_uint;
+pub type ImDrawFlags_ = core::ffi::c_uint;
 pub const ImDrawListFlags_None: ImDrawListFlags_ = 0;
 pub const ImDrawListFlags_AntiAliasedLines: ImDrawListFlags_ = 1;
 pub const ImDrawListFlags_AntiAliasedLinesUseTex: ImDrawListFlags_ = 2;
 pub const ImDrawListFlags_AntiAliasedFill: ImDrawListFlags_ = 4;
 pub const ImDrawListFlags_AllowVtxOffset: ImDrawListFlags_ = 8;
-pub type ImDrawListFlags_ = cty::c_uint;
+pub type ImDrawListFlags_ = core::ffi::c_uint;
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImVector_ImDrawVert {
-    pub Size: cty::c_int,
-    pub Capacity: cty::c_int,
+    pub Size: core::ffi::c_int,
+    pub Capacity: core::ffi::c_int,
     pub Data: *mut ImDrawVert,
 }
 impl Default for ImVector_ImDrawVert {
@@ -1694,8 +1697,8 @@ impl Default for ImVector_ImDrawVert {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImVector_ImVec2 {
-    pub Size: cty::c_int,
-    pub Capacity: cty::c_int,
+    pub Size: core::ffi::c_int,
+    pub Capacity: core::ffi::c_int,
     pub Data: *mut ImVec2,
 }
 impl Default for ImVector_ImVec2 {
@@ -1710,8 +1713,8 @@ impl Default for ImVector_ImVec2 {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImVector_ImVec4 {
-    pub Size: cty::c_int,
-    pub Capacity: cty::c_int,
+    pub Size: core::ffi::c_int,
+    pub Capacity: core::ffi::c_int,
     pub Data: *mut ImVec4,
 }
 impl Default for ImVector_ImVec4 {
@@ -1726,8 +1729,8 @@ impl Default for ImVector_ImVec4 {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImVector_ImTextureRef {
-    pub Size: cty::c_int,
-    pub Capacity: cty::c_int,
+    pub Size: core::ffi::c_int,
+    pub Capacity: core::ffi::c_int,
     pub Data: *mut ImTextureRef,
 }
 impl Default for ImVector_ImTextureRef {
@@ -1742,8 +1745,8 @@ impl Default for ImVector_ImTextureRef {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImVector_ImU8 {
-    pub Size: cty::c_int,
-    pub Capacity: cty::c_int,
+    pub Size: core::ffi::c_int,
+    pub Capacity: core::ffi::c_int,
     pub Data: *mut ImU8,
 }
 impl Default for ImVector_ImU8 {
@@ -1762,7 +1765,7 @@ pub struct ImDrawList {
     pub IdxBuffer: ImVector_ImDrawIdx,
     pub VtxBuffer: ImVector_ImDrawVert,
     pub Flags: ImDrawListFlags,
-    pub _VtxCurrentIdx: cty::c_uint,
+    pub _VtxCurrentIdx: core::ffi::c_uint,
     pub _Data: *mut ImDrawListSharedData,
     pub _VtxWritePtr: *mut ImDrawVert,
     pub _IdxWritePtr: *mut ImDrawIdx,
@@ -1773,7 +1776,7 @@ pub struct ImDrawList {
     pub _TextureStack: ImVector_ImTextureRef,
     pub _CallbacksDataBuf: ImVector_ImU8,
     pub _FringeScale: f32,
-    pub _OwnerName: *const cty::c_char,
+    pub _OwnerName: *const core::ffi::c_char,
 }
 impl Default for ImDrawList {
     fn default() -> Self {
@@ -1787,8 +1790,8 @@ impl Default for ImDrawList {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImVector_ImDrawListPtr {
-    pub Size: cty::c_int,
-    pub Capacity: cty::c_int,
+    pub Size: core::ffi::c_int,
+    pub Capacity: core::ffi::c_int,
     pub Data: *mut *mut ImDrawList,
 }
 impl Default for ImVector_ImDrawListPtr {
@@ -1803,8 +1806,8 @@ impl Default for ImVector_ImDrawListPtr {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImVector_ImTextureDataPtr {
-    pub Size: cty::c_int,
-    pub Capacity: cty::c_int,
+    pub Size: core::ffi::c_int,
+    pub Capacity: core::ffi::c_int,
     pub Data: *mut *mut ImTextureData,
 }
 impl Default for ImVector_ImTextureDataPtr {
@@ -1820,9 +1823,9 @@ impl Default for ImVector_ImTextureDataPtr {
 #[derive(Debug, Copy, Clone, PartialEq)]
 pub struct ImDrawData {
     pub Valid: bool,
-    pub CmdListsCount: cty::c_int,
-    pub TotalIdxCount: cty::c_int,
-    pub TotalVtxCount: cty::c_int,
+    pub CmdListsCount: core::ffi::c_int,
+    pub TotalIdxCount: core::ffi::c_int,
+    pub TotalVtxCount: core::ffi::c_int,
     pub CmdLists: ImVector_ImDrawListPtr,
     pub DisplayPos: ImVec2,
     pub DisplaySize: ImVec2,
@@ -1841,26 +1844,26 @@ impl Default for ImDrawData {
 }
 pub const ImTextureFormat_RGBA32: ImTextureFormat = 0;
 pub const ImTextureFormat_Alpha8: ImTextureFormat = 1;
-pub type ImTextureFormat = cty::c_uint;
+pub type ImTextureFormat = core::ffi::c_uint;
 pub const ImTextureStatus_OK: ImTextureStatus = 0;
 pub const ImTextureStatus_Destroyed: ImTextureStatus = 1;
 pub const ImTextureStatus_WantCreate: ImTextureStatus = 2;
 pub const ImTextureStatus_WantUpdates: ImTextureStatus = 3;
 pub const ImTextureStatus_WantDestroy: ImTextureStatus = 4;
-pub type ImTextureStatus = cty::c_uint;
+pub type ImTextureStatus = core::ffi::c_uint;
 #[repr(C)]
 #[derive(Debug, Default, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImTextureRect {
-    pub x: cty::c_ushort,
-    pub y: cty::c_ushort,
-    pub w: cty::c_ushort,
-    pub h: cty::c_ushort,
+    pub x: core::ffi::c_ushort,
+    pub y: core::ffi::c_ushort,
+    pub w: core::ffi::c_ushort,
+    pub h: core::ffi::c_ushort,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImVector_ImTextureRect {
-    pub Size: cty::c_int,
-    pub Capacity: cty::c_int,
+    pub Size: core::ffi::c_int,
+    pub Capacity: core::ffi::c_int,
     pub Data: *mut ImTextureRect,
 }
 impl Default for ImVector_ImTextureRect {
@@ -1875,20 +1878,20 @@ impl Default for ImVector_ImTextureRect {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImTextureData {
-    pub UniqueID: cty::c_int,
+    pub UniqueID: core::ffi::c_int,
     pub Status: ImTextureStatus,
-    pub BackendUserData: *mut cty::c_void,
+    pub BackendUserData: *mut core::ffi::c_void,
     pub TexID: ImTextureID,
     pub Format: ImTextureFormat,
-    pub Width: cty::c_int,
-    pub Height: cty::c_int,
-    pub BytesPerPixel: cty::c_int,
-    pub Pixels: *mut cty::c_uchar,
+    pub Width: core::ffi::c_int,
+    pub Height: core::ffi::c_int,
+    pub BytesPerPixel: core::ffi::c_int,
+    pub Pixels: *mut core::ffi::c_uchar,
     pub UsedRect: ImTextureRect,
     pub UpdateRect: ImTextureRect,
     pub Updates: ImVector_ImTextureRect,
-    pub UnusedFrames: cty::c_int,
-    pub RefCount: cty::c_ushort,
+    pub UnusedFrames: core::ffi::c_int,
+    pub RefCount: core::ffi::c_ushort,
     pub UseColors: bool,
     pub WantDestroyNextFrame: bool,
 }
@@ -1904,9 +1907,9 @@ impl Default for ImTextureData {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, PartialEq)]
 pub struct ImFontConfig {
-    pub Name: [cty::c_char; 40usize],
-    pub FontData: *mut cty::c_void,
-    pub FontDataSize: cty::c_int,
+    pub Name: [core::ffi::c_char; 40usize],
+    pub FontData: *mut core::ffi::c_void,
+    pub FontDataSize: core::ffi::c_int,
     pub FontDataOwnedByAtlas: bool,
     pub MergeMode: bool,
     pub PixelSnapH: bool,
@@ -1921,14 +1924,14 @@ pub struct ImFontConfig {
     pub GlyphMinAdvanceX: f32,
     pub GlyphMaxAdvanceX: f32,
     pub GlyphExtraAdvanceX: f32,
-    pub FontLoaderFlags: cty::c_uint,
+    pub FontLoaderFlags: core::ffi::c_uint,
     pub RasterizerMultiply: f32,
     pub RasterizerDensity: f32,
     pub EllipsisChar: ImWchar,
     pub Flags: ImFontFlags,
     pub DstFont: *mut ImFont,
     pub FontLoader: *const ImFontLoader,
-    pub FontLoaderData: *mut cty::c_void,
+    pub FontLoaderData: *mut core::ffi::c_void,
 }
 impl Default for ImFontConfig {
     fn default() -> Self {
@@ -1953,22 +1956,22 @@ pub struct ImFontGlyph {
     pub V0: f32,
     pub U1: f32,
     pub V1: f32,
-    pub PackId: cty::c_int,
+    pub PackId: core::ffi::c_int,
 }
 impl ImFontGlyph {
     #[inline]
-    pub fn Colored(&self) -> cty::c_uint {
+    pub fn Colored(&self) -> core::ffi::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_Colored(&mut self, val: cty::c_uint) {
+    pub fn set_Colored(&mut self, val: core::ffi::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub unsafe fn Colored_raw(this: *const Self) -> cty::c_uint {
+    pub unsafe fn Colored_raw(this: *const Self) -> core::ffi::c_uint {
         unsafe {
             ::core::mem::transmute(<__BindgenBitfieldUnit<[u8; 4usize]>>::raw_get(
                 ::core::ptr::addr_of!((*this)._bitfield_1),
@@ -1978,7 +1981,7 @@ impl ImFontGlyph {
         }
     }
     #[inline]
-    pub unsafe fn set_Colored_raw(this: *mut Self, val: cty::c_uint) {
+    pub unsafe fn set_Colored_raw(this: *mut Self, val: core::ffi::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             <__BindgenBitfieldUnit<[u8; 4usize]>>::raw_set(
@@ -1990,18 +1993,18 @@ impl ImFontGlyph {
         }
     }
     #[inline]
-    pub fn Visible(&self) -> cty::c_uint {
+    pub fn Visible(&self) -> core::ffi::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_Visible(&mut self, val: cty::c_uint) {
+    pub fn set_Visible(&mut self, val: core::ffi::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub unsafe fn Visible_raw(this: *const Self) -> cty::c_uint {
+    pub unsafe fn Visible_raw(this: *const Self) -> core::ffi::c_uint {
         unsafe {
             ::core::mem::transmute(<__BindgenBitfieldUnit<[u8; 4usize]>>::raw_get(
                 ::core::ptr::addr_of!((*this)._bitfield_1),
@@ -2011,7 +2014,7 @@ impl ImFontGlyph {
         }
     }
     #[inline]
-    pub unsafe fn set_Visible_raw(this: *mut Self, val: cty::c_uint) {
+    pub unsafe fn set_Visible_raw(this: *mut Self, val: core::ffi::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             <__BindgenBitfieldUnit<[u8; 4usize]>>::raw_set(
@@ -2023,18 +2026,18 @@ impl ImFontGlyph {
         }
     }
     #[inline]
-    pub fn SourceIdx(&self) -> cty::c_uint {
+    pub fn SourceIdx(&self) -> core::ffi::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 4u8) as u32) }
     }
     #[inline]
-    pub fn set_SourceIdx(&mut self, val: cty::c_uint) {
+    pub fn set_SourceIdx(&mut self, val: core::ffi::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(2usize, 4u8, val as u64)
         }
     }
     #[inline]
-    pub unsafe fn SourceIdx_raw(this: *const Self) -> cty::c_uint {
+    pub unsafe fn SourceIdx_raw(this: *const Self) -> core::ffi::c_uint {
         unsafe {
             ::core::mem::transmute(<__BindgenBitfieldUnit<[u8; 4usize]>>::raw_get(
                 ::core::ptr::addr_of!((*this)._bitfield_1),
@@ -2044,7 +2047,7 @@ impl ImFontGlyph {
         }
     }
     #[inline]
-    pub unsafe fn set_SourceIdx_raw(this: *mut Self, val: cty::c_uint) {
+    pub unsafe fn set_SourceIdx_raw(this: *mut Self, val: core::ffi::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             <__BindgenBitfieldUnit<[u8; 4usize]>>::raw_set(
@@ -2056,18 +2059,18 @@ impl ImFontGlyph {
         }
     }
     #[inline]
-    pub fn Codepoint(&self) -> cty::c_uint {
+    pub fn Codepoint(&self) -> core::ffi::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(6usize, 26u8) as u32) }
     }
     #[inline]
-    pub fn set_Codepoint(&mut self, val: cty::c_uint) {
+    pub fn set_Codepoint(&mut self, val: core::ffi::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(6usize, 26u8, val as u64)
         }
     }
     #[inline]
-    pub unsafe fn Codepoint_raw(this: *const Self) -> cty::c_uint {
+    pub unsafe fn Codepoint_raw(this: *const Self) -> core::ffi::c_uint {
         unsafe {
             ::core::mem::transmute(<__BindgenBitfieldUnit<[u8; 4usize]>>::raw_get(
                 ::core::ptr::addr_of!((*this)._bitfield_1),
@@ -2077,7 +2080,7 @@ impl ImFontGlyph {
         }
     }
     #[inline]
-    pub unsafe fn set_Codepoint_raw(this: *mut Self, val: cty::c_uint) {
+    pub unsafe fn set_Codepoint_raw(this: *mut Self, val: core::ffi::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             <__BindgenBitfieldUnit<[u8; 4usize]>>::raw_set(
@@ -2090,10 +2093,10 @@ impl ImFontGlyph {
     }
     #[inline]
     pub fn new_bitfield_1(
-        Colored: cty::c_uint,
-        Visible: cty::c_uint,
-        SourceIdx: cty::c_uint,
-        Codepoint: cty::c_uint,
+        Colored: core::ffi::c_uint,
+        Visible: core::ffi::c_uint,
+        SourceIdx: core::ffi::c_uint,
+        Codepoint: core::ffi::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 4usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 4usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -2118,8 +2121,8 @@ impl ImFontGlyph {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImVector_ImU32 {
-    pub Size: cty::c_int,
-    pub Capacity: cty::c_int,
+    pub Size: core::ffi::c_int,
+    pub Capacity: core::ffi::c_int,
     pub Data: *mut ImU32,
 }
 impl Default for ImVector_ImU32 {
@@ -2145,14 +2148,14 @@ impl Default for ImFontGlyphRangesBuilder {
         }
     }
 }
-pub type ImFontAtlasRectId = cty::c_int;
+pub type ImFontAtlasRectId = core::ffi::c_int;
 #[repr(C)]
 #[derive(Debug, Default, Copy, Clone, PartialEq)]
 pub struct ImFontAtlasRect {
-    pub x: cty::c_ushort,
-    pub y: cty::c_ushort,
-    pub w: cty::c_ushort,
-    pub h: cty::c_ushort,
+    pub x: core::ffi::c_ushort,
+    pub y: core::ffi::c_ushort,
+    pub w: core::ffi::c_ushort,
+    pub h: core::ffi::c_ushort,
     pub uv0: ImVec2,
     pub uv1: ImVec2,
 }
@@ -2160,12 +2163,12 @@ pub const ImFontAtlasFlags_None: ImFontAtlasFlags_ = 0;
 pub const ImFontAtlasFlags_NoPowerOfTwoHeight: ImFontAtlasFlags_ = 1;
 pub const ImFontAtlasFlags_NoMouseCursors: ImFontAtlasFlags_ = 2;
 pub const ImFontAtlasFlags_NoBakedLines: ImFontAtlasFlags_ = 4;
-pub type ImFontAtlasFlags_ = cty::c_uint;
+pub type ImFontAtlasFlags_ = core::ffi::c_uint;
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImVector_ImFontPtr {
-    pub Size: cty::c_int,
-    pub Capacity: cty::c_int,
+    pub Size: core::ffi::c_int,
+    pub Capacity: core::ffi::c_int,
     pub Data: *mut *mut ImFont,
 }
 impl Default for ImVector_ImFontPtr {
@@ -2180,8 +2183,8 @@ impl Default for ImVector_ImFontPtr {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImVector_ImFontConfig {
-    pub Size: cty::c_int,
-    pub Capacity: cty::c_int,
+    pub Size: core::ffi::c_int,
+    pub Capacity: core::ffi::c_int,
     pub Data: *mut ImFontConfig,
 }
 impl Default for ImVector_ImFontConfig {
@@ -2196,8 +2199,8 @@ impl Default for ImVector_ImFontConfig {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImVector_ImDrawListSharedDataPtr {
-    pub Size: cty::c_int,
-    pub Capacity: cty::c_int,
+    pub Size: core::ffi::c_int,
+    pub Capacity: core::ffi::c_int,
     pub Data: *mut *mut ImDrawListSharedData,
 }
 impl Default for ImVector_ImDrawListSharedDataPtr {
@@ -2214,12 +2217,12 @@ impl Default for ImVector_ImDrawListSharedDataPtr {
 pub struct ImFontAtlas {
     pub Flags: ImFontAtlasFlags,
     pub TexDesiredFormat: ImTextureFormat,
-    pub TexGlyphPadding: cty::c_int,
-    pub TexMinWidth: cty::c_int,
-    pub TexMinHeight: cty::c_int,
-    pub TexMaxWidth: cty::c_int,
-    pub TexMaxHeight: cty::c_int,
-    pub UserData: *mut cty::c_void,
+    pub TexGlyphPadding: core::ffi::c_int,
+    pub TexMinWidth: core::ffi::c_int,
+    pub TexMinHeight: core::ffi::c_int,
+    pub TexMaxWidth: core::ffi::c_int,
+    pub TexMaxHeight: core::ffi::c_int,
+    pub UserData: *mut core::ffi::c_void,
     pub TexRef: ImTextureRef,
     pub TexData: *mut ImTextureData,
     pub TexList: ImVector_ImTextureDataPtr,
@@ -2232,15 +2235,15 @@ pub struct ImFontAtlas {
     pub Fonts: ImVector_ImFontPtr,
     pub Sources: ImVector_ImFontConfig,
     pub TexUvLines: [ImVec4; 33usize],
-    pub TexNextUniqueID: cty::c_int,
-    pub FontNextUniqueID: cty::c_int,
+    pub TexNextUniqueID: core::ffi::c_int,
+    pub FontNextUniqueID: core::ffi::c_int,
     pub DrawListSharedDatas: ImVector_ImDrawListSharedDataPtr,
     pub Builder: *mut ImFontAtlasBuilder,
     pub FontLoader: *const ImFontLoader,
-    pub FontLoaderName: *const cty::c_char,
-    pub FontLoaderData: *mut cty::c_void,
-    pub FontLoaderFlags: cty::c_uint,
-    pub RefCount: cty::c_int,
+    pub FontLoaderName: *const core::ffi::c_char,
+    pub FontLoaderData: *mut core::ffi::c_void,
+    pub FontLoaderFlags: core::ffi::c_uint,
+    pub RefCount: core::ffi::c_int,
     pub OwnerContext: *mut ImGuiContext,
 }
 impl Default for ImFontAtlas {
@@ -2255,8 +2258,8 @@ impl Default for ImFontAtlas {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImVector_float {
-    pub Size: cty::c_int,
-    pub Capacity: cty::c_int,
+    pub Size: core::ffi::c_int,
+    pub Capacity: core::ffi::c_int,
     pub Data: *mut f32,
 }
 impl Default for ImVector_float {
@@ -2271,8 +2274,8 @@ impl Default for ImVector_float {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImVector_ImU16 {
-    pub Size: cty::c_int,
-    pub Capacity: cty::c_int,
+    pub Size: core::ffi::c_int,
+    pub Capacity: core::ffi::c_int,
     pub Data: *mut ImU16,
 }
 impl Default for ImVector_ImU16 {
@@ -2287,8 +2290,8 @@ impl Default for ImVector_ImU16 {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImVector_ImFontGlyph {
-    pub Size: cty::c_int,
-    pub Capacity: cty::c_int,
+    pub Size: core::ffi::c_int,
+    pub Capacity: core::ffi::c_int,
     pub Data: *mut ImFontGlyph,
 }
 impl Default for ImVector_ImFontGlyph {
@@ -2309,15 +2312,15 @@ pub struct ImFontBaked {
     pub RasterizerDensity: f32,
     pub IndexLookup: ImVector_ImU16,
     pub Glyphs: ImVector_ImFontGlyph,
-    pub FallbackGlyphIndex: cty::c_int,
+    pub FallbackGlyphIndex: core::ffi::c_int,
     pub Ascent: f32,
     pub Descent: f32,
     pub _bitfield_align_1: [u32; 0],
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize]>,
-    pub LastUsedFrame: cty::c_int,
+    pub LastUsedFrame: core::ffi::c_int,
     pub BakedId: ImGuiID,
     pub ContainerFont: *mut ImFont,
-    pub FontLoaderDatas: *mut cty::c_void,
+    pub FontLoaderDatas: *mut core::ffi::c_void,
 }
 impl Default for ImFontBaked {
     fn default() -> Self {
@@ -2330,18 +2333,18 @@ impl Default for ImFontBaked {
 }
 impl ImFontBaked {
     #[inline]
-    pub fn MetricsTotalSurface(&self) -> cty::c_uint {
+    pub fn MetricsTotalSurface(&self) -> core::ffi::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 26u8) as u32) }
     }
     #[inline]
-    pub fn set_MetricsTotalSurface(&mut self, val: cty::c_uint) {
+    pub fn set_MetricsTotalSurface(&mut self, val: core::ffi::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 26u8, val as u64)
         }
     }
     #[inline]
-    pub unsafe fn MetricsTotalSurface_raw(this: *const Self) -> cty::c_uint {
+    pub unsafe fn MetricsTotalSurface_raw(this: *const Self) -> core::ffi::c_uint {
         unsafe {
             ::core::mem::transmute(<__BindgenBitfieldUnit<[u8; 4usize]>>::raw_get(
                 ::core::ptr::addr_of!((*this)._bitfield_1),
@@ -2351,7 +2354,7 @@ impl ImFontBaked {
         }
     }
     #[inline]
-    pub unsafe fn set_MetricsTotalSurface_raw(this: *mut Self, val: cty::c_uint) {
+    pub unsafe fn set_MetricsTotalSurface_raw(this: *mut Self, val: core::ffi::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             <__BindgenBitfieldUnit<[u8; 4usize]>>::raw_set(
@@ -2363,18 +2366,18 @@ impl ImFontBaked {
         }
     }
     #[inline]
-    pub fn WantDestroy(&self) -> cty::c_uint {
+    pub fn WantDestroy(&self) -> core::ffi::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(26usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_WantDestroy(&mut self, val: cty::c_uint) {
+    pub fn set_WantDestroy(&mut self, val: core::ffi::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(26usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub unsafe fn WantDestroy_raw(this: *const Self) -> cty::c_uint {
+    pub unsafe fn WantDestroy_raw(this: *const Self) -> core::ffi::c_uint {
         unsafe {
             ::core::mem::transmute(<__BindgenBitfieldUnit<[u8; 4usize]>>::raw_get(
                 ::core::ptr::addr_of!((*this)._bitfield_1),
@@ -2384,7 +2387,7 @@ impl ImFontBaked {
         }
     }
     #[inline]
-    pub unsafe fn set_WantDestroy_raw(this: *mut Self, val: cty::c_uint) {
+    pub unsafe fn set_WantDestroy_raw(this: *mut Self, val: core::ffi::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             <__BindgenBitfieldUnit<[u8; 4usize]>>::raw_set(
@@ -2396,18 +2399,18 @@ impl ImFontBaked {
         }
     }
     #[inline]
-    pub fn LockLoadingFallback(&self) -> cty::c_uint {
+    pub fn LockLoadingFallback(&self) -> core::ffi::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(27usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_LockLoadingFallback(&mut self, val: cty::c_uint) {
+    pub fn set_LockLoadingFallback(&mut self, val: core::ffi::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(27usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub unsafe fn LockLoadingFallback_raw(this: *const Self) -> cty::c_uint {
+    pub unsafe fn LockLoadingFallback_raw(this: *const Self) -> core::ffi::c_uint {
         unsafe {
             ::core::mem::transmute(<__BindgenBitfieldUnit<[u8; 4usize]>>::raw_get(
                 ::core::ptr::addr_of!((*this)._bitfield_1),
@@ -2417,7 +2420,7 @@ impl ImFontBaked {
         }
     }
     #[inline]
-    pub unsafe fn set_LockLoadingFallback_raw(this: *mut Self, val: cty::c_uint) {
+    pub unsafe fn set_LockLoadingFallback_raw(this: *mut Self, val: core::ffi::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             <__BindgenBitfieldUnit<[u8; 4usize]>>::raw_set(
@@ -2430,9 +2433,9 @@ impl ImFontBaked {
     }
     #[inline]
     pub fn new_bitfield_1(
-        MetricsTotalSurface: cty::c_uint,
-        WantDestroy: cty::c_uint,
-        LockLoadingFallback: cty::c_uint,
+        MetricsTotalSurface: core::ffi::c_uint,
+        WantDestroy: core::ffi::c_uint,
+        LockLoadingFallback: core::ffi::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 4usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 4usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 26u8, {
@@ -2454,12 +2457,12 @@ pub const ImFontFlags_None: ImFontFlags_ = 0;
 pub const ImFontFlags_NoLoadError: ImFontFlags_ = 2;
 pub const ImFontFlags_NoLoadGlyphs: ImFontFlags_ = 4;
 pub const ImFontFlags_LockBakedSizes: ImFontFlags_ = 8;
-pub type ImFontFlags_ = cty::c_uint;
+pub type ImFontFlags_ = core::ffi::c_uint;
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImVector_ImFontConfigPtr {
-    pub Size: cty::c_int,
-    pub Capacity: cty::c_int,
+    pub Size: core::ffi::c_int,
+    pub Capacity: core::ffi::c_int,
     pub Data: *mut *mut ImFontConfig,
 }
 impl Default for ImVector_ImFontConfigPtr {
@@ -2500,7 +2503,7 @@ pub const ImGuiViewportFlags_None: ImGuiViewportFlags_ = 0;
 pub const ImGuiViewportFlags_IsPlatformWindow: ImGuiViewportFlags_ = 1;
 pub const ImGuiViewportFlags_IsPlatformMonitor: ImGuiViewportFlags_ = 2;
 pub const ImGuiViewportFlags_OwnedByApp: ImGuiViewportFlags_ = 4;
-pub type ImGuiViewportFlags_ = cty::c_uint;
+pub type ImGuiViewportFlags_ = core::ffi::c_uint;
 #[repr(C)]
 #[derive(Debug, Copy, Clone, PartialEq)]
 pub struct ImGuiViewport {
@@ -2511,8 +2514,8 @@ pub struct ImGuiViewport {
     pub FramebufferScale: ImVec2,
     pub WorkPos: ImVec2,
     pub WorkSize: ImVec2,
-    pub PlatformHandle: *mut cty::c_void,
-    pub PlatformHandleRaw: *mut cty::c_void,
+    pub PlatformHandle: *mut core::ffi::c_void,
+    pub PlatformHandleRaw: *mut core::ffi::c_void,
 }
 impl Default for ImGuiViewport {
     fn default() -> Self {
@@ -2526,16 +2529,17 @@ impl Default for ImGuiViewport {
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub struct ImGuiPlatformIO {
-    pub Platform_GetClipboardTextFn:
-        ::core::option::Option<unsafe extern "C" fn(ctx: *mut ImGuiContext) -> *const cty::c_char>,
+    pub Platform_GetClipboardTextFn: ::core::option::Option<
+        unsafe extern "C" fn(ctx: *mut ImGuiContext) -> *const core::ffi::c_char,
+    >,
     pub Platform_SetClipboardTextFn: ::core::option::Option<
-        unsafe extern "C" fn(ctx: *mut ImGuiContext, text: *const cty::c_char),
+        unsafe extern "C" fn(ctx: *mut ImGuiContext, text: *const core::ffi::c_char),
     >,
-    pub Platform_ClipboardUserData: *mut cty::c_void,
+    pub Platform_ClipboardUserData: *mut core::ffi::c_void,
     pub Platform_OpenInShellFn: ::core::option::Option<
-        unsafe extern "C" fn(ctx: *mut ImGuiContext, path: *const cty::c_char) -> bool,
+        unsafe extern "C" fn(ctx: *mut ImGuiContext, path: *const core::ffi::c_char) -> bool,
     >,
-    pub Platform_OpenInShellUserData: *mut cty::c_void,
+    pub Platform_OpenInShellUserData: *mut core::ffi::c_void,
     pub Platform_SetImeDataFn: ::core::option::Option<
         unsafe extern "C" fn(
             ctx: *mut ImGuiContext,
@@ -2543,11 +2547,11 @@ pub struct ImGuiPlatformIO {
             data: *mut ImGuiPlatformImeData,
         ),
     >,
-    pub Platform_ImeUserData: *mut cty::c_void,
+    pub Platform_ImeUserData: *mut core::ffi::c_void,
     pub Platform_LocaleDecimalPoint: ImWchar,
-    pub Renderer_TextureMaxWidth: cty::c_int,
-    pub Renderer_TextureMaxHeight: cty::c_int,
-    pub Renderer_RenderState: *mut cty::c_void,
+    pub Renderer_TextureMaxWidth: core::ffi::c_int,
+    pub Renderer_TextureMaxHeight: core::ffi::c_int,
+    pub Renderer_RenderState: *mut core::ffi::c_void,
     pub Textures: ImVector_ImTextureDataPtr,
 }
 impl Default for ImGuiPlatformIO {
@@ -2678,11 +2682,11 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igShowStyleSelector(label: *const cty::c_char) -> bool;
+    pub fn igShowStyleSelector(label: *const core::ffi::c_char) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igShowFontSelector(label: *const cty::c_char);
+    pub fn igShowFontSelector(label: *const core::ffi::c_char);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -2690,7 +2694,7 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igGetVersion() -> *const cty::c_char;
+    pub fn igGetVersion() -> *const core::ffi::c_char;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -2706,7 +2710,11 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igBegin(name: *const cty::c_char, p_open: *mut bool, flags: ImGuiWindowFlags) -> bool;
+    pub fn igBegin(
+        name: *const core::ffi::c_char,
+        p_open: *mut bool,
+        flags: ImGuiWindowFlags,
+    ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -2715,7 +2723,7 @@ unsafe extern "C" {
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igBeginChild_Str(
-        str_id: *const cty::c_char,
+        str_id: *const core::ffi::c_char,
         size: ImVec2,
         child_flags: ImGuiChildFlags,
         window_flags: ImGuiWindowFlags,
@@ -2784,7 +2792,7 @@ unsafe extern "C" {
         size_min: ImVec2,
         size_max: ImVec2,
         custom_callback: ImGuiSizeCallback,
-        custom_callback_data: *mut cty::c_void,
+        custom_callback_data: *mut core::ffi::c_void,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -2825,19 +2833,23 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igSetWindowPos_Str(name: *const cty::c_char, pos: ImVec2, cond: ImGuiCond);
+    pub fn igSetWindowPos_Str(name: *const core::ffi::c_char, pos: ImVec2, cond: ImGuiCond);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igSetWindowSize_Str(name: *const cty::c_char, size: ImVec2, cond: ImGuiCond);
+    pub fn igSetWindowSize_Str(name: *const core::ffi::c_char, size: ImVec2, cond: ImGuiCond);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igSetWindowCollapsed_Str(name: *const cty::c_char, collapsed: bool, cond: ImGuiCond);
+    pub fn igSetWindowCollapsed_Str(
+        name: *const core::ffi::c_char,
+        collapsed: bool,
+        cond: ImGuiCond,
+    );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igSetWindowFocus_Str(name: *const cty::c_char);
+    pub fn igSetWindowFocus_Str(name: *const core::ffi::c_char);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -2909,7 +2921,7 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igPopStyleColor(count: cty::c_int);
+    pub fn igPopStyleColor(count: core::ffi::c_int);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -2929,7 +2941,7 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igPopStyleVar(count: cty::c_int);
+    pub fn igPopStyleVar(count: core::ffi::c_int);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -3081,19 +3093,22 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igPushID_Str(str_id: *const cty::c_char);
+    pub fn igPushID_Str(str_id: *const core::ffi::c_char);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igPushID_StrStr(str_id_begin: *const cty::c_char, str_id_end: *const cty::c_char);
+    pub fn igPushID_StrStr(
+        str_id_begin: *const core::ffi::c_char,
+        str_id_end: *const core::ffi::c_char,
+    );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igPushID_Ptr(ptr_id: *const cty::c_void);
+    pub fn igPushID_Ptr(ptr_id: *const core::ffi::c_void);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igPushID_Int(int_id: cty::c_int);
+    pub fn igPushID_Int(int_id: core::ffi::c_int);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -3101,110 +3116,110 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igGetID_Str(str_id: *const cty::c_char) -> ImGuiID;
+    pub fn igGetID_Str(str_id: *const core::ffi::c_char) -> ImGuiID;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igGetID_StrStr(
-        str_id_begin: *const cty::c_char,
-        str_id_end: *const cty::c_char,
+        str_id_begin: *const core::ffi::c_char,
+        str_id_end: *const core::ffi::c_char,
     ) -> ImGuiID;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igGetID_Ptr(ptr_id: *const cty::c_void) -> ImGuiID;
+    pub fn igGetID_Ptr(ptr_id: *const core::ffi::c_void) -> ImGuiID;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igGetID_Int(int_id: cty::c_int) -> ImGuiID;
+    pub fn igGetID_Int(int_id: core::ffi::c_int) -> ImGuiID;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igTextUnformatted(text: *const cty::c_char, text_end: *const cty::c_char);
+    pub fn igTextUnformatted(text: *const core::ffi::c_char, text_end: *const core::ffi::c_char);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igText(fmt: *const cty::c_char, ...);
+    pub fn igText(fmt: *const core::ffi::c_char, ...);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igTextColored(col: ImVec4, fmt: *const cty::c_char, ...);
+    pub fn igTextColored(col: ImVec4, fmt: *const core::ffi::c_char, ...);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igTextDisabled(fmt: *const cty::c_char, ...);
+    pub fn igTextDisabled(fmt: *const core::ffi::c_char, ...);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igTextWrapped(fmt: *const cty::c_char, ...);
+    pub fn igTextWrapped(fmt: *const core::ffi::c_char, ...);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igLabelText(label: *const cty::c_char, fmt: *const cty::c_char, ...);
+    pub fn igLabelText(label: *const core::ffi::c_char, fmt: *const core::ffi::c_char, ...);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igBulletText(fmt: *const cty::c_char, ...);
+    pub fn igBulletText(fmt: *const core::ffi::c_char, ...);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igSeparatorText(label: *const cty::c_char);
+    pub fn igSeparatorText(label: *const core::ffi::c_char);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igButton(label: *const cty::c_char, size: ImVec2) -> bool;
+    pub fn igButton(label: *const core::ffi::c_char, size: ImVec2) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igSmallButton(label: *const cty::c_char) -> bool;
+    pub fn igSmallButton(label: *const core::ffi::c_char) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igInvisibleButton(
-        str_id: *const cty::c_char,
+        str_id: *const core::ffi::c_char,
         size: ImVec2,
         flags: ImGuiButtonFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igArrowButton(str_id: *const cty::c_char, dir: ImGuiDir) -> bool;
+    pub fn igArrowButton(str_id: *const core::ffi::c_char, dir: ImGuiDir) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igCheckbox(label: *const cty::c_char, v: *mut bool) -> bool;
+    pub fn igCheckbox(label: *const core::ffi::c_char, v: *mut bool) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igCheckboxFlags_IntPtr(
-        label: *const cty::c_char,
-        flags: *mut cty::c_int,
-        flags_value: cty::c_int,
+        label: *const core::ffi::c_char,
+        flags: *mut core::ffi::c_int,
+        flags_value: core::ffi::c_int,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igCheckboxFlags_UintPtr(
-        label: *const cty::c_char,
-        flags: *mut cty::c_uint,
-        flags_value: cty::c_uint,
+        label: *const core::ffi::c_char,
+        flags: *mut core::ffi::c_uint,
+        flags_value: core::ffi::c_uint,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igRadioButton_Bool(label: *const cty::c_char, active: bool) -> bool;
+    pub fn igRadioButton_Bool(label: *const core::ffi::c_char, active: bool) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igRadioButton_IntPtr(
-        label: *const cty::c_char,
-        v: *mut cty::c_int,
-        v_button: cty::c_int,
+        label: *const core::ffi::c_char,
+        v: *mut core::ffi::c_int,
+        v_button: core::ffi::c_int,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igProgressBar(fraction: f32, size_arg: ImVec2, overlay: *const cty::c_char);
+    pub fn igProgressBar(fraction: f32, size_arg: ImVec2, overlay: *const core::ffi::c_char);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -3212,11 +3227,14 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igTextLink(label: *const cty::c_char) -> bool;
+    pub fn igTextLink(label: *const core::ffi::c_char) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igTextLinkOpenURL(label: *const cty::c_char, url: *const cty::c_char) -> bool;
+    pub fn igTextLinkOpenURL(
+        label: *const core::ffi::c_char,
+        url: *const core::ffi::c_char,
+    ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -3236,7 +3254,7 @@ unsafe extern "C" {
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igImageButton(
-        str_id: *const cty::c_char,
+        str_id: *const core::ffi::c_char,
         tex_ref: ImTextureRef,
         image_size: ImVec2,
         uv0: ImVec2,
@@ -3248,8 +3266,8 @@ unsafe extern "C" {
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igBeginCombo(
-        label: *const cty::c_char,
-        preview_value: *const cty::c_char,
+        label: *const core::ffi::c_char,
+        preview_value: *const core::ffi::c_char,
         flags: ImGuiComboFlags,
     ) -> bool;
 }
@@ -3260,497 +3278,497 @@ unsafe extern "C" {
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igCombo_Str_arr(
-        label: *const cty::c_char,
-        current_item: *mut cty::c_int,
-        items: *const *const cty::c_char,
-        items_count: cty::c_int,
-        popup_max_height_in_items: cty::c_int,
+        label: *const core::ffi::c_char,
+        current_item: *mut core::ffi::c_int,
+        items: *const *const core::ffi::c_char,
+        items_count: core::ffi::c_int,
+        popup_max_height_in_items: core::ffi::c_int,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igCombo_Str(
-        label: *const cty::c_char,
-        current_item: *mut cty::c_int,
-        items_separated_by_zeros: *const cty::c_char,
-        popup_max_height_in_items: cty::c_int,
+        label: *const core::ffi::c_char,
+        current_item: *mut core::ffi::c_int,
+        items_separated_by_zeros: *const core::ffi::c_char,
+        popup_max_height_in_items: core::ffi::c_int,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igCombo_FnStrPtr(
-        label: *const cty::c_char,
-        current_item: *mut cty::c_int,
+        label: *const core::ffi::c_char,
+        current_item: *mut core::ffi::c_int,
         getter: ::core::option::Option<
             unsafe extern "C" fn(
-                user_data: *mut cty::c_void,
-                idx: cty::c_int,
-            ) -> *const cty::c_char,
+                user_data: *mut core::ffi::c_void,
+                idx: core::ffi::c_int,
+            ) -> *const core::ffi::c_char,
         >,
-        user_data: *mut cty::c_void,
-        items_count: cty::c_int,
-        popup_max_height_in_items: cty::c_int,
+        user_data: *mut core::ffi::c_void,
+        items_count: core::ffi::c_int,
+        popup_max_height_in_items: core::ffi::c_int,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igDragFloat(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         v: *mut f32,
         v_speed: f32,
         v_min: f32,
         v_max: f32,
-        format: *const cty::c_char,
+        format: *const core::ffi::c_char,
         flags: ImGuiSliderFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igDragFloat2(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         v: *mut f32,
         v_speed: f32,
         v_min: f32,
         v_max: f32,
-        format: *const cty::c_char,
+        format: *const core::ffi::c_char,
         flags: ImGuiSliderFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igDragFloat3(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         v: *mut f32,
         v_speed: f32,
         v_min: f32,
         v_max: f32,
-        format: *const cty::c_char,
+        format: *const core::ffi::c_char,
         flags: ImGuiSliderFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igDragFloat4(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         v: *mut f32,
         v_speed: f32,
         v_min: f32,
         v_max: f32,
-        format: *const cty::c_char,
+        format: *const core::ffi::c_char,
         flags: ImGuiSliderFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igDragFloatRange2(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         v_current_min: *mut f32,
         v_current_max: *mut f32,
         v_speed: f32,
         v_min: f32,
         v_max: f32,
-        format: *const cty::c_char,
-        format_max: *const cty::c_char,
+        format: *const core::ffi::c_char,
+        format_max: *const core::ffi::c_char,
         flags: ImGuiSliderFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igDragInt(
-        label: *const cty::c_char,
-        v: *mut cty::c_int,
+        label: *const core::ffi::c_char,
+        v: *mut core::ffi::c_int,
         v_speed: f32,
-        v_min: cty::c_int,
-        v_max: cty::c_int,
-        format: *const cty::c_char,
+        v_min: core::ffi::c_int,
+        v_max: core::ffi::c_int,
+        format: *const core::ffi::c_char,
         flags: ImGuiSliderFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igDragInt2(
-        label: *const cty::c_char,
-        v: *mut cty::c_int,
+        label: *const core::ffi::c_char,
+        v: *mut core::ffi::c_int,
         v_speed: f32,
-        v_min: cty::c_int,
-        v_max: cty::c_int,
-        format: *const cty::c_char,
+        v_min: core::ffi::c_int,
+        v_max: core::ffi::c_int,
+        format: *const core::ffi::c_char,
         flags: ImGuiSliderFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igDragInt3(
-        label: *const cty::c_char,
-        v: *mut cty::c_int,
+        label: *const core::ffi::c_char,
+        v: *mut core::ffi::c_int,
         v_speed: f32,
-        v_min: cty::c_int,
-        v_max: cty::c_int,
-        format: *const cty::c_char,
+        v_min: core::ffi::c_int,
+        v_max: core::ffi::c_int,
+        format: *const core::ffi::c_char,
         flags: ImGuiSliderFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igDragInt4(
-        label: *const cty::c_char,
-        v: *mut cty::c_int,
+        label: *const core::ffi::c_char,
+        v: *mut core::ffi::c_int,
         v_speed: f32,
-        v_min: cty::c_int,
-        v_max: cty::c_int,
-        format: *const cty::c_char,
+        v_min: core::ffi::c_int,
+        v_max: core::ffi::c_int,
+        format: *const core::ffi::c_char,
         flags: ImGuiSliderFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igDragIntRange2(
-        label: *const cty::c_char,
-        v_current_min: *mut cty::c_int,
-        v_current_max: *mut cty::c_int,
+        label: *const core::ffi::c_char,
+        v_current_min: *mut core::ffi::c_int,
+        v_current_max: *mut core::ffi::c_int,
         v_speed: f32,
-        v_min: cty::c_int,
-        v_max: cty::c_int,
-        format: *const cty::c_char,
-        format_max: *const cty::c_char,
+        v_min: core::ffi::c_int,
+        v_max: core::ffi::c_int,
+        format: *const core::ffi::c_char,
+        format_max: *const core::ffi::c_char,
         flags: ImGuiSliderFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igDragScalar(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         data_type: ImGuiDataType,
-        p_data: *mut cty::c_void,
+        p_data: *mut core::ffi::c_void,
         v_speed: f32,
-        p_min: *const cty::c_void,
-        p_max: *const cty::c_void,
-        format: *const cty::c_char,
+        p_min: *const core::ffi::c_void,
+        p_max: *const core::ffi::c_void,
+        format: *const core::ffi::c_char,
         flags: ImGuiSliderFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igDragScalarN(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         data_type: ImGuiDataType,
-        p_data: *mut cty::c_void,
-        components: cty::c_int,
+        p_data: *mut core::ffi::c_void,
+        components: core::ffi::c_int,
         v_speed: f32,
-        p_min: *const cty::c_void,
-        p_max: *const cty::c_void,
-        format: *const cty::c_char,
+        p_min: *const core::ffi::c_void,
+        p_max: *const core::ffi::c_void,
+        format: *const core::ffi::c_char,
         flags: ImGuiSliderFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igSliderFloat(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         v: *mut f32,
         v_min: f32,
         v_max: f32,
-        format: *const cty::c_char,
+        format: *const core::ffi::c_char,
         flags: ImGuiSliderFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igSliderFloat2(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         v: *mut f32,
         v_min: f32,
         v_max: f32,
-        format: *const cty::c_char,
+        format: *const core::ffi::c_char,
         flags: ImGuiSliderFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igSliderFloat3(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         v: *mut f32,
         v_min: f32,
         v_max: f32,
-        format: *const cty::c_char,
+        format: *const core::ffi::c_char,
         flags: ImGuiSliderFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igSliderFloat4(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         v: *mut f32,
         v_min: f32,
         v_max: f32,
-        format: *const cty::c_char,
+        format: *const core::ffi::c_char,
         flags: ImGuiSliderFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igSliderAngle(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         v_rad: *mut f32,
         v_degrees_min: f32,
         v_degrees_max: f32,
-        format: *const cty::c_char,
+        format: *const core::ffi::c_char,
         flags: ImGuiSliderFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igSliderInt(
-        label: *const cty::c_char,
-        v: *mut cty::c_int,
-        v_min: cty::c_int,
-        v_max: cty::c_int,
-        format: *const cty::c_char,
+        label: *const core::ffi::c_char,
+        v: *mut core::ffi::c_int,
+        v_min: core::ffi::c_int,
+        v_max: core::ffi::c_int,
+        format: *const core::ffi::c_char,
         flags: ImGuiSliderFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igSliderInt2(
-        label: *const cty::c_char,
-        v: *mut cty::c_int,
-        v_min: cty::c_int,
-        v_max: cty::c_int,
-        format: *const cty::c_char,
+        label: *const core::ffi::c_char,
+        v: *mut core::ffi::c_int,
+        v_min: core::ffi::c_int,
+        v_max: core::ffi::c_int,
+        format: *const core::ffi::c_char,
         flags: ImGuiSliderFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igSliderInt3(
-        label: *const cty::c_char,
-        v: *mut cty::c_int,
-        v_min: cty::c_int,
-        v_max: cty::c_int,
-        format: *const cty::c_char,
+        label: *const core::ffi::c_char,
+        v: *mut core::ffi::c_int,
+        v_min: core::ffi::c_int,
+        v_max: core::ffi::c_int,
+        format: *const core::ffi::c_char,
         flags: ImGuiSliderFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igSliderInt4(
-        label: *const cty::c_char,
-        v: *mut cty::c_int,
-        v_min: cty::c_int,
-        v_max: cty::c_int,
-        format: *const cty::c_char,
+        label: *const core::ffi::c_char,
+        v: *mut core::ffi::c_int,
+        v_min: core::ffi::c_int,
+        v_max: core::ffi::c_int,
+        format: *const core::ffi::c_char,
         flags: ImGuiSliderFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igSliderScalar(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         data_type: ImGuiDataType,
-        p_data: *mut cty::c_void,
-        p_min: *const cty::c_void,
-        p_max: *const cty::c_void,
-        format: *const cty::c_char,
+        p_data: *mut core::ffi::c_void,
+        p_min: *const core::ffi::c_void,
+        p_max: *const core::ffi::c_void,
+        format: *const core::ffi::c_char,
         flags: ImGuiSliderFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igSliderScalarN(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         data_type: ImGuiDataType,
-        p_data: *mut cty::c_void,
-        components: cty::c_int,
-        p_min: *const cty::c_void,
-        p_max: *const cty::c_void,
-        format: *const cty::c_char,
+        p_data: *mut core::ffi::c_void,
+        components: core::ffi::c_int,
+        p_min: *const core::ffi::c_void,
+        p_max: *const core::ffi::c_void,
+        format: *const core::ffi::c_char,
         flags: ImGuiSliderFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igVSliderFloat(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         size: ImVec2,
         v: *mut f32,
         v_min: f32,
         v_max: f32,
-        format: *const cty::c_char,
+        format: *const core::ffi::c_char,
         flags: ImGuiSliderFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igVSliderInt(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         size: ImVec2,
-        v: *mut cty::c_int,
-        v_min: cty::c_int,
-        v_max: cty::c_int,
-        format: *const cty::c_char,
+        v: *mut core::ffi::c_int,
+        v_min: core::ffi::c_int,
+        v_max: core::ffi::c_int,
+        format: *const core::ffi::c_char,
         flags: ImGuiSliderFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igVSliderScalar(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         size: ImVec2,
         data_type: ImGuiDataType,
-        p_data: *mut cty::c_void,
-        p_min: *const cty::c_void,
-        p_max: *const cty::c_void,
-        format: *const cty::c_char,
+        p_data: *mut core::ffi::c_void,
+        p_min: *const core::ffi::c_void,
+        p_max: *const core::ffi::c_void,
+        format: *const core::ffi::c_char,
         flags: ImGuiSliderFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igInputText(
-        label: *const cty::c_char,
-        buf: *mut cty::c_char,
+        label: *const core::ffi::c_char,
+        buf: *mut core::ffi::c_char,
         buf_size: usize,
         flags: ImGuiInputTextFlags,
         callback: ImGuiInputTextCallback,
-        user_data: *mut cty::c_void,
+        user_data: *mut core::ffi::c_void,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igInputTextMultiline(
-        label: *const cty::c_char,
-        buf: *mut cty::c_char,
+        label: *const core::ffi::c_char,
+        buf: *mut core::ffi::c_char,
         buf_size: usize,
         size: ImVec2,
         flags: ImGuiInputTextFlags,
         callback: ImGuiInputTextCallback,
-        user_data: *mut cty::c_void,
+        user_data: *mut core::ffi::c_void,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igInputTextWithHint(
-        label: *const cty::c_char,
-        hint: *const cty::c_char,
-        buf: *mut cty::c_char,
+        label: *const core::ffi::c_char,
+        hint: *const core::ffi::c_char,
+        buf: *mut core::ffi::c_char,
         buf_size: usize,
         flags: ImGuiInputTextFlags,
         callback: ImGuiInputTextCallback,
-        user_data: *mut cty::c_void,
+        user_data: *mut core::ffi::c_void,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igInputFloat(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         v: *mut f32,
         step: f32,
         step_fast: f32,
-        format: *const cty::c_char,
+        format: *const core::ffi::c_char,
         flags: ImGuiInputTextFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igInputFloat2(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         v: *mut f32,
-        format: *const cty::c_char,
+        format: *const core::ffi::c_char,
         flags: ImGuiInputTextFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igInputFloat3(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         v: *mut f32,
-        format: *const cty::c_char,
+        format: *const core::ffi::c_char,
         flags: ImGuiInputTextFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igInputFloat4(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         v: *mut f32,
-        format: *const cty::c_char,
+        format: *const core::ffi::c_char,
         flags: ImGuiInputTextFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igInputInt(
-        label: *const cty::c_char,
-        v: *mut cty::c_int,
-        step: cty::c_int,
-        step_fast: cty::c_int,
+        label: *const core::ffi::c_char,
+        v: *mut core::ffi::c_int,
+        step: core::ffi::c_int,
+        step_fast: core::ffi::c_int,
         flags: ImGuiInputTextFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igInputInt2(
-        label: *const cty::c_char,
-        v: *mut cty::c_int,
+        label: *const core::ffi::c_char,
+        v: *mut core::ffi::c_int,
         flags: ImGuiInputTextFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igInputInt3(
-        label: *const cty::c_char,
-        v: *mut cty::c_int,
+        label: *const core::ffi::c_char,
+        v: *mut core::ffi::c_int,
         flags: ImGuiInputTextFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igInputInt4(
-        label: *const cty::c_char,
-        v: *mut cty::c_int,
+        label: *const core::ffi::c_char,
+        v: *mut core::ffi::c_int,
         flags: ImGuiInputTextFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igInputDouble(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         v: *mut f64,
         step: f64,
         step_fast: f64,
-        format: *const cty::c_char,
+        format: *const core::ffi::c_char,
         flags: ImGuiInputTextFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igInputScalar(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         data_type: ImGuiDataType,
-        p_data: *mut cty::c_void,
-        p_step: *const cty::c_void,
-        p_step_fast: *const cty::c_void,
-        format: *const cty::c_char,
+        p_data: *mut core::ffi::c_void,
+        p_step: *const core::ffi::c_void,
+        p_step_fast: *const core::ffi::c_void,
+        format: *const core::ffi::c_char,
         flags: ImGuiInputTextFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igInputScalarN(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         data_type: ImGuiDataType,
-        p_data: *mut cty::c_void,
-        components: cty::c_int,
-        p_step: *const cty::c_void,
-        p_step_fast: *const cty::c_void,
-        format: *const cty::c_char,
+        p_data: *mut core::ffi::c_void,
+        components: core::ffi::c_int,
+        p_step: *const core::ffi::c_void,
+        p_step_fast: *const core::ffi::c_void,
+        format: *const core::ffi::c_char,
         flags: ImGuiInputTextFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igColorEdit3(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         col: *mut f32,
         flags: ImGuiColorEditFlags,
     ) -> bool;
@@ -3758,7 +3776,7 @@ unsafe extern "C" {
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igColorEdit4(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         col: *mut f32,
         flags: ImGuiColorEditFlags,
     ) -> bool;
@@ -3766,7 +3784,7 @@ unsafe extern "C" {
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igColorPicker3(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         col: *mut f32,
         flags: ImGuiColorEditFlags,
     ) -> bool;
@@ -3774,7 +3792,7 @@ unsafe extern "C" {
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igColorPicker4(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         col: *mut f32,
         flags: ImGuiColorEditFlags,
         ref_col: *const f32,
@@ -3783,7 +3801,7 @@ unsafe extern "C" {
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igColorButton(
-        desc_id: *const cty::c_char,
+        desc_id: *const core::ffi::c_char,
         col: ImVec4,
         flags: ImGuiColorEditFlags,
         size: ImVec2,
@@ -3795,45 +3813,53 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igTreeNode_Str(label: *const cty::c_char) -> bool;
+    pub fn igTreeNode_Str(label: *const core::ffi::c_char) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igTreeNode_StrStr(str_id: *const cty::c_char, fmt: *const cty::c_char, ...) -> bool;
+    pub fn igTreeNode_StrStr(
+        str_id: *const core::ffi::c_char,
+        fmt: *const core::ffi::c_char,
+        ...
+    ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igTreeNode_Ptr(ptr_id: *const cty::c_void, fmt: *const cty::c_char, ...) -> bool;
+    pub fn igTreeNode_Ptr(
+        ptr_id: *const core::ffi::c_void,
+        fmt: *const core::ffi::c_char,
+        ...
+    ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igTreeNodeEx_Str(label: *const cty::c_char, flags: ImGuiTreeNodeFlags) -> bool;
+    pub fn igTreeNodeEx_Str(label: *const core::ffi::c_char, flags: ImGuiTreeNodeFlags) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igTreeNodeEx_StrStr(
-        str_id: *const cty::c_char,
+        str_id: *const core::ffi::c_char,
         flags: ImGuiTreeNodeFlags,
-        fmt: *const cty::c_char,
+        fmt: *const core::ffi::c_char,
         ...
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igTreeNodeEx_Ptr(
-        ptr_id: *const cty::c_void,
+        ptr_id: *const core::ffi::c_void,
         flags: ImGuiTreeNodeFlags,
-        fmt: *const cty::c_char,
+        fmt: *const core::ffi::c_char,
         ...
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igTreePush_Str(str_id: *const cty::c_char);
+    pub fn igTreePush_Str(str_id: *const core::ffi::c_char);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igTreePush_Ptr(ptr_id: *const cty::c_void);
+    pub fn igTreePush_Ptr(ptr_id: *const core::ffi::c_void);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -3846,14 +3872,14 @@ unsafe extern "C" {
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igCollapsingHeader_TreeNodeFlags(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         flags: ImGuiTreeNodeFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igCollapsingHeader_BoolPtr(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         p_visible: *mut bool,
         flags: ImGuiTreeNodeFlags,
     ) -> bool;
@@ -3869,7 +3895,7 @@ unsafe extern "C" {
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igSelectable_Bool(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         selected: bool,
         flags: ImGuiSelectableFlags,
         size: ImVec2,
@@ -3878,7 +3904,7 @@ unsafe extern "C" {
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igSelectable_BoolPtr(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         p_selected: *mut bool,
         flags: ImGuiSelectableFlags,
         size: ImVec2,
@@ -3888,8 +3914,8 @@ unsafe extern "C" {
 unsafe extern "C" {
     pub fn igBeginMultiSelect(
         flags: ImGuiMultiSelectFlags,
-        selection_size: cty::c_int,
-        items_count: cty::c_int,
+        selection_size: core::ffi::c_int,
+        items_count: core::ffi::c_int,
     ) -> *mut ImGuiMultiSelectIO;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -3906,7 +3932,7 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igBeginListBox(label: *const cty::c_char, size: ImVec2) -> bool;
+    pub fn igBeginListBox(label: *const core::ffi::c_char, size: ImVec2) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -3915,54 +3941,54 @@ unsafe extern "C" {
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igListBox_Str_arr(
-        label: *const cty::c_char,
-        current_item: *mut cty::c_int,
-        items: *const *const cty::c_char,
-        items_count: cty::c_int,
-        height_in_items: cty::c_int,
+        label: *const core::ffi::c_char,
+        current_item: *mut core::ffi::c_int,
+        items: *const *const core::ffi::c_char,
+        items_count: core::ffi::c_int,
+        height_in_items: core::ffi::c_int,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igListBox_FnStrPtr(
-        label: *const cty::c_char,
-        current_item: *mut cty::c_int,
+        label: *const core::ffi::c_char,
+        current_item: *mut core::ffi::c_int,
         getter: ::core::option::Option<
             unsafe extern "C" fn(
-                user_data: *mut cty::c_void,
-                idx: cty::c_int,
-            ) -> *const cty::c_char,
+                user_data: *mut core::ffi::c_void,
+                idx: core::ffi::c_int,
+            ) -> *const core::ffi::c_char,
         >,
-        user_data: *mut cty::c_void,
-        items_count: cty::c_int,
-        height_in_items: cty::c_int,
+        user_data: *mut core::ffi::c_void,
+        items_count: core::ffi::c_int,
+        height_in_items: core::ffi::c_int,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igPlotLines_FloatPtr(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         values: *const f32,
-        values_count: cty::c_int,
-        values_offset: cty::c_int,
-        overlay_text: *const cty::c_char,
+        values_count: core::ffi::c_int,
+        values_offset: core::ffi::c_int,
+        overlay_text: *const core::ffi::c_char,
         scale_min: f32,
         scale_max: f32,
         graph_size: ImVec2,
-        stride: cty::c_int,
+        stride: core::ffi::c_int,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igPlotLines_FnFloatPtr(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         values_getter: ::core::option::Option<
-            unsafe extern "C" fn(data: *mut cty::c_void, idx: cty::c_int) -> f32,
+            unsafe extern "C" fn(data: *mut core::ffi::c_void, idx: core::ffi::c_int) -> f32,
         >,
-        data: *mut cty::c_void,
-        values_count: cty::c_int,
-        values_offset: cty::c_int,
-        overlay_text: *const cty::c_char,
+        data: *mut core::ffi::c_void,
+        values_count: core::ffi::c_int,
+        values_offset: core::ffi::c_int,
+        overlay_text: *const core::ffi::c_char,
         scale_min: f32,
         scale_max: f32,
         graph_size: ImVec2,
@@ -3971,28 +3997,28 @@ unsafe extern "C" {
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igPlotHistogram_FloatPtr(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         values: *const f32,
-        values_count: cty::c_int,
-        values_offset: cty::c_int,
-        overlay_text: *const cty::c_char,
+        values_count: core::ffi::c_int,
+        values_offset: core::ffi::c_int,
+        overlay_text: *const core::ffi::c_char,
         scale_min: f32,
         scale_max: f32,
         graph_size: ImVec2,
-        stride: cty::c_int,
+        stride: core::ffi::c_int,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igPlotHistogram_FnFloatPtr(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         values_getter: ::core::option::Option<
-            unsafe extern "C" fn(data: *mut cty::c_void, idx: cty::c_int) -> f32,
+            unsafe extern "C" fn(data: *mut core::ffi::c_void, idx: core::ffi::c_int) -> f32,
         >,
-        data: *mut cty::c_void,
-        values_count: cty::c_int,
-        values_offset: cty::c_int,
-        overlay_text: *const cty::c_char,
+        data: *mut core::ffi::c_void,
+        values_count: core::ffi::c_int,
+        values_offset: core::ffi::c_int,
+        overlay_text: *const core::ffi::c_char,
         scale_min: f32,
         scale_max: f32,
         graph_size: ImVec2,
@@ -4000,19 +4026,23 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igValue_Bool(prefix: *const cty::c_char, b: bool);
+    pub fn igValue_Bool(prefix: *const core::ffi::c_char, b: bool);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igValue_Int(prefix: *const cty::c_char, v: cty::c_int);
+    pub fn igValue_Int(prefix: *const core::ffi::c_char, v: core::ffi::c_int);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igValue_Uint(prefix: *const cty::c_char, v: cty::c_uint);
+    pub fn igValue_Uint(prefix: *const core::ffi::c_char, v: core::ffi::c_uint);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igValue_Float(prefix: *const cty::c_char, v: f32, float_format: *const cty::c_char);
+    pub fn igValue_Float(
+        prefix: *const core::ffi::c_char,
+        v: f32,
+        float_format: *const core::ffi::c_char,
+    );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -4032,7 +4062,7 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igBeginMenu(label: *const cty::c_char, enabled: bool) -> bool;
+    pub fn igBeginMenu(label: *const core::ffi::c_char, enabled: bool) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -4041,8 +4071,8 @@ unsafe extern "C" {
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igMenuItem_Bool(
-        label: *const cty::c_char,
-        shortcut: *const cty::c_char,
+        label: *const core::ffi::c_char,
+        shortcut: *const core::ffi::c_char,
         selected: bool,
         enabled: bool,
     ) -> bool;
@@ -4050,8 +4080,8 @@ unsafe extern "C" {
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igMenuItem_BoolPtr(
-        label: *const cty::c_char,
-        shortcut: *const cty::c_char,
+        label: *const core::ffi::c_char,
+        shortcut: *const core::ffi::c_char,
         p_selected: *mut bool,
         enabled: bool,
     ) -> bool;
@@ -4066,7 +4096,7 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igSetTooltip(fmt: *const cty::c_char, ...);
+    pub fn igSetTooltip(fmt: *const core::ffi::c_char, ...);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -4074,16 +4104,16 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igSetItemTooltip(fmt: *const cty::c_char, ...);
+    pub fn igSetItemTooltip(fmt: *const core::ffi::c_char, ...);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igBeginPopup(str_id: *const cty::c_char, flags: ImGuiWindowFlags) -> bool;
+    pub fn igBeginPopup(str_id: *const core::ffi::c_char, flags: ImGuiWindowFlags) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igBeginPopupModal(
-        name: *const cty::c_char,
+        name: *const core::ffi::c_char,
         p_open: *mut bool,
         flags: ImGuiWindowFlags,
     ) -> bool;
@@ -4094,7 +4124,7 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igOpenPopup_Str(str_id: *const cty::c_char, popup_flags: ImGuiPopupFlags);
+    pub fn igOpenPopup_Str(str_id: *const core::ffi::c_char, popup_flags: ImGuiPopupFlags);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -4102,7 +4132,7 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igOpenPopupOnItemClick(str_id: *const cty::c_char, popup_flags: ImGuiPopupFlags);
+    pub fn igOpenPopupOnItemClick(str_id: *const core::ffi::c_char, popup_flags: ImGuiPopupFlags);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -4111,33 +4141,33 @@ unsafe extern "C" {
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igBeginPopupContextItem(
-        str_id: *const cty::c_char,
+        str_id: *const core::ffi::c_char,
         popup_flags: ImGuiPopupFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igBeginPopupContextWindow(
-        str_id: *const cty::c_char,
+        str_id: *const core::ffi::c_char,
         popup_flags: ImGuiPopupFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igBeginPopupContextVoid(
-        str_id: *const cty::c_char,
+        str_id: *const core::ffi::c_char,
         popup_flags: ImGuiPopupFlags,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igIsPopupOpen(str_id: *const cty::c_char, flags: ImGuiPopupFlags) -> bool;
+    pub fn igIsPopupOpen(str_id: *const core::ffi::c_char, flags: ImGuiPopupFlags) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igBeginTable(
-        str_id: *const cty::c_char,
-        columns: cty::c_int,
+        str_id: *const core::ffi::c_char,
+        columns: core::ffi::c_int,
         flags: ImGuiTableFlags,
         outer_size: ImVec2,
         inner_width: f32,
@@ -4157,12 +4187,12 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igTableSetColumnIndex(column_n: cty::c_int) -> bool;
+    pub fn igTableSetColumnIndex(column_n: core::ffi::c_int) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igTableSetupColumn(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         flags: ImGuiTableColumnFlags,
         init_width_or_weight: f32,
         user_id: ImGuiID,
@@ -4170,11 +4200,11 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igTableSetupScrollFreeze(cols: cty::c_int, rows: cty::c_int);
+    pub fn igTableSetupScrollFreeze(cols: core::ffi::c_int, rows: core::ffi::c_int);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igTableHeader(label: *const cty::c_char);
+    pub fn igTableHeader(label: *const core::ffi::c_char);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -4190,39 +4220,39 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igTableGetColumnCount() -> cty::c_int;
+    pub fn igTableGetColumnCount() -> core::ffi::c_int;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igTableGetColumnIndex() -> cty::c_int;
+    pub fn igTableGetColumnIndex() -> core::ffi::c_int;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igTableGetRowIndex() -> cty::c_int;
+    pub fn igTableGetRowIndex() -> core::ffi::c_int;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igTableGetColumnName(column_n: cty::c_int) -> *const cty::c_char;
+    pub fn igTableGetColumnName(column_n: core::ffi::c_int) -> *const core::ffi::c_char;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igTableGetColumnFlags(column_n: cty::c_int) -> ImGuiTableColumnFlags;
+    pub fn igTableGetColumnFlags(column_n: core::ffi::c_int) -> ImGuiTableColumnFlags;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igTableSetColumnEnabled(column_n: cty::c_int, v: bool);
+    pub fn igTableSetColumnEnabled(column_n: core::ffi::c_int, v: bool);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igTableGetHoveredColumn() -> cty::c_int;
+    pub fn igTableGetHoveredColumn() -> core::ffi::c_int;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igTableSetBgColor(target: ImGuiTableBgTarget, color: ImU32, column_n: cty::c_int);
+    pub fn igTableSetBgColor(target: ImGuiTableBgTarget, color: ImU32, column_n: core::ffi::c_int);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igColumns(count: cty::c_int, id: *const cty::c_char, borders: bool);
+    pub fn igColumns(count: core::ffi::c_int, id: *const core::ffi::c_char, borders: bool);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -4230,31 +4260,31 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igGetColumnIndex() -> cty::c_int;
+    pub fn igGetColumnIndex() -> core::ffi::c_int;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igGetColumnWidth(column_index: cty::c_int) -> f32;
+    pub fn igGetColumnWidth(column_index: core::ffi::c_int) -> f32;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igSetColumnWidth(column_index: cty::c_int, width: f32);
+    pub fn igSetColumnWidth(column_index: core::ffi::c_int, width: f32);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igGetColumnOffset(column_index: cty::c_int) -> f32;
+    pub fn igGetColumnOffset(column_index: core::ffi::c_int) -> f32;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igSetColumnOffset(column_index: cty::c_int, offset_x: f32);
+    pub fn igSetColumnOffset(column_index: core::ffi::c_int, offset_x: f32);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igGetColumnsCount() -> cty::c_int;
+    pub fn igGetColumnsCount() -> core::ffi::c_int;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igBeginTabBar(str_id: *const cty::c_char, flags: ImGuiTabBarFlags) -> bool;
+    pub fn igBeginTabBar(str_id: *const core::ffi::c_char, flags: ImGuiTabBarFlags) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -4263,7 +4293,7 @@ unsafe extern "C" {
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igBeginTabItem(
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         p_open: *mut bool,
         flags: ImGuiTabItemFlags,
     ) -> bool;
@@ -4274,23 +4304,23 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igTabItemButton(label: *const cty::c_char, flags: ImGuiTabItemFlags) -> bool;
+    pub fn igTabItemButton(label: *const core::ffi::c_char, flags: ImGuiTabItemFlags) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igSetTabItemClosed(tab_or_docked_window_label: *const cty::c_char);
+    pub fn igSetTabItemClosed(tab_or_docked_window_label: *const core::ffi::c_char);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igLogToTTY(auto_open_depth: cty::c_int);
+    pub fn igLogToTTY(auto_open_depth: core::ffi::c_int);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igLogToFile(auto_open_depth: cty::c_int, filename: *const cty::c_char);
+    pub fn igLogToFile(auto_open_depth: core::ffi::c_int, filename: *const core::ffi::c_char);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igLogToClipboard(auto_open_depth: cty::c_int);
+    pub fn igLogToClipboard(auto_open_depth: core::ffi::c_int);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -4302,7 +4332,7 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igLogText(fmt: *const cty::c_char, ...);
+    pub fn igLogText(fmt: *const core::ffi::c_char, ...);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -4311,8 +4341,8 @@ unsafe extern "C" {
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igSetDragDropPayload(
-        type_: *const cty::c_char,
-        data: *const cty::c_void,
+        type_: *const core::ffi::c_char,
+        data: *const core::ffi::c_void,
         sz: usize,
         cond: ImGuiCond,
     ) -> bool;
@@ -4328,7 +4358,7 @@ unsafe extern "C" {
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igAcceptDragDropPayload(
-        type_: *const cty::c_char,
+        type_: *const core::ffi::c_char,
         flags: ImGuiDragDropFlags,
     ) -> *const ImGuiPayload;
 }
@@ -4366,7 +4396,7 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igSetKeyboardFocusHere(offset: cty::c_int);
+    pub fn igSetKeyboardFocusHere(offset: core::ffi::c_int);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -4470,7 +4500,7 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igGetFrameCount() -> cty::c_int;
+    pub fn igGetFrameCount() -> core::ffi::c_int;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -4478,7 +4508,7 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igGetStyleColorName(idx: ImGuiCol) -> *const cty::c_char;
+    pub fn igGetStyleColorName(idx: ImGuiCol) -> *const core::ffi::c_char;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -4492,8 +4522,8 @@ unsafe extern "C" {
 unsafe extern "C" {
     pub fn igCalcTextSize(
         pOut: *mut ImVec2,
-        text: *const cty::c_char,
-        text_end: *const cty::c_char,
+        text: *const core::ffi::c_char,
+        text_end: *const core::ffi::c_char,
         hide_text_after_double_hash: bool,
         wrap_width: f32,
     );
@@ -4546,11 +4576,11 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igGetKeyPressedAmount(key: ImGuiKey, repeat_delay: f32, rate: f32) -> cty::c_int;
+    pub fn igGetKeyPressedAmount(key: ImGuiKey, repeat_delay: f32, rate: f32) -> core::ffi::c_int;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igGetKeyName(key: ImGuiKey) -> *const cty::c_char;
+    pub fn igGetKeyName(key: ImGuiKey) -> *const core::ffi::c_char;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -4590,7 +4620,7 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igGetMouseClickedCount(button: ImGuiMouseButton) -> cty::c_int;
+    pub fn igGetMouseClickedCount(button: ImGuiMouseButton) -> core::ffi::c_int;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -4638,31 +4668,31 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igGetClipboardText() -> *const cty::c_char;
+    pub fn igGetClipboardText() -> *const core::ffi::c_char;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igSetClipboardText(text: *const cty::c_char);
+    pub fn igSetClipboardText(text: *const core::ffi::c_char);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igLoadIniSettingsFromDisk(ini_filename: *const cty::c_char);
+    pub fn igLoadIniSettingsFromDisk(ini_filename: *const core::ffi::c_char);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igLoadIniSettingsFromMemory(ini_data: *const cty::c_char, ini_size: usize);
+    pub fn igLoadIniSettingsFromMemory(ini_data: *const core::ffi::c_char, ini_size: usize);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igSaveIniSettingsToDisk(ini_filename: *const cty::c_char);
+    pub fn igSaveIniSettingsToDisk(ini_filename: *const core::ffi::c_char);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igSaveIniSettingsToMemory(out_ini_size: *mut usize) -> *const cty::c_char;
+    pub fn igSaveIniSettingsToMemory(out_ini_size: *mut usize) -> *const core::ffi::c_char;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igDebugTextEncoding(text: *const cty::c_char);
+    pub fn igDebugTextEncoding(text: *const core::ffi::c_char);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -4675,7 +4705,7 @@ unsafe extern "C" {
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igDebugCheckVersionAndDataLayout(
-        version_str: *const cty::c_char,
+        version_str: *const core::ffi::c_char,
         sz_io: usize,
         sz_style: usize,
         sz_vec2: usize,
@@ -4686,14 +4716,14 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igDebugLog(fmt: *const cty::c_char, ...);
+    pub fn igDebugLog(fmt: *const core::ffi::c_char, ...);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn igSetAllocatorFunctions(
         alloc_func: ImGuiMemAllocFunc,
         free_func: ImGuiMemFreeFunc,
-        user_data: *mut cty::c_void,
+        user_data: *mut core::ffi::c_void,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -4701,16 +4731,16 @@ unsafe extern "C" {
     pub fn igGetAllocatorFunctions(
         p_alloc_func: *mut ImGuiMemAllocFunc,
         p_free_func: *mut ImGuiMemFreeFunc,
-        p_user_data: *mut *mut cty::c_void,
+        p_user_data: *mut *mut core::ffi::c_void,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igMemAlloc(size: usize) -> *mut cty::c_void;
+    pub fn igMemAlloc(size: usize) -> *mut core::ffi::c_void;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn igMemFree(ptr: *mut cty::c_void);
+    pub fn igMemFree(ptr: *mut core::ffi::c_void);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -4754,7 +4784,7 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImGuiIO_AddMouseButtonEvent(self_: *mut ImGuiIO, button: cty::c_int, down: bool);
+    pub fn ImGuiIO_AddMouseButtonEvent(self_: *mut ImGuiIO, button: core::ffi::c_int, down: bool);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -4770,7 +4800,7 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImGuiIO_AddInputCharacter(self_: *mut ImGuiIO, c: cty::c_uint);
+    pub fn ImGuiIO_AddInputCharacter(self_: *mut ImGuiIO, c: core::ffi::c_uint);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -4778,16 +4808,16 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImGuiIO_AddInputCharactersUTF8(self_: *mut ImGuiIO, str_: *const cty::c_char);
+    pub fn ImGuiIO_AddInputCharactersUTF8(self_: *mut ImGuiIO, str_: *const core::ffi::c_char);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn ImGuiIO_SetKeyEventNativeData(
         self_: *mut ImGuiIO,
         key: ImGuiKey,
-        native_keycode: cty::c_int,
-        native_scancode: cty::c_int,
-        native_legacy_index: cty::c_int,
+        native_keycode: core::ffi::c_int,
+        native_scancode: core::ffi::c_int,
+        native_legacy_index: core::ffi::c_int,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -4826,17 +4856,17 @@ unsafe extern "C" {
 unsafe extern "C" {
     pub fn ImGuiInputTextCallbackData_DeleteChars(
         self_: *mut ImGuiInputTextCallbackData,
-        pos: cty::c_int,
-        bytes_count: cty::c_int,
+        pos: core::ffi::c_int,
+        bytes_count: core::ffi::c_int,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn ImGuiInputTextCallbackData_InsertChars(
         self_: *mut ImGuiInputTextCallbackData,
-        pos: cty::c_int,
-        text: *const cty::c_char,
-        text_end: *const cty::c_char,
+        pos: core::ffi::c_int,
+        text: *const core::ffi::c_char,
+        text_end: *const core::ffi::c_char,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -4865,7 +4895,10 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImGuiPayload_IsDataType(self_: *mut ImGuiPayload, type_: *const cty::c_char) -> bool;
+    pub fn ImGuiPayload_IsDataType(
+        self_: *mut ImGuiPayload,
+        type_: *const core::ffi::c_char,
+    ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -4886,7 +4919,7 @@ unsafe extern "C" {
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn ImGuiTextFilter_ImGuiTextFilter(
-        default_filter: *const cty::c_char,
+        default_filter: *const core::ffi::c_char,
     ) -> *mut ImGuiTextFilter;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -4897,7 +4930,7 @@ unsafe extern "C" {
 unsafe extern "C" {
     pub fn ImGuiTextFilter_Draw(
         self_: *mut ImGuiTextFilter,
-        label: *const cty::c_char,
+        label: *const core::ffi::c_char,
         width: f32,
     ) -> bool;
 }
@@ -4905,8 +4938,8 @@ unsafe extern "C" {
 unsafe extern "C" {
     pub fn ImGuiTextFilter_PassFilter(
         self_: *mut ImGuiTextFilter,
-        text: *const cty::c_char,
-        text_end: *const cty::c_char,
+        text: *const core::ffi::c_char,
+        text_end: *const core::ffi::c_char,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -4932,8 +4965,8 @@ unsafe extern "C" {
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn ImGuiTextRange_ImGuiTextRange_Str(
-        _b: *const cty::c_char,
-        _e: *const cty::c_char,
+        _b: *const core::ffi::c_char,
+        _e: *const core::ffi::c_char,
     ) -> *mut ImGuiTextRange;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -4944,7 +4977,7 @@ unsafe extern "C" {
 unsafe extern "C" {
     pub fn ImGuiTextRange_split(
         self_: *mut ImGuiTextRange,
-        separator: cty::c_char,
+        separator: core::ffi::c_char,
         out: *mut ImVector_ImGuiTextRange,
     );
 }
@@ -4958,15 +4991,15 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImGuiTextBuffer_begin(self_: *mut ImGuiTextBuffer) -> *const cty::c_char;
+    pub fn ImGuiTextBuffer_begin(self_: *mut ImGuiTextBuffer) -> *const core::ffi::c_char;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImGuiTextBuffer_end(self_: *mut ImGuiTextBuffer) -> *const cty::c_char;
+    pub fn ImGuiTextBuffer_end(self_: *mut ImGuiTextBuffer) -> *const core::ffi::c_char;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImGuiTextBuffer_size(self_: *mut ImGuiTextBuffer) -> cty::c_int;
+    pub fn ImGuiTextBuffer_size(self_: *mut ImGuiTextBuffer) -> core::ffi::c_int;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -4978,29 +5011,29 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImGuiTextBuffer_resize(self_: *mut ImGuiTextBuffer, size: cty::c_int);
+    pub fn ImGuiTextBuffer_resize(self_: *mut ImGuiTextBuffer, size: core::ffi::c_int);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImGuiTextBuffer_reserve(self_: *mut ImGuiTextBuffer, capacity: cty::c_int);
+    pub fn ImGuiTextBuffer_reserve(self_: *mut ImGuiTextBuffer, capacity: core::ffi::c_int);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImGuiTextBuffer_c_str(self_: *mut ImGuiTextBuffer) -> *const cty::c_char;
+    pub fn ImGuiTextBuffer_c_str(self_: *mut ImGuiTextBuffer) -> *const core::ffi::c_char;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn ImGuiTextBuffer_append(
         self_: *mut ImGuiTextBuffer,
-        str_: *const cty::c_char,
-        str_end: *const cty::c_char,
+        str_: *const core::ffi::c_char,
+        str_end: *const core::ffi::c_char,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn ImGuiStoragePair_ImGuiStoragePair_Int(
         _key: ImGuiID,
-        _val: cty::c_int,
+        _val: core::ffi::c_int,
     ) -> *mut ImGuiStoragePair;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -5018,7 +5051,7 @@ unsafe extern "C" {
 unsafe extern "C" {
     pub fn ImGuiStoragePair_ImGuiStoragePair_Ptr(
         _key: ImGuiID,
-        _val: *mut cty::c_void,
+        _val: *mut core::ffi::c_void,
     ) -> *mut ImGuiStoragePair;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -5030,12 +5063,12 @@ unsafe extern "C" {
     pub fn ImGuiStorage_GetInt(
         self_: *mut ImGuiStorage,
         key: ImGuiID,
-        default_val: cty::c_int,
-    ) -> cty::c_int;
+        default_val: core::ffi::c_int,
+    ) -> core::ffi::c_int;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImGuiStorage_SetInt(self_: *mut ImGuiStorage, key: ImGuiID, val: cty::c_int);
+    pub fn ImGuiStorage_SetInt(self_: *mut ImGuiStorage, key: ImGuiID, val: core::ffi::c_int);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -5055,19 +5088,26 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImGuiStorage_GetVoidPtr(self_: *mut ImGuiStorage, key: ImGuiID) -> *mut cty::c_void;
+    pub fn ImGuiStorage_GetVoidPtr(
+        self_: *mut ImGuiStorage,
+        key: ImGuiID,
+    ) -> *mut core::ffi::c_void;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImGuiStorage_SetVoidPtr(self_: *mut ImGuiStorage, key: ImGuiID, val: *mut cty::c_void);
+    pub fn ImGuiStorage_SetVoidPtr(
+        self_: *mut ImGuiStorage,
+        key: ImGuiID,
+        val: *mut core::ffi::c_void,
+    );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn ImGuiStorage_GetIntRef(
         self_: *mut ImGuiStorage,
         key: ImGuiID,
-        default_val: cty::c_int,
-    ) -> *mut cty::c_int;
+        default_val: core::ffi::c_int,
+    ) -> *mut core::ffi::c_int;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -5090,8 +5130,8 @@ unsafe extern "C" {
     pub fn ImGuiStorage_GetVoidPtrRef(
         self_: *mut ImGuiStorage,
         key: ImGuiID,
-        default_val: *mut cty::c_void,
-    ) -> *mut *mut cty::c_void;
+        default_val: *mut core::ffi::c_void,
+    ) -> *mut *mut core::ffi::c_void;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -5099,7 +5139,7 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImGuiStorage_SetAllInt(self_: *mut ImGuiStorage, val: cty::c_int);
+    pub fn ImGuiStorage_SetAllInt(self_: *mut ImGuiStorage, val: core::ffi::c_int);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -5113,7 +5153,7 @@ unsafe extern "C" {
 unsafe extern "C" {
     pub fn ImGuiListClipper_Begin(
         self_: *mut ImGuiListClipper,
-        items_count: cty::c_int,
+        items_count: core::ffi::c_int,
         items_height: f32,
     );
 }
@@ -5129,20 +5169,23 @@ unsafe extern "C" {
 unsafe extern "C" {
     pub fn ImGuiListClipper_IncludeItemByIndex(
         self_: *mut ImGuiListClipper,
-        item_index: cty::c_int,
+        item_index: core::ffi::c_int,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn ImGuiListClipper_IncludeItemsByIndex(
         self_: *mut ImGuiListClipper,
-        item_begin: cty::c_int,
-        item_end: cty::c_int,
+        item_begin: core::ffi::c_int,
+        item_end: core::ffi::c_int,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImGuiListClipper_SeekCursorForItem(self_: *mut ImGuiListClipper, item_index: cty::c_int);
+    pub fn ImGuiListClipper_SeekCursorForItem(
+        self_: *mut ImGuiListClipper,
+        item_index: core::ffi::c_int,
+    );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -5163,10 +5206,10 @@ unsafe extern "C" {
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn ImColor_ImColor_Int(
-        r: cty::c_int,
-        g: cty::c_int,
-        b: cty::c_int,
-        a: cty::c_int,
+        r: core::ffi::c_int,
+        g: core::ffi::c_int,
+        b: core::ffi::c_int,
+        a: core::ffi::c_int,
     ) -> *mut ImColor;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -5226,7 +5269,7 @@ unsafe extern "C" {
 unsafe extern "C" {
     pub fn ImGuiSelectionBasicStorage_GetNextSelectedItem(
         self_: *mut ImGuiSelectionBasicStorage,
-        opaque_it: *mut *mut cty::c_void,
+        opaque_it: *mut *mut core::ffi::c_void,
         out_id: *mut ImGuiID,
     ) -> bool;
 }
@@ -5234,7 +5277,7 @@ unsafe extern "C" {
 unsafe extern "C" {
     pub fn ImGuiSelectionBasicStorage_GetStorageIdFromIndex(
         self_: *mut ImGuiSelectionBasicStorage,
-        idx: cty::c_int,
+        idx: core::ffi::c_int,
     ) -> ImGuiID;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -5286,7 +5329,7 @@ unsafe extern "C" {
     pub fn ImDrawListSplitter_Split(
         self_: *mut ImDrawListSplitter,
         draw_list: *mut ImDrawList,
-        count: cty::c_int,
+        count: core::ffi::c_int,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -5298,7 +5341,7 @@ unsafe extern "C" {
     pub fn ImDrawListSplitter_SetCurrentChannel(
         self_: *mut ImDrawListSplitter,
         draw_list: *mut ImDrawList,
-        channel_idx: cty::c_int,
+        channel_idx: core::ffi::c_int,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -5438,7 +5481,7 @@ unsafe extern "C" {
         center: ImVec2,
         radius: f32,
         col: ImU32,
-        num_segments: cty::c_int,
+        num_segments: core::ffi::c_int,
         thickness: f32,
     );
 }
@@ -5449,7 +5492,7 @@ unsafe extern "C" {
         center: ImVec2,
         radius: f32,
         col: ImU32,
-        num_segments: cty::c_int,
+        num_segments: core::ffi::c_int,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -5459,7 +5502,7 @@ unsafe extern "C" {
         center: ImVec2,
         radius: f32,
         col: ImU32,
-        num_segments: cty::c_int,
+        num_segments: core::ffi::c_int,
         thickness: f32,
     );
 }
@@ -5470,7 +5513,7 @@ unsafe extern "C" {
         center: ImVec2,
         radius: f32,
         col: ImU32,
-        num_segments: cty::c_int,
+        num_segments: core::ffi::c_int,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -5481,7 +5524,7 @@ unsafe extern "C" {
         radius: ImVec2,
         col: ImU32,
         rot: f32,
-        num_segments: cty::c_int,
+        num_segments: core::ffi::c_int,
         thickness: f32,
     );
 }
@@ -5493,7 +5536,7 @@ unsafe extern "C" {
         radius: ImVec2,
         col: ImU32,
         rot: f32,
-        num_segments: cty::c_int,
+        num_segments: core::ffi::c_int,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -5502,8 +5545,8 @@ unsafe extern "C" {
         self_: *mut ImDrawList,
         pos: ImVec2,
         col: ImU32,
-        text_begin: *const cty::c_char,
-        text_end: *const cty::c_char,
+        text_begin: *const core::ffi::c_char,
+        text_end: *const core::ffi::c_char,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -5514,8 +5557,8 @@ unsafe extern "C" {
         font_size: f32,
         pos: ImVec2,
         col: ImU32,
-        text_begin: *const cty::c_char,
-        text_end: *const cty::c_char,
+        text_begin: *const core::ffi::c_char,
+        text_end: *const core::ffi::c_char,
         wrap_width: f32,
         cpu_fine_clip_rect: *const ImVec4,
     );
@@ -5530,7 +5573,7 @@ unsafe extern "C" {
         p4: ImVec2,
         col: ImU32,
         thickness: f32,
-        num_segments: cty::c_int,
+        num_segments: core::ffi::c_int,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -5542,7 +5585,7 @@ unsafe extern "C" {
         p3: ImVec2,
         col: ImU32,
         thickness: f32,
-        num_segments: cty::c_int,
+        num_segments: core::ffi::c_int,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -5550,7 +5593,7 @@ unsafe extern "C" {
     pub fn ImDrawList_AddPolyline(
         self_: *mut ImDrawList,
         points: *const ImVec2,
-        num_points: cty::c_int,
+        num_points: core::ffi::c_int,
         col: ImU32,
         flags: ImDrawFlags,
         thickness: f32,
@@ -5561,7 +5604,7 @@ unsafe extern "C" {
     pub fn ImDrawList_AddConvexPolyFilled(
         self_: *mut ImDrawList,
         points: *const ImVec2,
-        num_points: cty::c_int,
+        num_points: core::ffi::c_int,
         col: ImU32,
     );
 }
@@ -5570,7 +5613,7 @@ unsafe extern "C" {
     pub fn ImDrawList_AddConcavePolyFilled(
         self_: *mut ImDrawList,
         points: *const ImVec2,
-        num_points: cty::c_int,
+        num_points: core::ffi::c_int,
         col: ImU32,
     );
 }
@@ -5653,7 +5696,7 @@ unsafe extern "C" {
         radius: f32,
         a_min: f32,
         a_max: f32,
-        num_segments: cty::c_int,
+        num_segments: core::ffi::c_int,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -5662,8 +5705,8 @@ unsafe extern "C" {
         self_: *mut ImDrawList,
         center: ImVec2,
         radius: f32,
-        a_min_of_12: cty::c_int,
-        a_max_of_12: cty::c_int,
+        a_min_of_12: core::ffi::c_int,
+        a_max_of_12: core::ffi::c_int,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -5675,7 +5718,7 @@ unsafe extern "C" {
         rot: f32,
         a_min: f32,
         a_max: f32,
-        num_segments: cty::c_int,
+        num_segments: core::ffi::c_int,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -5685,7 +5728,7 @@ unsafe extern "C" {
         p2: ImVec2,
         p3: ImVec2,
         p4: ImVec2,
-        num_segments: cty::c_int,
+        num_segments: core::ffi::c_int,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -5694,7 +5737,7 @@ unsafe extern "C" {
         self_: *mut ImDrawList,
         p2: ImVec2,
         p3: ImVec2,
-        num_segments: cty::c_int,
+        num_segments: core::ffi::c_int,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -5712,7 +5755,7 @@ unsafe extern "C" {
     pub fn ImDrawList_AddCallback(
         self_: *mut ImDrawList,
         callback: ImDrawCallback,
-        userdata: *mut cty::c_void,
+        userdata: *mut core::ffi::c_void,
         userdata_size: usize,
     );
 }
@@ -5726,7 +5769,7 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImDrawList_ChannelsSplit(self_: *mut ImDrawList, count: cty::c_int);
+    pub fn ImDrawList_ChannelsSplit(self_: *mut ImDrawList, count: core::ffi::c_int);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -5734,22 +5777,22 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImDrawList_ChannelsSetCurrent(self_: *mut ImDrawList, n: cty::c_int);
+    pub fn ImDrawList_ChannelsSetCurrent(self_: *mut ImDrawList, n: core::ffi::c_int);
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn ImDrawList_PrimReserve(
         self_: *mut ImDrawList,
-        idx_count: cty::c_int,
-        vtx_count: cty::c_int,
+        idx_count: core::ffi::c_int,
+        vtx_count: core::ffi::c_int,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn ImDrawList_PrimUnreserve(
         self_: *mut ImDrawList,
-        idx_count: cty::c_int,
-        vtx_count: cty::c_int,
+        idx_count: core::ffi::c_int,
+        vtx_count: core::ffi::c_int,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -5838,7 +5881,7 @@ unsafe extern "C" {
     pub fn ImDrawList__CalcCircleAutoSegmentCount(
         self_: *mut ImDrawList,
         radius: f32,
-    ) -> cty::c_int;
+    ) -> core::ffi::c_int;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -5846,9 +5889,9 @@ unsafe extern "C" {
         self_: *mut ImDrawList,
         center: ImVec2,
         radius: f32,
-        a_min_sample: cty::c_int,
-        a_max_sample: cty::c_int,
-        a_step: cty::c_int,
+        a_min_sample: core::ffi::c_int,
+        a_max_sample: core::ffi::c_int,
+        a_step: core::ffi::c_int,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -5859,7 +5902,7 @@ unsafe extern "C" {
         radius: f32,
         a_min: f32,
         a_max: f32,
-        num_segments: cty::c_int,
+        num_segments: core::ffi::c_int,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -5899,8 +5942,8 @@ unsafe extern "C" {
     pub fn ImTextureData_Create(
         self_: *mut ImTextureData,
         format: ImTextureFormat,
-        w: cty::c_int,
-        h: cty::c_int,
+        w: core::ffi::c_int,
+        h: core::ffi::c_int,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -5909,23 +5952,23 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImTextureData_GetPixels(self_: *mut ImTextureData) -> *mut cty::c_void;
+    pub fn ImTextureData_GetPixels(self_: *mut ImTextureData) -> *mut core::ffi::c_void;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
     pub fn ImTextureData_GetPixelsAt(
         self_: *mut ImTextureData,
-        x: cty::c_int,
-        y: cty::c_int,
-    ) -> *mut cty::c_void;
+        x: core::ffi::c_int,
+        y: core::ffi::c_int,
+    ) -> *mut core::ffi::c_void;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImTextureData_GetSizeInBytes(self_: *mut ImTextureData) -> cty::c_int;
+    pub fn ImTextureData_GetSizeInBytes(self_: *mut ImTextureData) -> core::ffi::c_int;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImTextureData_GetPitch(self_: *mut ImTextureData) -> cty::c_int;
+    pub fn ImTextureData_GetPitch(self_: *mut ImTextureData) -> core::ffi::c_int;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -5987,8 +6030,8 @@ unsafe extern "C" {
 unsafe extern "C" {
     pub fn ImFontGlyphRangesBuilder_AddText(
         self_: *mut ImFontGlyphRangesBuilder,
-        text: *const cty::c_char,
-        text_end: *const cty::c_char,
+        text: *const core::ffi::c_char,
+        text_end: *const core::ffi::c_char,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -6039,7 +6082,7 @@ unsafe extern "C" {
 unsafe extern "C" {
     pub fn ImFontAtlas_AddFontFromFileTTF(
         self_: *mut ImFontAtlas,
-        filename: *const cty::c_char,
+        filename: *const core::ffi::c_char,
         size_pixels: f32,
         font_cfg: *const ImFontConfig,
         glyph_ranges: *const ImWchar,
@@ -6049,8 +6092,8 @@ unsafe extern "C" {
 unsafe extern "C" {
     pub fn ImFontAtlas_AddFontFromMemoryTTF(
         self_: *mut ImFontAtlas,
-        font_data: *mut cty::c_void,
-        font_data_size: cty::c_int,
+        font_data: *mut core::ffi::c_void,
+        font_data_size: core::ffi::c_int,
         size_pixels: f32,
         font_cfg: *const ImFontConfig,
         glyph_ranges: *const ImWchar,
@@ -6060,8 +6103,8 @@ unsafe extern "C" {
 unsafe extern "C" {
     pub fn ImFontAtlas_AddFontFromMemoryCompressedTTF(
         self_: *mut ImFontAtlas,
-        compressed_font_data: *const cty::c_void,
-        compressed_font_data_size: cty::c_int,
+        compressed_font_data: *const core::ffi::c_void,
+        compressed_font_data_size: core::ffi::c_int,
         size_pixels: f32,
         font_cfg: *const ImFontConfig,
         glyph_ranges: *const ImWchar,
@@ -6071,7 +6114,7 @@ unsafe extern "C" {
 unsafe extern "C" {
     pub fn ImFontAtlas_AddFontFromMemoryCompressedBase85TTF(
         self_: *mut ImFontAtlas,
-        compressed_font_data_base85: *const cty::c_char,
+        compressed_font_data_base85: *const core::ffi::c_char,
         size_pixels: f32,
         font_cfg: *const ImFontConfig,
         glyph_ranges: *const ImWchar,
@@ -6109,8 +6152,8 @@ unsafe extern "C" {
 unsafe extern "C" {
     pub fn ImFontAtlas_AddCustomRect(
         self_: *mut ImFontAtlas,
-        width: cty::c_int,
-        height: cty::c_int,
+        width: core::ffi::c_int,
+        height: core::ffi::c_int,
         out_r: *mut ImFontAtlasRect,
     ) -> ImFontAtlasRectId;
 }
@@ -6173,7 +6216,7 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImFont_GetDebugName(self_: *mut ImFont) -> *const cty::c_char;
+    pub fn ImFont_GetDebugName(self_: *mut ImFont) -> *const core::ffi::c_char;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -6191,9 +6234,9 @@ unsafe extern "C" {
         size: f32,
         max_width: f32,
         wrap_width: f32,
-        text_begin: *const cty::c_char,
-        text_end: *const cty::c_char,
-        remaining: *mut *const cty::c_char,
+        text_begin: *const core::ffi::c_char,
+        text_end: *const core::ffi::c_char,
+        remaining: *mut *const core::ffi::c_char,
     );
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -6201,10 +6244,10 @@ unsafe extern "C" {
     pub fn ImFont_CalcWordWrapPosition(
         self_: *mut ImFont,
         size: f32,
-        text: *const cty::c_char,
-        text_end: *const cty::c_char,
+        text: *const core::ffi::c_char,
+        text_end: *const core::ffi::c_char,
         wrap_width: f32,
-    ) -> *const cty::c_char;
+    ) -> *const core::ffi::c_char;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
@@ -6227,8 +6270,8 @@ unsafe extern "C" {
         pos: ImVec2,
         col: ImU32,
         clip_rect: ImVec4,
-        text_begin: *const cty::c_char,
-        text_end: *const cty::c_char,
+        text_begin: *const core::ffi::c_char,
+        text_end: *const core::ffi::c_char,
         wrap_width: f32,
         cpu_fine_clip: bool,
     );
@@ -6245,8 +6288,8 @@ unsafe extern "C" {
 unsafe extern "C" {
     pub fn ImFont_IsGlyphRangeUnused(
         self_: *mut ImFont,
-        c_begin: cty::c_uint,
-        c_last: cty::c_uint,
+        c_begin: core::ffi::c_uint,
+        c_last: core::ffi::c_uint,
     ) -> bool;
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
@@ -6283,5 +6326,5 @@ unsafe extern "C" {
 }
 #[link(wasm_import_module = "imgui-sys-v0")]
 unsafe extern "C" {
-    pub fn ImGuiTextBuffer_appendf(self_: *mut ImGuiTextBuffer, fmt: *const cty::c_char, ...);
+    pub fn ImGuiTextBuffer_appendf(self_: *mut ImGuiTextBuffer, fmt: *const core::ffi::c_char, ...);
 }
