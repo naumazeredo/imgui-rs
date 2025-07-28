@@ -438,7 +438,7 @@ impl<'ui> DrawListMut<'ui> {
         ImageQuad::new(self, texture_id, p1, p2, p3, p4)
     }
 
-    /// Draw the speciied image, with rounded corners
+    /// Draw the specified image, with rounded corners
     pub fn add_image_rounded(
         &'ui self,
         texture_id: TextureId,
@@ -447,6 +447,17 @@ impl<'ui> DrawListMut<'ui> {
         rounding: f32,
     ) -> ImageRounded<'ui> {
         ImageRounded::new(self, texture_id, p_min, p_max, rounding)
+    }
+
+    /// Draw the color rect checkboard
+    pub fn add_checkboard(
+        &'ui self,
+        p_min: impl Into<MintVec2>,
+        p_max: impl Into<MintVec2>,
+        grid_step: f32,
+        grid_offset: impl Into<MintVec2>,
+    ) -> Checkerboard<'ui> {
+        Checkerboard::new(self, p_min, p_max, grid_step, grid_offset)
     }
 
     /// Draw the specified callback.
@@ -1162,6 +1173,66 @@ impl<'ui> ImageRounded<'ui> {
                 self.uv_min.into(),
                 self.uv_max.into(),
                 self.col.into(),
+                self.rounding,
+                self.draw_flags.bits() as i32,
+            );
+        }
+    }
+}
+
+/// Color rect draw list primitive
+#[must_use = "should call .build() to draw the object"]
+pub struct Checkerboard<'ui> {
+    p_min: [f32; 2],
+    p_max: [f32; 2],
+    fill_col: ImColor32,
+    grid_step: f32,
+    grid_offset: [f32; 2],
+    rounding: f32,
+    draw_flags: DrawFlags,
+    draw_list: &'ui DrawListMut<'ui>,
+}
+
+impl<'ui> Checkerboard<'ui> {
+    /// Typically constructed by [`DrawListMut::add_image`]
+    pub fn new(
+        draw_list: &'ui DrawListMut<'_>,
+        p_min: impl Into<MintVec2>,
+        p_max: impl Into<MintVec2>,
+        grid_step: f32,
+        grid_offset: impl Into<MintVec2>,
+    ) -> Self {
+        Self {
+            p_min: p_min.into().into(),
+            p_max: p_max.into().into(),
+            fill_col: [1.0, 1.0, 1.0, 1.0].into(),
+            grid_step,
+            grid_offset: grid_offset.into().into(),
+            rounding: 0.0,
+            draw_flags: DrawFlags::ROUND_CORNERS_NONE,
+            draw_list,
+        }
+    }
+
+    /// Set fill color (default: white `[1.0, 1.0, 1.0, 1.0]`)
+    pub fn fill_col<C>(mut self, fill_col: C) -> Self
+    where
+        C: Into<ImColor32>,
+    {
+        self.fill_col = fill_col.into();
+        self
+    }
+
+    /// Draw the image on the window.
+    pub fn build(self) {
+        unsafe {
+            sys::igRenderColorRectWithAlphaCheckerboard(
+                self.draw_list.draw_list,
+                self.p_min.into(),
+                self.p_max.into(),
+                self.fill_col.into(),
+                self.grid_step,
+                self.grid_offset.into(),
                 self.rounding,
                 self.draw_flags.bits() as i32,
             );
