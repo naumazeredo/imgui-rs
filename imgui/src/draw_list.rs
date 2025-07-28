@@ -455,9 +455,8 @@ impl<'ui> DrawListMut<'ui> {
         p_min: impl Into<MintVec2>,
         p_max: impl Into<MintVec2>,
         grid_step: f32,
-        grid_offset: impl Into<MintVec2>,
     ) -> Checkerboard<'ui> {
-        Checkerboard::new(self, p_min, p_max, grid_step, grid_offset)
+        Checkerboard::new(self, p_min, p_max, grid_step)
     }
 
     /// Draw the specified callback.
@@ -1200,18 +1199,23 @@ impl<'ui> Checkerboard<'ui> {
         p_min: impl Into<MintVec2>,
         p_max: impl Into<MintVec2>,
         grid_step: f32,
-        grid_offset: impl Into<MintVec2>,
     ) -> Self {
         Self {
             p_min: p_min.into().into(),
             p_max: p_max.into().into(),
             fill_col: [1.0, 1.0, 1.0, 1.0].into(),
             grid_step,
-            grid_offset: grid_offset.into().into(),
+            grid_offset: [0.0, 0.0],
             rounding: 0.0,
             draw_flags: DrawFlags::ROUND_CORNERS_NONE,
             draw_list,
         }
+    }
+
+    /// Set the grid offset (default: `[0.0, 0.0]`)
+    pub fn grid_offset(mut self, grid_offset: impl Into<MintVec2>) -> Self {
+        self.grid_offset = grid_offset.into().into();
+        self
     }
 
     /// Set fill color (default: white `[1.0, 1.0, 1.0, 1.0]`)
