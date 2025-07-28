@@ -450,7 +450,7 @@ impl<'ui> DrawListMut<'ui> {
     }
 
     /// Draw the color rect checkboard
-    pub fn add_checkboard(
+    pub fn add_checkerboard(
         &'ui self,
         p_min: impl Into<MintVec2>,
         p_max: impl Into<MintVec2>,
