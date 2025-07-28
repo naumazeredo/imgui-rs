@@ -1221,7 +1221,7 @@ impl<'ui> Checkerboard<'ui> {
         Self {
             p_min: p_min.into().into(),
             p_max: p_max.into().into(),
-            fill_col: [1.0, 1.0, 1.0, 1.0].into(),
+            fill_col: [1.0, 1.0, 1.0, 0.5].into(),
             grid_step,
             grid_offset: [0.0, 0.0],
             rounding: 0.0,
@@ -1236,7 +1236,7 @@ impl<'ui> Checkerboard<'ui> {
         self
     }
 
-    /// Set fill color (default: white `[1.0, 1.0, 1.0, 1.0]`)
+    /// Set fill color (default: white `[1.0, 1.0, 1.0, 0.5]`)
     pub fn fill_col<C>(mut self, fill_col: C) -> Self
     where
         C: Into<ImColor32>,
