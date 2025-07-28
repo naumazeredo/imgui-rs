@@ -70,7 +70,7 @@ In short, there are a few steps:
         Success [output = .../imgui-rs/imgui-sys/src/wasm_bindings.rs]
     ```
 
-    This requires bindgen to be installed (`cargo install bindgen` should do it)
+    This requires bindgen to be installed (`cargo install bindgen-cli` should do it)
 
     Be sure to check `bindgen --version` versus the previously used version which is recoded in the first line of `imgui-sys/src/bindings.rs` - if you use a different version, you may get slightly different bindings which could also cause an update to be more work than it would otherwise be with matching bindgen versions
 

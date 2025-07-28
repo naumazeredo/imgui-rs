@@ -136,16 +136,7 @@ impl DrawListMut<'_> {
     pub(crate) fn background(_: &Ui) -> Self {
         Self::lock_draw_list(DrawListType::Background);
         Self {
-            draw_list: unsafe {
-                cfg_if::cfg_if! {
-                    if #[cfg(feature = "docking")] {
-                        // Has extra overload in docking branch
-                        sys::igGetBackgroundDrawList(std::ptr::null_mut())
-                    } else {
-                        sys::igGetBackgroundDrawList()
-                    }
-                }
-            },
+            draw_list: unsafe { sys::igGetBackgroundDrawList_Nil() },
             draw_list_type: DrawListType::Background,
             _phantom: PhantomData,
         }
@@ -155,16 +146,7 @@ impl DrawListMut<'_> {
     pub(crate) fn foreground(_: &Ui) -> Self {
         Self::lock_draw_list(DrawListType::Foreground);
         Self {
-            draw_list: unsafe {
-                cfg_if::cfg_if! {
-                    if #[cfg(feature = "docking")] {
-                        // Has extra overload in docking branch
-                        sys::igGetForegroundDrawList_ViewportPtr(std::ptr::null_mut())
-                    } else {
-                        sys::igGetForegroundDrawList()
-                    }
-                }
-            },
+            draw_list: unsafe { sys::igGetForegroundDrawList_Nil() },
             draw_list_type: DrawListType::Foreground,
             _phantom: PhantomData,
         }

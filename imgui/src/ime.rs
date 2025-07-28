@@ -1,8 +1,6 @@
 use std::panic::catch_unwind;
 use std::process;
 
-use crate::get_platform_io;
-
 pub trait ImeDataBackend: 'static {
     fn set_ime_data(
         &mut self,
@@ -49,7 +47,7 @@ pub(crate) unsafe extern "C" fn set_ime_data(
     let result = catch_unwind(|| {
         let data = unsafe { *(data as *mut crate::PlatformImeData).as_ref().unwrap() };
 
-        let user_data = unsafe { (*get_platform_io()).Platform_ImeUserData };
+        let user_data = unsafe { (*sys::igGetPlatformIO_Nil()).Platform_ImeUserData };
         let ctx = &mut *(user_data as *mut ImeDataContext);
 
         ctx.backend
