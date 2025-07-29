@@ -1,5 +1,6 @@
 use std::ptr;
 
+use crate::math::MintVec2;
 use crate::sys;
 use crate::window::WindowFlags;
 use crate::Ui;
@@ -26,6 +27,7 @@ pub struct PopupModal<'ui, 'p, Label> {
     ui: &'ui Ui,
     label: Label,
     opened: Option<&'p mut bool>,
+    size_constraints: Option<(MintVec2, MintVec2)>,
     flags: WindowFlags,
 }
 
@@ -36,6 +38,7 @@ impl<'ui, 'p, Label: AsRef<str>> PopupModal<'ui, 'p, Label> {
             ui,
             label,
             opened: None,
+            size_constraints: None,
             flags: WindowFlags::empty(),
         }
     }
@@ -112,6 +115,18 @@ impl<'ui, 'p, Label: AsRef<str>> PopupModal<'ui, 'p, Label> {
             .set(WindowFlags::ALWAYS_HORIZONTAL_SCROLLBAR, value);
         self
     }
+    /// Sets modal size constraints.
+    ///
+    /// Use -1.0, -1.0 on either X or Y axis to preserve current size.
+    #[inline]
+    pub fn size_constraints(
+        mut self,
+        size_min: impl Into<MintVec2>,
+        size_max: impl Into<MintVec2>,
+    ) -> Self {
+        self.size_constraints = Some((size_min.into(), size_max.into()));
+        self
+    }
 
     /// Consume and draw the PopupModal.
     /// Returns the result of the closure, if it is called.
@@ -127,6 +142,18 @@ impl<'ui, 'p, Label: AsRef<str>> PopupModal<'ui, 'p, Label> {
     /// should be called *once* when you want to actual create the popup.
     #[doc(alias = "BeginPopupModal")]
     pub fn begin_popup(self) -> Option<PopupToken<'ui>> {
+        if let Some((size_min, size_max)) = self.size_constraints {
+            // TODO: callback support
+            unsafe {
+                sys::igSetNextWindowSizeConstraints(
+                    size_min.into(),
+                    size_max.into(),
+                    None,
+                    ptr::null_mut(),
+                )
+            };
+        }
+
         let render = unsafe {
             sys::igBeginPopupModal(
                 self.ui.scratch_txt(self.label),
@@ -205,6 +232,7 @@ impl Ui {
             ui: self,
             label: str_id,
             opened: None,
+            size_constraints: None,
             flags: WindowFlags::empty(),
         }
         .build(f)
@@ -218,6 +246,7 @@ impl Ui {
             ui: self,
             label: str_id,
             opened: None,
+            size_constraints: None,
             flags: WindowFlags::empty(),
         }
         .begin_popup()
@@ -232,6 +261,7 @@ impl Ui {
             ui: self,
             label: str_id,
             opened: None,
+            size_constraints: None,
             flags: WindowFlags::empty(),
         }
     }
