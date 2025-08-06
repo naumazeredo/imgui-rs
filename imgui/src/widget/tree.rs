@@ -151,7 +151,7 @@ impl<'a, T: AsRef<str>> TreeNode<'a, T, &'static str> {
 
 impl<'a, T: AsRef<str>, L: AsRef<str>> TreeNode<'a, T, L> {
     /// Sets the tree node label
-    pub fn label<I: Into<TreeNodeId<L2>>, L2: AsRef<str>>(self, label: L2) -> TreeNode<'a, T, L2> {
+    pub fn label<L2: AsRef<str>>(self, label: L2) -> TreeNode<'a, T, L2> {
         TreeNode {
             label: Some(label),
             id: self.id,
