@@ -25,8 +25,9 @@ fn find_freetype() -> Vec<impl AsRef<std::path::Path>> {
 
 // Output define args for compiler
 fn main() -> std::io::Result<()> {
-    #[cfg(feature = "external")]
-    {
+    let external_enabled = std::env::var_os("CARGO_FEATURE_EXTERNAL").is_some();
+
+    if external_enabled {
         println!(
             "cargo:warning=feature 'external' enabled, skipping C++ compilation of libcimgui.a"
         );
