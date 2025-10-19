@@ -25,6 +25,14 @@ fn find_freetype() -> Vec<impl AsRef<std::path::Path>> {
 
 // Output define args for compiler
 fn main() -> std::io::Result<()> {
+    #[cfg(feature = "external")]
+    {
+        println!(
+            "cargo:warning=feature 'external' enabled, skipping C++ compilation of libcimgui.a"
+        );
+        return Ok(());
+    }
+
     // Root of imgui-sys
     let manifest_dir = std::path::Path::new(env!("CARGO_MANIFEST_DIR"));
 
