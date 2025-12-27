@@ -1,6 +1,8 @@
 #![allow(dead_code)]
 
 const DEFINES: &[(&str, Option<&str>)] = &[
+    // Match cimgui generated definitions.
+    ("IMGUI_DISABLE_OBSOLETE_FUNCTIONS", None),
     // Rust `char` is a unicode scalar value, e.g. 32 bits.
     ("IMGUI_USE_WCHAR32", None),
     // Disabled due to linking issues
@@ -25,6 +27,15 @@ fn find_freetype() -> Vec<impl AsRef<std::path::Path>> {
 
 // Output define args for compiler
 fn main() -> std::io::Result<()> {
+    let external_enabled = std::env::var_os("CARGO_FEATURE_EXTERNAL").is_some();
+
+    if external_enabled {
+        println!(
+            "cargo:warning=feature 'external' enabled, skipping C++ compilation of libcimgui.a"
+        );
+        return Ok(());
+    }
+
     // Root of imgui-sys
     let manifest_dir = std::path::Path::new(env!("CARGO_MANIFEST_DIR"));
 

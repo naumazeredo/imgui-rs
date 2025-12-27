@@ -26,6 +26,7 @@ cfg-if = "1"
 wasm = ["imgui-sys/wasm"]
 freetype = ["imgui-sys/freetype"]
 docking = ["imgui-sys/docking"]
+external = ["imgui-sys/external"]
 # this api is in beta in the upstream imgui crate. See issue #524 for more info.
 # it should be stable and fine to use though.
 tables-api = []
